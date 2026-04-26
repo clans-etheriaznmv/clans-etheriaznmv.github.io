@@ -12,7 +12,7 @@
             flex-direction: column;
             align-items: center;
             padding: 40px;
-            scroll-behavior: smooth; /* Esto hace que el salto sea suave y no brusco */
+            scroll-behavior: smooth; 
         }
         .card {
             background: white;
@@ -90,10 +90,9 @@
             font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
-            text-decoration: none; /* Quitamos subrayado si los usas como links */
+            text-decoration: none; 
         }
 
-        /* --- NUEVOS ESTILOS PARA EL ÍNDICE Y CONTENIDO --- */
         .nav-index {
             border: 1px solid #3b82f6;
             border-radius: 8px;
@@ -143,10 +142,16 @@
             color: #4b5563;
         }
         .bullet {
-            color: #9061f9;
-            margin-right: 10px;
-            font-size: 20px;
-        }
+        margin-right: 10px;
+        font-size: 18px;
+        line-height: 1;
+}
+
+        .bullet-new { color: #9061f9; }
+        .bullet-changes { color: #10b981; }
+        .bullet-balance { color: #f59e0b; }
+        .bullet-internal { color: #06b6d4; }
+        .bullet-fixes { color: #ef4444; }
     </style>
 </head>
 <body>
@@ -211,15 +216,15 @@
     <p style="color: #6b7280; margin-bottom: 30px;">Esta actualización se encuentra conformada de la siguiente manera:</p>
 
     <h2 id="26042026001" style="font-size: 24px; font-weight: 800; margin-top: 40px;">Cosas nuevas</h2>
-    <div class="list-item"><span class="bullet">●</span> [26-04-2026] Se añadió el nuevo sistema de Guerras de Clanes.</div>
-    <div class="list-item"><span class="bullet">●</span> [26-04-2026] Nuevo comando /clan para gestionar tu equipo.</div>
-    <div class="list-item"><span class="bullet">●</span> [26-04-2026] Se integraron los nuevos modelos 3D para estandartes.</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Se añadió el nuevo sistema de Guerras de Clanes.</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Nuevo comando /clan para gestionar tu equipo.</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Se integraron los nuevos modelos 3D para estandartes.</div>
 
     <h2 id="26042026002" style="font-size: 24px; font-weight: 800; margin-top: 40px;">Ligeros cambios</h2>
-    <div class="list-item"><span class="bullet">●</span> Se ajustó la visibilidad de los nombres de clan en el chat.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> Se ajustó la visibilidad de los nombres de clan en el chat.</div>
 
     <h2 id="26042026003" style="font-size: 24px; font-weight: 800; margin-top: 40px;">Cambios de balance</h2>
-    <div class="list-item"><span class="bullet">●</span> Se redujo el costo de creación de clan a 500 monedas.</div>
+    <div class="list-item"><span class="bullet bullet-balance">●</span> Se redujo el costo de creación de clan a 500 monedas.</div>
 </div>
 
 </body>
