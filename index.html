@@ -11,12 +11,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0; /* Quitamos padding superior para el banner */
+            padding: 0;
             margin: 0;
             scroll-behavior: smooth; 
         }
 
-        /* --- BANNER ESTILO MINELATINO --- */
         .hero-banner {
             width: 100%;
             height: 450px;
@@ -36,7 +35,6 @@
         .hero-title { font-size: 42px; font-weight: 900; margin: 0; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); padding: 0 20px; }
         .hero-subtitle { font-size: 18px; margin-top: 10px; font-weight: 500; opacity: 0.8; }
 
-        /* --- CONTENEDORES --- */
         .card {
             background: white;
             border-radius: 15px;
@@ -46,7 +44,7 @@
             padding: 35px;
             border: 1px solid #e1e4e8;
             margin-bottom: 30px;
-            z-index: 2; /* Para quedar sobre el banner */
+            z-index: 2;
         }
 
         .header {
@@ -110,7 +108,6 @@
         }
         .tag:hover { transform: scale(1.05); }
 
-        /* --- SECCIONES DE CONTENIDO --- */
         .nav-index {
             border: 1px solid #3b82f6;
             border-radius: 12px;
@@ -144,7 +141,6 @@
 
         .bullet { margin-right: 12px; font-size: 18px; flex-shrink: 0; }
 
-        /* --- COLORES DE BULLETS --- */
         .bullet-new { color: #9061f9; }
         .bullet-changes { color: #10b981; }
         .bullet-balance { color: #f59e0b; }
@@ -165,8 +161,8 @@
     <div class="header">˖ㅤ⊹ㅤ ࣪ Información de la actualización 🪽</div>
     
     <div class="banner-info">
-        <div style="color: #6b7280; font-weight: 800; font-size: 11px; margin-bottom: 5px; text-transform: uppercase;">ACTUALIZACIÓN ESTRUCTURAL</div>
-        <div style="font-size: 14px; font-weight: 600; color: #1a2b49;">Se habilitó el sistema de facciones y roles jerárquicos.</div>
+        <div style="color: #6b7280; font-weight: 800; font-size: 11px; margin-bottom: 5px; text-transform: uppercase;">NUEVO SISTEMA DE CLANES</div>
+        <div style="font-size: 14px; font-weight: 600; color: #1a2b49;">¡Guerras de clanes, nuevos rangos & recompensas exclusivas!</div>
     </div>
 
     <div class="stats-grid">
@@ -186,93 +182,75 @@
 
     <div class="credits-box">
         <span class="credits-label">Créditos</span>
-        <span style="color: #374151; font-weight: 600;">dosmenosdos / Nicolás</span>
+        <span style="color: #374151; font-weight: 600;">dosmenosdos.</span>
     </div>
 
     <div class="tag-container">
-        <a href="#Cosas_Nuevas" class="tag" style="background: #9061f9;">COSAS NUEVAS</a>
-        <a href="#Cambios_pendientes" class="tag" style="background: #10b981;">PENDIENTES</a>
-        <a href="#Cambios_internos" class="tag" style="background: #f59e0b;">AJUSTES</a>
-        <a href="#Correcciones" class="tag" style="background: #ef4444;">CORRECCIONES</a>
+
+        <a href="#nuevos" class="tag" style="background: #9061f9;">COSAS NUEVAS</a>
+
+        <a href="#cambios" class="tag" style="background: #10b981;">CAMBIOS PENDIENTES</a>
+
+        <a href="#ajustes" class="tag" style="background: #f59e0b;">AJUSTES</a>
+
+        <a href="#internos" class="tag" style="background: #06b6d4;">CAMBIOS INTERNOS</a>
+
+        <a href="#correcciones" class="tag" style="background: #ef4444;">CORRECCIONES</a>
+
     </div>
+
 </div>
+
+
 
 <div class="nav-index">
-    <h3 style="margin-top:0; color:#1e40af">Índice de navegación</h3>
-    <ul style="list-style: none; padding: 0;">
-        <li>1. <a href="#info" style="color:#2563eb; text-decoration:none;">Resumen de la versión</a></li>
-        <li style="margin-top:10px;">
-            <ul style="padding-left: 20px; list-style: none;">
-                <li>• <a href="#Cosas_Nuevas" style="color:#2563eb; text-decoration:none;">1.1. Cosas nuevas (20 items)</a></li>
-                <li>• <a href="#Cambios_pendientes" style="color:#2563eb; text-decoration:none;">1.2. Cambios pendientes (30 items)</a></li>
-                <li>• <a href="#Cambios_internos" style="color:#2563eb; text-decoration:none;">1.3. Ajustes internos</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
 
+    <h3>índice de navegación</h3>
+
+    <ul>
+
+        <li>1. <a href="#¿Qué_trae_de_nuevo_esta_actualización?">¿Qué trae de nuevo esta actualización?</a></li>
+
+        <ul style="padding-left: 20px; list-style: none;">
+
+            <li>1.1. <a href="#Cosas_Nuevas">Cosas nuevas</a></li>
+
+            <li>1.2. <a href="#Cambios_pendientes">Cambios pendientes</a></li>
+
+            <li>1.3. <a href="#Cambios_de_balance">Cambios de balance</a></li>
+
+            <li>1.4. <a href="#Correcciones">Correcciones</a></li>
+
+        </ul>
+
+    </ul>
+
+</div>
 <div id="info" class="content-section">
     <h1 class="section-title">¿Qué trae de nuevo esta actualización?</h1>
     <p style="color: #6b7280; margin-bottom: 30px; font-size: 14px; line-height: 1.6;">¡Saludos, exploradores! Presentamos los clanes como el eje central para la organización estratégica en Etheria. Esta implementación introduce un marco formal para la agrupación de usuarios, permitiendo la gestión autónoma de facciones bajo una infraestructura técnica estable y optimizada. A continuación, el desglose detallado de los cambios:</p>
 
     <h2 id="Cosas_Nuevas" style="color:#9061f9;">Cosas Nuevas</h2>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Implementación del rol jerárquico "Líder de Clan".</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Implementación del rol "Líder de Clan".</div>
     <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Implementación del rol "Co-Líder de Clan".</div>
     <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Implementación del rol "Miembro de Clan".</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Creación automática de canales de texto privados para cada facción.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Creación automática de canales de voz exclusivos.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Sistema de "Remoción de Advertencias" (4 en total) para el Líder.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Rol identificador con color e icono personalizado por cada clan.</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Creación de canales de texto privados para cada clan.</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] El líder podrá distribuir 4 remociones de sanciones entre sus miembros.</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Rol identificador con color e icono personalizado para cada clan.</div>
     <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Límite inicial establecido en 5 miembros por clan.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Validación de 15 invitaciones para la creación manual de clanes.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Posibilidad de fundar clan como alternativa a recompensas de Booster.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Orden jerárquico: Los clanes se muestran por encima de los Boosters.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Prioridad visual basada en la fecha de fundación del clan.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Integración de base de datos MongoDB para registros de clanes.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Sistema de logs para ingresos y salidas de miembros.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Comando de información interna del clan (/clan info).</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Protección de nombres para evitar duplicados entre facciones.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Sincronización de permisos en tiempo real para nuevos miembros.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Posicionamiento del rol de clan por debajo de los rangos VIP.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Configuración de notificaciones privadas para la administración del clan.</div>
-    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Integración del sistema de tickets para soporte de líderes.</div>
 
     <h2 id="Cambios_pendientes" style="color:#10b981;">Cambios Pendientes</h2>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Activación de Guerras de Clanes (Quórum: 5 clanes activos).</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Sistema de puntos de clan para canje de cosméticos.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Apertura de la Tienda de Clan exclusiva.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Implementación de Alianzas entre facciones.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Canal de noticias con menciones (@tag) para clanes activos.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Leaderboard de actividad y antigüedad de clanes.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Catálogo expandido de iconos personalizados.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Colores animados para clanes de alto nivel.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Sistema de veto permanente para miembros expulsados.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Mensajes de bienvenida automáticos por clan.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Eventos de conquista de canales temporales.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Registros de auditoría accesibles para los líderes.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Creación de sub-roles internos (ej. Capitán, Recluta).</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Sistema de logros y medallas colectivas.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Niveles de clan para aumentar el cupo de miembros.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Comando de perfil de clan público.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Banners personalizados para canales de voz.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Mercado de beneficios entre clanes aliados.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Anuncios automáticos de aniversarios de fundación.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Desafíos semanales de clan por prestigio.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Bloqueo de nombres similares para protección de marca.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Canal formal de reclutamiento inter-clanes.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Permisos de música en canales de voz de facción.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Sincronización de lista de clanes en la web oficial.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Invitaciones temporales para usuarios externos a los canales de voz.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Torneos competitivos entre representantes de cada clan.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Iconos temáticos por temporada (Navidad, Aniversario).</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Optimización de bitrate automático en canales de clan.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Comando seguro de transferencia de liderazgo.</div>
-    <div class="list-item"><span class="bullet bullet-changes">●</span> Modo diplomacia para clanes neutrales.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Definir cuándo será la primera guerra de actividad de clanes.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Sistema de puntos de clan para canje de cosméticos.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Creación de una tienda exclusiva para puntos de clan.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Canal de noticias con mención exclusiva para miembros de clan.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Leaderboard de actividad y antigüedad de clanes.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Niveles de clan para aumentar el cupo de miembros.</div>
 
     <h2 id="Cambios_internos" style="color:#f59e0b;">Ajustes Internos</h2>
-    <div class="list-item"><span class="bullet bullet-balance">●</span> Se estableció la exclusividad: o reclamas recompensas de Booster o fundas un clan.</div>
-    <div class="list-item"><span class="bullet bullet-balance">●</span> Los usuarios con mejora activa de servidor podrán fundar clanes retroactivamente.</div>
-    <div class="list-item"><span class="bullet bullet-balance">●</span> Los roles personalizados previos se eliminan al fundar un clan para evitar conflictos de color.</div>
+    <div class="list-item"><span class="bullet bullet-balance">●</span> [26-04-2026] Aquellos que mejoren el Servidor deberán elegir entre fundar un clan o elegir sus recompensas habituales.</div>
+    <div class="list-item"><span class="bullet bullet-balance">●</span> [26-04-2026] Los usuarios con mejoras activas dentro del Servidor podrán fundar clanes (en primera instancia).</div>
+    <div class="list-item"><span class="bullet bullet-balance">●</span> [26-04-2026] Los roles personalizados previos se eliminan al fundar un clan para evitar llenar el Servidor de roles.</div>
 </div>
 
 </body>
