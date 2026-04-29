@@ -18,6 +18,12 @@
             forced-color-adjust: none !important;
         }
 
+        .hero-link {
+            width: 100%;
+            text-decoration: none;
+            display: block;
+        }
+
         .hero-network {
             width: 100%;
             height: 400px;
@@ -32,7 +38,10 @@
             font-weight: 900;
             text-shadow: 0 4px 10px rgba(0,0,0,0.5);
             margin-bottom: 40px;
+            transition: opacity 0.3s ease;
         }
+
+        .hero-network:hover { opacity: 0.9; }
 
         .posts-container {
             width: 90%;
@@ -48,16 +57,9 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-decoration: none;
-            color: #374151 !important;
-            transition: transform 0.3s ease;
             position: relative;
             display: flex;
             flex-direction: column;
-        }
-
-        .post-card:hover {
-            transform: translateY(-8px);
         }
 
         .post-image {
@@ -70,6 +72,8 @@
 
         .post-content {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
         .post-title {
@@ -79,16 +83,82 @@
             color: #1a2b49 !important;
         }
 
+        .text-wrapper {
+            position: relative;
+            max-height: 4.5em;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
         .post-desc {
             font-size: 14px;
             color: #6b7280 !important;
             line-height: 1.5;
+            margin: 0;
         }
 
-        .coming-soon {
-            cursor: not-allowed;
+        .blur-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(transparent, white);
+            backdrop-filter: blur(1px);
+            transition: opacity 0.3s ease;
         }
 
+        .toggle-input { display: none; }
+
+        .expand-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 32px;
+            height: 32px;
+            background-color: #7c3aed;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            align-self: flex-start;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-btn::before {
+            content: '>';
+            color: white;
+            font-weight: bold;
+            transform: rotate(90deg);
+            font-size: 16px;
+        }
+
+        .toggle-input:checked ~ .text-wrapper {
+            max-height: 1000px;
+        }
+
+        .toggle-input:checked ~ .text-wrapper .blur-overlay {
+            opacity: 0;
+        }
+
+        .toggle-input:checked ~ .expand-btn {
+            transform: rotate(180deg);
+        }
+
+        .ver-mas {
+            display: none;
+            margin-top: 15px;
+            color: #5865f2;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .toggle-input:checked ~ .ver-mas {
+            display: inline-block;
+        }
+
+        .coming-soon { cursor: not-allowed; }
         .coming-soon::after {
             content: "PRÓXIMAMENTE";
             position: absolute;
@@ -102,34 +172,38 @@
             font-weight: 900;
             opacity: 0;
             transition: opacity 0.3s ease;
+            z-index: 5;
         }
-
-        .coming-soon:hover::after {
-            opacity: 1;
-        }
+        .coming-soon:hover::after { opacity: 1; }
     </style>
 </head>
 <body>
 
-    <header class="hero-network">
-        NETWORK
-    </header>
+    <a href="index.html" class="hero-link">
+        <header class="hero-network">
+            NETWORK
+        </header>
+    </a>
 
     <main class="posts-container">
         
-        <a href="index.html" class="post-card">
+        <div class="post-card">
             <div class="post-image" style="background-image: url('banner-clanes.png');"></div>
             <div class="post-content">
                 <h3 class="post-title">¡SISTEMA DE CLANES, GUERRAS & MÁS!</h3>
-                <p class="post-desc">¡Saludos, exploradores! Les presentamos el nuevo sistema de clanes, que a pesar de iniciar sólo como una idea en desarrollo, esperamos que pueda utilizarse para realizar eventos y dinámicas divertidas junto a todos ustedes.</p>
-            </div>
-        </a>
+                
+                <input type="checkbox" id="check-clanes" class="toggle-input">
+                
+                <div class="text-wrapper">
+                    <p class="post-desc">
+                        ¡Saludos, exploradores! Les presentamos el nuevo sistema de clanes, que a pesar de iniciar sólo como una idea en desarrollo, esperamos que pueda utilizarse para realizar eventos y dinámicas divertidas junto a todos ustedes. El sistema permitirá crear grupos unidos bajo un mismo nombre e insignia para competir por el dominio de Etheria.
+                    </p>
+                    <div class="blur-overlay"></div>
+                </div>
 
-        <div class="post-card coming-soon">
-            <div class="post-image" style="background-image: url('placeholder1.jpg'); filter: grayscale(100%);"></div>
-            <div class="post-content">
-                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc"></p>
+                <label for="check-clanes" class="expand-btn"></label>
+
+                <a href="clanes.html" class="ver-mas">VER MÁS DETALLES →</a>
             </div>
         </div>
 
@@ -137,7 +211,15 @@
             <div class="post-image" style="background-image: url('placeholder1.jpg'); filter: grayscale(100%);"></div>
             <div class="post-content">
                 <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc"></p>
+                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
+            </div>
+        </div>
+
+        <div class="post-card coming-soon">
+            <div class="post-image" style="background-image: url('placeholder1.jpg'); filter: grayscale(100%);"></div>
+            <div class="post-content">
+                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
+                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
             </div>
         </div>
 
