@@ -74,6 +74,7 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
         .post-title {
@@ -81,6 +82,7 @@
             font-weight: 800;
             margin: 0 0 10px 0;
             color: #1a2b49 !important;
+            align-self: flex-start;
         }
 
         .text-wrapper {
@@ -88,6 +90,7 @@
             max-height: 4.5em;
             overflow: hidden;
             transition: max-height 0.5s ease;
+            width: 100%;
         }
 
         .post-desc {
@@ -115,15 +118,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 32px;
-            height: 32px;
+            width: 100%;
+            height: 40px;
             background-color: #7c3aed;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             margin-top: 15px;
-            align-self: flex-start;
-            transition: transform 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
+        .expand-btn:hover { background-color: #6d28d9; }
 
         .expand-btn::before {
             content: '>';
@@ -153,6 +157,7 @@
             font-weight: 800;
             font-size: 13px;
             text-transform: uppercase;
+            text-align: center;
         }
 
         .toggle-input:checked ~ .ver-mas {
@@ -222,18 +227,18 @@
         .social-icon img:hover {
             opacity: 1;
             transform: translateY(-5px);
+        }
     </style>
 </head>
 <body>
 
-    <a class="hero-link">
+    <a href="index.html" class="hero-link">
         <header class="hero-network">
-            
+            NETWORK
         </header>
     </a>
 
     <main class="posts-container">
-        
         <div class="post-card">
             <div class="post-image" style="background-image: url('banner-clanes.png');"></div>
             <div class="post-content">
@@ -270,18 +275,19 @@
             </div>
         </div>
     </main>
-<footer class="footer">
-    <div class="footer-content">
-        <div class="social-links">
-            <a href="https://discord.gg/QWx89C38" target="_blank" class="social-icon">
-                <img src="discor-logo.png" alt="Discord">
-            </a>
-            <a href="https://www.instagram.com/etheria.znmv/" target="_blank" class="social-icon">
-                <img src="insta-logo.png" alt="Instagram">
-            </a>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://discord.gg/QWx89C38" target="_blank" class="social-icon">
+                    <img src="discor-logo.png" alt="Discord">
+                </a>
+                <a href="https://www.instagram.com/etheria.znmv/" target="_blank" class="social-icon">
+                    <img src="insta-logo.png" alt="Instagram">
+                </a>
+            </div>
+            <p class="copyright">© 2026 Etheria. Todos los derechos reservados.</p>
         </div>
-        <p class="copyright">© 2026 Etheria. Todos los derechos reservados.</p>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
