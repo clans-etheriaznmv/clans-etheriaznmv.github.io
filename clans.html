@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="only light">
+    <title>Información de la actualización</title>
+    <style>
+        
+        :root {
+            color-scheme: light;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5 !important;
+            color: #4b5563 !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            scroll-behavior: smooth; 
+        }
+
+        .card, .nav-index, .content-section {
+            background-color: white !important;
+            color: #374151 !important;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 450px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('background-image.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white !important;
+            text-align: center;
+            margin-bottom: -50px;
+        }
+
+        .hero-date { font-size: 14px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; opacity: 0.9; }
+        .hero-title { font-size: 42px; font-weight: 900; margin: 0; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); padding: 0 20px; }
+        .hero-subtitle { font-size: 18px; margin-top: 10px; font-weight: 500; opacity: 0.8; }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 700px;
+            padding: 35px;
+            border: 1px solid #e1e4e8;
+            margin-bottom: 30px;
+            z-index: 2;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: #1a2b49 !important;
+            margin-bottom: 25px;
+        }
+
+        .banner-info {
+            background-color: #fffbeb !important;
+            border-left: 5px solid #fbbf24;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .label { font-size: 11px; text-transform: uppercase; color: #6b7280; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .value { font-size: 15px; font-weight: 600; }
+
+        .credits-box {
+            background-color: #f3f4f6 !important;
+            border-left: 4px solid #9ca3af;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .credits-label { color: #6b7280; font-weight: 800; text-transform: uppercase; margin-right: 8px; }
+
+        .tag-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            border-top: 1px solid #f3f4f6;
+            padding-top: 25px;
+            justify-content: center;
+        }
+
+        .tag {
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: white !important;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none; 
+            transition: transform 0.2s;
+        }
+        .tag:hover { transform: scale(1.05); }
+
+        .nav-index {
+            border: 1px solid #3b82f6;
+            border-radius: 12px;
+            padding: 25px;
+            width: 90%;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        .content-section {
+            width: 90%;
+            max-width: 700px;
+            margin-bottom: 50px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .section-title { font-size: 28px; font-weight: 800; margin-bottom: 15px; color: #111827 !important; }
+        
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 14px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .bullet { margin-right: 12px; font-size: 18px; flex-shrink: 0; }
+        .bullet-new { color: #9061f9; }
+        .bullet-changes { color: #10b981; }
+        .bullet-balance { color: #f59e0b; }
+        .bullet-fixes { color: #ef4444; }
+
+        h2 { border-bottom: 2px solid #f3f4f6; padding-bottom: 10px; margin-top: 40px; }
+
+        .footer {
+            width: 100%;
+            background-color: #5865f2; 
+            background-image: linear-gradient(135deg, #5865f2 0%, #7c3aed 100%);
+            padding: 40px 0;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            border-top: 4px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .social-icon img {
+            width: 28px;
+            height: 28px;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon img:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    
+<header class="hero-banner">
+    <div class="hero-date">ACTUALIZACIÓN #01, 29 DE ABRIL, 2026</div>
+    <h1 class="hero-title">¡SISTEMA DE CLANES, GUERRAS & MÁS!</h1>
+    <div class="hero-subtitle">Etheria | Actualizaciones</div>
+</header>
+
+<div class="card">
+    <div class="header">˖ㅤ⊹ㅤ ࣪ Información de la actualización 🪽</div>
+    
+    <div class="banner-info">
+        <div style="color: #6b7280; font-weight: 800; font-size: 11px; margin-bottom: 5px; text-transform: uppercase;">NUEVO SISTEMA DE CLANES</div>
+        <div style="font-size: 14px; font-weight: 600; color: #1a2b49;">¡Guerras de clanes, nuevos rangos & recompensas exclusivas!</div>
+    </div>
+
+    <div class="stats-grid">
+        <div>
+            <div class="label">Número</div>
+            <div class="value">#0001 (NEW)</div>
+        </div>
+        <div>
+            <div class="label">Publicación</div>
+            <div class="value">26-04-2026</div>
+        </div>
+        <div>
+            <div class="label">Desarrollo</div>
+            <div class="value">11 DÍAS</div>
+        </div>
+    </div>
+
+    <div class="credits-box">
+        <span class="credits-label">Créditos</span>
+        <span style="color: #374151; font-weight: 600;">dosmenosdos.</span>
+    </div>
+
+    <div class="tag-container">
+        <a href="main.html" class="tag" style="background: #9061f9;">COSAS NUEVAS</a>
+        <a href="#Cambios_Pendientes" class="tag" style="background: #10b981;">CAMBIOS PENDIENTES</a>
+        <a href="#Ajustes_Internos" class="tag" style="background: #f59e0b;">AJUSTES</a>
+        <a href="#Ajustes_Internos" class="tag" style="background: #06b6d4;">CAMBIOS INTERNOS</a>
+        <a href="#Correcciones" class="tag" style="background: #ef4444;">CORRECCIONES</a>
+    </div>
+</div>
+
+<div class="nav-index">
+    <h3>índice de navegación</h3>
+    <ul>
+        <li>1. <a href="#¿Qué_trae_de_nuevo_esta_actualización?">¿Qué trae de nuevo esta actualización?</a></li>
+        <ul style="padding-left: 20px; list-style: none;">
+            <li>1.1. <a href="#Cosas_Nuevas">Cosas Nuevas</a></li>
+            <li>1.2. <a href="#Cambios_Pendientes">Cambios Pendientes</a></li>
+            <li>1.3. <a href="#Ajustes_Internos">Ajustes Internos</a></li>
+        </ul>
+    </ul>
+</div>
+
+<div id="¿Qué_trae_de_nuevo_esta_actualización?" class="content-section">
+    <h1 class="section-title">¿Qué trae de nuevo esta actualización?</h1>
+    
+    <p style="color: #6b7280; margin-bottom: 30px; font-size: 14px; line-height: 1.6;">
+        ¡Saludos, exploradores! Les presentamos el nuevo sistema de clanes, que a pesar de iniciar sólo como una idea en desarrollo, esperamos que pueda utilizarse para realizar eventos y dinámicas divertidas junto a todos ustedes. Esta actualización trae consigo la introducción de un sistema formal para la creación de grupos (llámese clanes) que podrán competir cada cierto tiempo para obtener recompensas exclusivas tanto dentro del Servidor, como cosméticos para la misma aplicación.
+    </p>
+    <p></p>
+        <p>De momento, la única forma de crear un clan es mejorando el Servidor dos veces. Al mejorar el Servidor, en caso de querer fundar un clan, deberás renunciar a las recompensas habituales por crear un Servidor. Obtendrás un clan (rol con nombre, color e ícono personalizado), el rol "Líder de Clan" y 4 remociones de advertencias que podrás utilizar y gestionar como prefieras entre tus miembros del clan. Al principio, el límite de personas por clan será de 5, aunque se planea cambiarlo en un futuro.
+</p>
+    <p></p>
+        <p>Cada cierto tiempo, los clanes podrán enfrentarse en "Guerras de Clanes", eventos de actividad mensuales donde los miembros de cada clan compiten por entrar dentro del Leaderboard de mensajes. Durante el transcurso de este período, los clanes lucharán por obtener diversas recompensas que escalan dependiendo de la posición en la que queden, otorgando desde puntos de clan para las posiciones más bajas hasta cosméticos dentro de la aplicación en caso de quedar en primer lugar. Asegúrate de elegir un buen equipo para asegurar mejores recompensas.
+</p>
+    <p></p>
+       <p>Llegarán nuevas mejoras a este sistema en relación a cuánto apoyo reciban con el tiempo. Puedes leer un resumen con los puntos más destacables e importantes de la actualización a continuación:
+    </p>
+    
+    <h2 id="Cosas_Nuevas" style="color:#9061f9;">Cosas Nuevas</h2>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Implementación del rol "Líder de Clan".</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Implementación del rol "Co-Líder de Clan".</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Implementación del rol "Miembro de Clan".</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Creación de canales de texto privados para cada clan.</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] El líder podrá distribuir 4 remociones de sanciones entre sus miembros.</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Rol identificador con color e icono personalizado para cada clan.</div>
+    <div class="list-item"><span class="bullet bullet-new">●</span> [26-04-2026] Límite inicial establecido en 5 miembros por clan.</div>
+
+    <h2 id="Cambios_Pendientes" style="color:#10b981;">Cambios Pendientes</h2>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Definir cuándo será la primera guerra de actividad de clanes.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Sistema de puntos de clan para canje de cosméticos.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Creación de una tienda exclusiva para puntos de clan.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Canal de noticias con mención exclusiva para miembros de clan.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Leaderboard de actividad y antigüedad de clanes.</div>
+    <div class="list-item"><span class="bullet bullet-changes">●</span> [PENDIENTE] Niveles de clan para aumentar el cupo de miembros.</div>
+
+    <h2 id="Ajustes_Internos" style="color:#f59e0b;">Ajustes Internos</h2>
+    <div class="list-item"><span class="bullet bullet-balance">●</span> [26-04-2026] Aquellos que mejoren el Servidor deberán elegir entre fundar un clan o elegir sus recompensas habituales.</div>
+    <div class="list-item"><span class="bullet bullet-balance">●</span> [26-04-2026] Los usuarios con mejoras activas dentro del Servidor podrán fundar clanes (en primera instancia).</div>
+    <div class="list-item"><span class="bullet bullet-balance">●</span> [26-04-2026] Los roles personalizados previos se eliminan al fundar un clan para evitar conflictos de color.</div>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="social-links">
+            <a href="https://discord.gg/QWx89C38" target="_blank" class="social-icon">
+                <img src="discor-logo.png" alt="Discord">
+            </a>
+            <a href="https://www.instagram.com/etheria.znmv/" target="_blank" class="social-icon">
+                <img src="insta-logo.png" alt="Instagram">
+            </a>
+        </div>
+        <p class="copyright">© 2026 Etheria. Todos los derechos reservados.</p>
+    </div>
+</footer>
+    
+</body>
+</html>
