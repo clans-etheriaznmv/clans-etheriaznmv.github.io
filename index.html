@@ -127,9 +127,7 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .expand-btn:hover { background-color: #6d28d9; }
-
-        .expand-btn {
+.expand-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,21 +137,29 @@
     border-radius: 8px;
     cursor: pointer;
     margin-top: 15px;
-    transition: background-color 0.3s ease; 
-        }
+    transition: background-color 0.3s ease;
+}
 
-        .toggle-input:checked ~ .text-wrapper {
-            max-height: 1000px;
-        }
+.expand-btn:hover {
+    background-color: #6d28d9;
+}
 
-        .toggle-input:checked ~ .text-wrapper .blur-overlay {
-            opacity: 0;
-        }
+.expand-btn::before {
+    content: '>';
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transform: rotate(90deg);
+    display: inline-block;
+}
 
-        .toggle-input:checked ~ .expand-btn {
-            transform: rotate(180deg);
-        }
+.toggle-input:checked ~ .expand-btn::before {
+    transform: rotate(-90deg);
+}
 
+.toggle-input:checked ~ .expand-btn {
+    transform: none;
+}
         .ver-mas {
             display: none;
             margin-top: 15px;
