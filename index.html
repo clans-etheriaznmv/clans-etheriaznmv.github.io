@@ -129,12 +129,17 @@
 
         .expand-btn:hover { background-color: #6d28d9; }
 
-        .expand-btn::before {
-            content: '>';
-            color: white;
-            font-weight: bold;
-            transform: rotate(90deg);
-            font-size: 16px;
+        .expand-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: #7c3aed;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease; 
         }
 
         .toggle-input:checked ~ .text-wrapper {
