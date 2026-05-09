@@ -41,8 +41,6 @@
             transition: opacity 0.3s ease;
         }
 
-        .hero-network:hover { opacity: 0.9; }
-
         .posts-container {
             width: 90%;
             max-width: 1100px;
@@ -121,54 +119,40 @@
             width: 100%;
             height: 40px;
             background-color: #7c3aed;
-           .expand-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 40px;
-    background-color: #7c3aed;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
-}
-
-.expand-btn:hover {
-    background-color: #6d28d9;
-}
-
-.expand-btn::before {
-    content: '>';
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    transform: rotate(90deg);
-    display: inline-block;
-}
-
-.toggle-input:checked ~ .text-wrapper {
-    max-height: 1000px;
-}
-
-.toggle-input:checked ~ .text-wrapper .blur-overlay {
-    opacity: 0;
-}
-
-.toggle-input:checked ~ .expand-btn::before {
-    transform: rotate(-90deg);
-}
-
-.toggle-input:checked ~ .expand-btn {
-    transform: none;
-}
-            
-     border-radius: 8px;
+            border-radius: 8px;
             cursor: pointer;
             margin-top: 15px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
+        .expand-btn:hover {
+            background-color: #6d28d9;
+        }
+
+        .expand-btn::before {
+            content: '>';
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            transform: rotate(90deg);
+            display: inline-block;
+        }
+
+        .toggle-input:checked ~ .text-wrapper {
+            max-height: 1000px;
+        }
+
+        .toggle-input:checked ~ .text-wrapper .blur-overlay {
+            opacity: 0;
+        }
+
+        .toggle-input:checked ~ .expand-btn::before {
+            transform: rotate(-90deg);
+        }
+
+        .toggle-input:checked ~ .expand-btn {
+            transform: none;
+        }
 
         .ver-mas {
             display: none;
@@ -288,6 +272,7 @@
             </div>
         </div>
 
+        <!-- El resto de las tarjetas se mantienen igual -->
         <div class="post-card coming-soon">
             <div class="post-image" style="background-image: url('background-image.png'); filter: grayscale(80%);"></div>
             <div class="post-content">
@@ -296,29 +281,6 @@
             </div>
         </div>
 
-        <div class="post-card coming-soon">
-            <div class="post-image" style="background-image: url('placeholder6.png'); filter: grayscale(80%);"></div>
-            <div class="post-content">
-                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
-            </div>
-        </div>
-
-        <div class="post-card coming-soon">
-            <div class="post-image" style="background-image: url('placeholder7.png'); filter: grayscale(80%);"></div>
-            <div class="post-content">
-                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
-            </div>
-        </div>
-
-        <div class="post-card coming-soon">
-            <div class="post-image" style="background-image: url('placeholder8.jpg'); filter: grayscale(80%);"></div>
-            <div class="post-content">
-                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
-            </div>
-        </div>
     </main>
 
     <footer class="footer">
