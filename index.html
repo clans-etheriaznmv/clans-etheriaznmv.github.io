@@ -16,10 +16,11 @@
             --gris-fondo: #f7fafc;
             --blanco: #ffffff;
             
-            /* Colores de Alerta Porter */
-            --badge-bajo: #48bb78;
-            --badge-moderado: #ecc94b;
-            --badge-alto: #f56565;
+            /* Colores de Intensidad de Amenaza (1 al 5) */
+            --intensidad-2: #48bb78; /* Baja */
+            --intensidad-3: #ecc94b; /* Moderada */
+            --intensidad-4: #ed8936; /* Alta */
+            --intensidad-5: #f56565; /* Muy Alta */
         }
 
         * {
@@ -35,13 +36,11 @@
             line-height: 1.6;
         }
 
-        /* Hero / Header Section */
         header {
             background: linear-gradient(135deg, var(--gris-oscuro) 0%, #1a202c 100%);
             color: var(--blanco);
             padding: 5rem 2rem;
             text-align: center;
-            position: relative;
             border-bottom: 5px solid var(--verde-intelbras);
         }
 
@@ -65,7 +64,6 @@
             padding: 3rem 2rem;
         }
 
-        /* Sección Introducción */
         .intro-section {
             background: var(--blanco);
             padding: 2.5rem;
@@ -100,7 +98,6 @@
             font-size: 1.2rem;
         }
 
-        /* Sección Porter (Tarjetas de las 5 Fuerzas) */
         .porter-title {
             text-align: center;
             font-size: 2.2rem;
@@ -144,29 +141,50 @@
 
         .force-header {
             margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
         }
 
         .force-card h3 {
             color: var(--gris-oscuro);
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            flex: 1;
         }
 
-        /* Badges de Amenaza */
-        .badge {
-            display: inline-block;
-            padding: 0.35rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
+        /* Badges de Intensidad Numérica */
+        .intensity-badge {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
             color: var(--blanco);
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            text-align: center;
+            min-width: 70px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .badge.baja { background-color: var(--badge-bajo); }
-        .badge.moderada { background-color: var(--badge-moderado); color: #744210; }
-        .badge.alto { background-color: var(--badge-alto); }
+        .intensity-badge .number {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .intensity-badge .label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .badge-2 { background-color: var(--intensidad-2); }
+        .badge-3 { background-color: var(--intensidad-3); color: #5a4308; }
+        .badge-4 { background-color: var(--intensidad-4); }
+        .badge-5 { background-color: var(--intensidad-5); }
 
         .force-body ul {
             list-style-type: none;
@@ -189,7 +207,6 @@
             top: -2px;
         }
 
-        /* Tabla de Matriz de Cierre */
         .matrix-section {
             background: var(--blanco);
             padding: 3rem;
@@ -213,6 +230,7 @@
         th, td {
             padding: 1rem 1.5rem;
             text-align: left;
+            vertical-align: middle;
         }
 
         th {
@@ -232,6 +250,20 @@
             background-color: var(--gris-fondo);
         }
 
+        .table-badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .tb-2 { background-color: var(--intensidad-2); }
+        .tb-3 { background-color: var(--intensidad-3); color: #5a4308; }
+        .tb-4 { background-color: var(--intensidad-4); }
+        .tb-5 { background-color: var(--intensidad-5); }
+
         footer {
             text-align: center;
             padding: 3rem;
@@ -241,11 +273,12 @@
             margin-top: 5rem;
         }
 
-        /* Responsividad para pantallas pequeñas */
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
             .forces-grid { grid-template-columns: 1fr; }
             .matrix-section { padding: 1.5rem; }
+            .force-header { flex-direction: column-reverse; align-items: flex-start; }
+            .intensity-badge { margin-bottom: 1rem; }
         }
     </style>
 </head>
@@ -253,48 +286,51 @@
 
     <header>
         <h1>Análisis de las 5 Fuerzas de Porter</h1>
-        <p>Estudio de Posicionamiento Estratégico y Entorno Competitivo para Intelbras S.A.</p>
+        <p>Matriz de Intensidad de Amenazas y Entorno Competitivo — Intelbras S.A.</p>
     </header>
 
     <div class="container">
         
-        <!-- INTRODUCCIÓN -->
+        <!-- CONTEXTO -->
         <section class="intro-section">
             <h2>Contexto Industrial: ¿Quién es Intelbras?</h2>
-            <p>Intelbras es un gigante tecnológico brasileño con más de 45 años de historia. Su éxito radica en transformar hardware complejo en soluciones accesibles para el mercado latinoamericano mediante tres verticales clave:</p>
+            <p>Intelbras es un gigante tecnológico brasileño con más de 45 años de trayectoria. Su ventaja no radica únicamente en la fabricación de hardware, sino en cómo gestiona las fuerzas del mercado mediante una sólida estructura de canales y soporte local.</p>
             
             <div class="grid-intro">
                 <div class="intro-card">
                     <h3>Origen y Alcance</h3>
-                    <p>Fundada en 1976 en Brasil. Hoy cuenta con múltiples plantas industriales de manufactura avanzada y distribución en toda la región.</p>
+                    <p>Fundada en 1976 en Brasil. Cuenta con plantas industriales de manufactura avanzada y una enorme infraestructura logística regional.</p>
                 </div>
                 <div class="intro-card">
                     <h3>Sectores Clave</h3>
-                    <p>Líder robusto en seguridad electrónica (CCTV/alarmas), redes de comunicación y un fuerte empuje hacia la energía solar fotovoltaica.</p>
+                    <p>Liderazgo consolidado en seguridad electrónica (CCTV y alarmas), redes de comunicación y soluciones de energía solar fotovoltaica.</p>
                 </div>
                 <div class="intro-card">
                     <h3>Ecosistema de Canal</h3>
-                    <p>Su ventaja competitiva no es solo el producto, sino su inmensa red de técnicos, instaladores e integradores corporativos fidelizados.</p>
+                    <p>Estrategia basada en la fidelización extrema de una red masiva de técnicos, instaladores independientes e integradores corporativos.</p>
                 </div>
             </div>
         </section>
 
         <!-- LAS 5 FUERZAS -->
-        <h2 class="porter-title">Despliegue de las 5 Fuerzas</h2>
+        <h2 class="porter-title">Grado de Intensidad de las Fuerzas</h2>
         
         <div class="forces-grid">
             
             <!-- FUERZA 1 -->
             <div class="force-card">
                 <div class="force-header">
-                    <h3>1. Amenaza de Nuevos Entrantes</h3>
-                    <span class="badge baja">Baja a Moderada</span>
+                    <h3>Amenaza de Nuevos Entrantes</h3>
+                    <div class="intensity-badge badge-2">
+                        <span class="number">2</span>
+                        <span class="label">Baja</span>
+                    </div>
                 </div>
                 <div class="force-body">
                     <ul>
-                        <li><strong>Economías de Escala:</strong> La altísima capacidad productiva e importadora de Intelbras en la región reduce los costos unitarios a niveles inalcanzables para nuevos competidores independientes.</li>
-                        <li><strong>Barreras de Canal:</strong> Los clientes finales confían en los instaladores de confianza; blindar y educar este ecosistema de técnicos locales es la barrera más fuerte de Intelbras.</li>
-                        <li><strong>Homologaciones Legales:</strong> Las estrictas regulaciones y normativas locales de telecomunicaciones y equipos de seguridad (ej. Anatel) actúan como un filtro inmediato contra actores improvisados.</li>
+                        <li><strong>Economías de Escala:</strong> Su capacidad de producción masiva e importación directa diluye los costos fijos, haciendo casi imposible que un nuevo actor compita en precios base.</li>
+                        <li><strong>Barreras de Canal:</strong> Los clientes finales compran lo que el técnico recomienda. El acceso a esta red de instaladores locales ya está dominado y blindado por Intelbras.</li>
+                        <li><strong>Filtros Legales:</strong> Las exigentes homologaciones exigidas por entes estatales locales actúan como barrera de entrada técnica y burocrática.</li>
                     </ul>
                 </div>
             </div>
@@ -302,14 +338,17 @@
             <!-- FUERZA 2 -->
             <div class="force-card">
                 <div class="force-header">
-                    <h3>2. Amenaza de Productos Sustitutos</h3>
-                    <span class="badge moderada">Moderada</span>
+                    <h3>Amenaza de Productos Sustitutos</h3>
+                    <div class="intensity-badge badge-3">
+                        <span class="number">3</span>
+                        <span class="label">Moderada</span>
+                    </div>
                 </div>
                 <div class="force-body">
                     <ul>
-                        <li><strong>Soluciones Smart Home DIY:</strong> El crecimiento masivo de plataformas globales de hogar inteligente (Alexa, Google, Tuya) permite al consumidor común comprar e instalar equipos genéricos sin un integrador profesional.</li>
-                        <li><strong>Desmaterialización por Software:</strong> Softwares basados 100% en la nube y aplicaciones móviles ágiles están reemplazando centrales físicas tradicionales y cableados complejos.</li>
-                        <li><strong>Asimetría Corporativa:</strong> Aunque el sector residencial cambia de tecnologías fácilmente (costo de cambio bajo), el sector industrial y corporativo mantiene hardware tradicional por temas de robustez y cumplimiento normativo.</li>
+                        <li><strong>Plataformas Smart Home DIY:</strong> Dispositivos genéricos autoinstalables (compatibles con Alexa o Google Home) ganan terreno en el usuario residencial común sin requerir un técnico.</li>
+                        <li><strong>Desmaterialización por Software:</strong> Plataformas en la nube sustituyen de forma eficiente a centrales telefónicas y hardware clásico de comunicación física.</li>
+                        <li><strong>Freno Corporativo:</strong> El sector industrial y de alta seguridad no adopta sustitutos fácilmente debido a exigencias de redundancia y robustez física.</li>
                     </ul>
                 </div>
             </div>
@@ -317,14 +356,17 @@
             <!-- FUERZA 3 -->
             <div class="force-card">
                 <div class="force-header">
-                    <h3>3. Rivalidad de la Industria</h3>
-                    <span class="badge alto">Alta</span>
+                    <h3>Rivalidad entre Competidores</h3>
+                    <div class="intensity-badge badge-5">
+                        <span class="number">5</span>
+                        <span class="label">Muy Alta</span>
+                    </div>
                 </div>
                 <div class="force-body">
                     <ul>
-                        <li><strong>Gigantes de Costo Asiáticos:</strong> Competencia frontal y agresiva con firmas transnacionales como Hikvision y Dahua, quienes dictan los márgenes de precios a nivel mundial.</li>
-                        <li><strong>Comoditización del Segmento Bajo:</strong> Los routers de entrada y cámaras básicas sufren de una fuerte canibalización de márgenes y guerras de precios constantes en el retail.</li>
-                        <li><strong>Ventaja Local:</strong> Intelbras neutraliza la rivalidad ofreciendo una sólida red de soporte técnico nativo, garantías extendidas aplicables localmente y repuestos de entrega inmediata.</li>
+                        <li><strong>Presión de Gigantes Asiáticos:</strong> Competencia directa y sumamente agresiva con transnacionales como Hikvision y Dahua, líderes mundiales en costes de seguridad.</li>
+                        <li><strong>Guerra de Precios:</strong> Comoditización severa del segmento de consumo y retail de gama baja (routers estándar y cámaras básicas).</li>
+                        <li><strong>Contramedida de Intelbras:</strong> La empresa compite mediante soporte técnico inmediato en el idioma local, garantías extendidas efectivas y stock físico inmediato.</li>
                     </ul>
                 </div>
             </div>
@@ -332,14 +374,17 @@
             <!-- FUERZA 4 -->
             <div class="force-card">
                 <div class="force-header">
-                    <h3>4. Poder de Proveedores</h3>
-                    <span class="badge moderada">Moderada a Alta</span>
+                    <h3>Poder de Negociación de Proveedores</h3>
+                    <div class="intensity-badge badge-4">
+                        <span class="number">4</span>
+                        <span class="label">Alta</span>
+                    </div>
                 </div>
                 <div class="force-body">
                     <ul>
-                        <li><strong>Monopolio de Componentes:</strong> Dependencia crítica de procesadores, semiconductores y sensores de alta tecnología fabricados casi de forma exclusiva por fundiciones en Asia (Taiwán/China).</li>
-                        <li><strong>Sensibilidad Logística y Cambiaria:</strong> Los costos operativos y los inventarios están permanentemente expuestos a las disrupciones de las cadenas de suministro marítimas y a la volatilidad del dólar.</li>
-                        <li><strong>Poder por Escala Regional:</strong> Al ser el mayor comprador de componentes del sector en la región, Intelbras tiene una capacidad de negociación superior que le permite asegurar stock prioritario sobre sus rivales más pequeños.</li>
+                        <li><strong>Monopolio de Suministros:</strong> Dependencia absoluta de microchips, procesadores y sensores de silicio de alta gama fabricados casi exclusivamente en Asia (Taiwán/China).</li>
+                        <li><strong>Riesgo Cambiario y Logístico:</strong> Costos de importación expuestos a crisis marítimas globales y a la volatilidad constante del dólar.</li>
+                        <li><strong>Amortiguación por Volumen:</strong> Su escala regional le otorga una posición de compra preferencial respecto a ensambladores locales más chicos.</li>
                     </ul>
                 </div>
             </div>
@@ -347,14 +392,17 @@
             <!-- FUERZA 5 -->
             <div class="force-card">
                 <div class="force-header">
-                    <h3>5. Poder de Negociación de Clientes</h3>
-                    <span class="badge moderada">Moderada</span>
+                    <h3>Poder de Negociación de Clientes</h3>
+                    <div class="intensity-badge badge-3">
+                        <span class="number">3</span>
+                        <span class="label">Moderada</span>
+                    </div>
                 </div>
                 <div class="force-body">
                     <ul>
-                        <li><strong>El Rol del Instalador B2B:</strong> El consumidor final rara vez elige la marca por criterios propios; delega la decisión en el técnico. Por ende, el verdadero cliente con poder es el canal de distribución.</li>
-                        <li><strong>Demanda de Márgenes Competitivos:</strong> Los distribuidores exigen que la marca sea rentable. Si Intelbras reduce significativamente sus incentivos, estos canales pueden virar sus recomendaciones hacia portafolios de la competencia.</li>
-                        <li><strong>Costos de Retención:</strong> Intelbras mitiga este poder ofreciendo capacitaciones masivas gratuitas especializadas (a través del Instituto Intelbras - Itec), creando un lazo de dependencia técnica con la marca.</li>
+                        <li><strong>Poder Concentrado en el Canal B2B:</strong> El instalador o distribuidor es el verdadero cliente estratégico. Si sus márgenes caen, tienen el poder de recomendar marcas rivales.</li>
+                        <li><strong>Exigencia de Rentabilidad:</strong> El mercado exige un portafolio con buena relación precio-beneficio e incentivos comerciales atractivos.</li>
+                        <li><strong>Estrategia de Retención:</strong> Mitigado con capacitaciones técnicas continuas de alto nivel a través del *Itec* (Instituto Intelbras), amarrando al técnico a su ecosistema operativo.</li>
                     </ul>
                 </div>
             </div>
@@ -363,40 +411,40 @@
 
         <!-- TABLA RESUMEN / MATRIZ -->
         <section class="matrix-section">
-            <h2>Matriz Resumen de Posicionamiento</h2>
+            <h2>Matriz de Posicionamiento Final</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Fuerza de Porter</th>
-                        <th>Intensidad de Riesgo</th>
-                        <th>Estrategia Corporativa de Mitigación</th>
+                        <th>Grado de Amenaza (1-5)</th>
+                        <th>Estrategia de Mitigación Corporativa</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Nuevos Entrantes</strong></td>
-                        <td><span class="badge baja">Baja a Moderada</span></td>
-                        <td>Apalancamiento en la capilaridad de su gigantesca red de instaladores locales autorizados.</td>
+                        <td><strong>Amenaza de Nuevos Entrantes</strong></td>
+                        <td><span class="table-badge tb-2">Nivel 2 (Baja)</span></td>
+                        <td>Bloqueo de canales mediante capilaridad logística y fidelización de instaladores técnicos.</td>
                     </tr>
                     <tr>
-                        <td><strong>Productos Sustitutos</strong></td>
-                        <td><span class="badge moderada">Moderada</span></td>
-                        <td>Evolución tecnológica constante hacia plataformas en la nube (Intelbras Cloud) y desarrollo IoT.</td>
+                        <td><strong>Amenaza de Productos Sustitutos</strong></td>
+                        <td><span class="table-badge tb-3">Nivel 3 (Moderada)</span></td>
+                        <td>Migración e integración nativa hacia ecosistemas en la nube (Intelbras Cloud) e IoT.</td>
                     </tr>
                     <tr>
-                        <td><strong>Rivalidad Industrial</strong></td>
-                        <td><span class="badge alto">Alta</span></td>
-                        <td>Diferenciación basada en soporte técnico postventa local, cercanía física y centros logísticos locales.</td>
+                        <td><strong>Rivalidad entre Competidores</strong></td>
+                        <td><span class="table-badge tb-5">Nivel 5 (Muy Alta)</span></td>
+                        <td>Diferenciación crítica basada en garantías locales efectivas, presencia física y soporte postventa premium.</td>
                     </tr>
                     <tr>
-                        <td><strong>Poder de Proveedores</strong></td>
-                        <td><span class="badge moderada">Moderada a Alta</span></td>
-                        <td>Contratos logísticos por volumen masivo y mantenimiento preventivo de stocks de seguridad.</td>
+                        <td><strong>Poder de Negociación de Proveedores</strong></td>
+                        <td><span class="table-badge tb-4">Nivel 4 (Alta)</span></td>
+                        <td>Planificación avanzada de compras por volumen masivo y mantenimiento preventivo de inventarios de seguridad.</td>
                     </tr>
                     <tr>
-                        <td><strong>Poder de Clientes</strong></td>
-                        <td><span class="badge moderada">Moderada</span></td>
-                        <td>Fidelización técnica continua e incentivos de canal a través del Itec (Instituto Intelbras).</td>
+                        <td><strong>Poder de Negociación de Clientes</strong></td>
+                        <td><span class="table-badge tb-3">Nivel 3 (Moderada)</span></td>
+                        <td>Capacitación técnica corporativa a través del Itec para crear dependencia técnica y de marca hacia el instalador.</td>
                     </tr>
                 </tbody>
             </table>
@@ -405,7 +453,7 @@
     </div>
 
     <footer>
-        <p>© 2026 — Análisis de Estrategia Corporativa. Desarrollado con estándares web modernos.</p>
+        <p>© 2026 — Análisis de Estrategia Corporativa. Estructura basada en el Modelo de Competitividad de M. Porter.</p>
     </footer>
 
 </body>
