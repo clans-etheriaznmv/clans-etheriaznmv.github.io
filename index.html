@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análisis de Porter — Intelbras S.A.</title>
+    <title>Análisis Cuantitativo de Porter — Intelbras</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -16,11 +16,12 @@
             --gris-fondo: #f7fafc;
             --blanco: #ffffff;
             
-            /* Colores de Intensidad de Amenaza (1 al 5) */
-            --intensidad-2: #48bb78; /* Baja */
-            --intensidad-3: #ecc94b; /* Moderada */
-            --intensidad-4: #ed8936; /* Alta */
-            --intensidad-5: #f56565; /* Muy Alta */
+            /* Colores de escala 1 a 5 */
+            --color-1: #4299e1; /* Muy Baja */
+            --color-2: #48bb78; /* Baja */
+            --color-3: #ecc94b; /* Moderada */
+            --color-4: #ed8936; /* Alta */
+            --color-5: #f56565; /* Muy Alta */
         }
 
         * {
@@ -39,23 +40,20 @@
         header {
             background: linear-gradient(135deg, var(--gris-oscuro) 0%, #1a202c 100%);
             color: var(--blanco);
-            padding: 5rem 2rem;
+            padding: 4rem 2rem;
             text-align: center;
             border-bottom: 5px solid var(--verde-intelbras);
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #a0aec0;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .container {
@@ -64,43 +62,9 @@
             padding: 3rem 2rem;
         }
 
-        .intro-section {
-            background: var(--blanco);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            margin-bottom: 4rem;
-        }
-
-        .intro-section h2 {
-            color: var(--verde-intelbras);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .grid-intro {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .intro-card {
-            background: var(--gris-fondo);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--verde-intelbras);
-        }
-
-        .intro-card h3 {
-            color: var(--gris-oscuro);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
         .porter-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--gris-oscuro);
             margin-bottom: 3rem;
             position: relative;
@@ -118,95 +82,103 @@
 
         .forces-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 2.5rem;
             margin-bottom: 4rem;
         }
 
-        .force-card {
-            background: var(--blanco);
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        @media (max-width: 768px) {
+            .forces-grid { grid-template-columns: 1fr; }
         }
 
-        .force-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        .force-card {
+            background: var(--blanco);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
         }
 
         .force-header {
-            margin-bottom: 1.5rem;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            gap: 1rem;
+            align-items: center;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .force-card h3 {
+        .force-header h3 {
             color: var(--gris-oscuro);
             font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            flex: 1;
+            max-width: 70%;
         }
 
-        /* Badges de Intensidad Numérica */
-        .intensity-badge {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 0.8rem;
+        /* Badge del Promedio de la Fuerza */
+        .force-total-badge {
+            background-color: var(--gris-oscuro);
+            color: white;
+            padding: 0.5rem 1rem;
             border-radius: 8px;
-            color: var(--blanco);
-            font-weight: 700;
             text-align: center;
-            min-width: 70px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
-        .intensity-badge .number {
-            font-size: 1.6rem;
-            line-height: 1;
+        .force-total-badge .score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
         }
-
-        .intensity-badge .label {
+        .force-total-badge .label {
             font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-top: 2px;
         }
 
-        .badge-2 { background-color: var(--intensidad-2); }
-        .badge-3 { background-color: var(--intensidad-3); color: #5a4308; }
-        .badge-4 { background-color: var(--intensidad-4); }
-        .badge-5 { background-color: var(--intensidad-5); }
-
-        .force-body ul {
-            list-style-type: none;
-        }
-
-        .force-body li {
-            position: relative;
-            padding-left: 1.5rem;
+        /* Factores determinantes (Desglose) */
+        .factor-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
             margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .factor-text {
             font-size: 0.95rem;
         }
 
-        .force-body li::before {
-            content: "•";
-            color: var(--verde-intelbras);
-            font-weight: bold;
-            font-size: 1.3rem;
-            position: absolute;
-            left: 0;
-            top: -2px;
+        .factor-text strong {
+            color: var(--gris-oscuro);
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
+        /* Badge numérico individual de los factores */
+        .factor-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        /* Clases dinámicas de color por nota */
+        .n-1 { background-color: var(--color-1); }
+        .n-2 { background-color: var(--color-2); }
+        .n-3 { background-color: var(--color-3); color: #5a4308; }
+        .n-4 { background-color: var(--color-4); }
+        .n-5 { background-color: var(--color-5); }
+
+        /* Matriz de Cierre */
         .matrix-section {
             background: var(--blanco);
             padding: 3rem;
@@ -217,14 +189,13 @@
 
         .matrix-section h2 {
             color: var(--gris-oscuro);
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 600px;
         }
 
         th, td {
@@ -236,84 +207,34 @@
         th {
             background-color: var(--verde-intelbras);
             color: var(--blanco);
-            font-weight: 600;
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
         }
 
-        tr {
-            border-bottom: 1px solid #e2e8f0;
-        }
+        tr { border-bottom: 1px solid #e2e8f0; }
+        tr:nth-child(even) { background-color: var(--gris-fondo); }
 
-        tr:nth-child(even) {
-            background-color: var(--gris-fondo);
-        }
-
-        .table-badge {
+        .final-badge {
             display: inline-block;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
             color: white;
             font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .tb-2 { background-color: var(--intensidad-2); }
-        .tb-3 { background-color: var(--intensidad-3); color: #5a4308; }
-        .tb-4 { background-color: var(--intensidad-4); }
-        .tb-5 { background-color: var(--intensidad-5); }
-
-        footer {
-            text-align: center;
-            padding: 3rem;
-            color: #a0aec0;
-            font-size: 0.9rem;
-            background-color: var(--gris-oscuro);
-            margin-top: 5rem;
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            .forces-grid { grid-template-columns: 1fr; }
-            .matrix-section { padding: 1.5rem; }
-            .force-header { flex-direction: column-reverse; align-items: flex-start; }
-            .intensity-badge { margin-bottom: 1rem; }
+            font-size: 0.95rem;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Análisis de las 5 Fuerzas de Porter</h1>
-        <p>Matriz de Intensidad de Amenazas y Entorno Competitivo — Intelbras S.A.</p>
+        <h1>Análisis Cuantitativo de las 5 Fuerzas de Porter</h1>
+        <p>Modelo de Diagnóstico Basado en Promedios de Factores Determinantes — Intelbras S.A.</p>
     </header>
 
     <div class="container">
-        
-        <!-- CONTEXTO -->
-        <section class="intro-section">
-            <h2>Contexto Industrial: ¿Quién es Intelbras?</h2>
-            <p>Intelbras es un gigante tecnológico brasileño con más de 45 años de trayectoria. Su ventaja no radica únicamente en la fabricación de hardware, sino en cómo gestiona las fuerzas del mercado mediante una sólida estructura de canales y soporte local.</p>
-            
-            <div class="grid-intro">
-                <div class="intro-card">
-                    <h3>Origen y Alcance</h3>
-                    <p>Fundada en 1976 en Brasil. Cuenta con plantas industriales de manufactura avanzada y una enorme infraestructura logística regional.</p>
-                </div>
-                <div class="intro-card">
-                    <h3>Sectores Clave</h3>
-                    <p>Liderazgo consolidado en seguridad electrónica (CCTV y alarmas), redes de comunicación y soluciones de energía solar fotovoltaica.</p>
-                </div>
-                <div class="intro-card">
-                    <h3>Ecosistema de Canal</h3>
-                    <p>Estrategia basada en la fidelización extrema de una red masiva de técnicos, instaladores independientes e integradores corporativos.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- LAS 5 FUERZAS -->
-        <h2 class="porter-title">Grado de Intensidad de las Fuerzas</h2>
+        <h2 class="porter-title">Evaluación de Factores y Ponderación</h2>
         
         <div class="forces-grid">
             
@@ -321,17 +242,31 @@
             <div class="force-card">
                 <div class="force-header">
                     <h3>Amenaza de Nuevos Entrantes</h3>
-                    <div class="intensity-badge badge-2">
-                        <span class="number">2</span>
-                        <span class="label">Baja</span>
+                    <div class="force-total-badge">
+                        <span class="score">2.3</span>
+                        <span class="label">Promedio</span>
                     </div>
                 </div>
-                <div class="force-body">
-                    <ul>
-                        <li><strong>Economías de Escala:</strong> Su capacidad de producción masiva e importación directa diluye los costos fijos, haciendo casi imposible que un nuevo actor compita en precios base.</li>
-                        <li><strong>Barreras de Canal:</strong> Los clientes finales compran lo que el técnico recomienda. El acceso a esta red de instaladores locales ya está dominado y blindado por Intelbras.</li>
-                        <li><strong>Filtros Legales:</strong> Las exigentes homologaciones exigidas por entes estatales locales actúan como barrera de entrada técnica y burocrática.</li>
-                    </ul>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Economías de escala</strong>
+                        Alta escala de producción de Intelbras que deprime costos base.
+                    </div>
+                    <div class="factor-num n-2">2</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Barreras de acceso a canales</strong>
+                        Dificultad extrema para captar la red existente de instaladores técnicos.
+                    </div>
+                    <div class="factor-num n-1">1</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Requisitos de capital y normativas</strong>
+                        Inversión alta en desarrollo y homologaciones legales (ej. Anatel).
+                    </div>
+                    <div class="factor-num n-4">4</div>
                 </div>
             </div>
 
@@ -339,17 +274,31 @@
             <div class="force-card">
                 <div class="force-header">
                     <h3>Amenaza de Productos Sustitutos</h3>
-                    <div class="intensity-badge badge-3">
-                        <span class="number">3</span>
-                        <span class="label">Moderada</span>
+                    <div class="force-total-badge">
+                        <span class="score">3.0</span>
+                        <span class="label">Promedio</span>
                     </div>
                 </div>
-                <div class="force-body">
-                    <ul>
-                        <li><strong>Plataformas Smart Home DIY:</strong> Dispositivos genéricos autoinstalables (compatibles con Alexa o Google Home) ganan terreno en el usuario residencial común sin requerir un técnico.</li>
-                        <li><strong>Desmaterialización por Software:</strong> Plataformas en la nube sustituyen de forma eficiente a centrales telefónicas y hardware clásico de comunicación física.</li>
-                        <li><strong>Freno Corporativo:</strong> El sector industrial y de alta seguridad no adopta sustitutos fácilmente debido a exigencias de redundancia y robustez física.</li>
-                    </ul>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Disponibilidad de sustitutos DIY</strong>
+                        Auge de ecosistemas domésticos auto-instalables (Google/Alexa).
+                    </div>
+                    <div class="factor-num n-4">4</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Costo de cambio del comprador</strong>
+                        Fácil migración tecnológica para hogares, costosa para corporaciones.
+                    </div>
+                    <div class="factor-num n-3">3</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Rendimiento relativo del sustituto</strong>
+                        Soluciones 100% de software que canibalizan hardware tradicional.
+                    </div>
+                    <div class="factor-num n-2">2</div>
                 </div>
             </div>
 
@@ -357,17 +306,31 @@
             <div class="force-card">
                 <div class="force-header">
                     <h3>Rivalidad entre Competidores</h3>
-                    <div class="intensity-badge badge-5">
-                        <span class="number">5</span>
-                        <span class="label">Muy Alta</span>
+                    <div class="force-total-badge">
+                        <span class="score">4.7</span>
+                        <span class="label">Promedio</span>
                     </div>
                 </div>
-                <div class="force-body">
-                    <ul>
-                        <li><strong>Presión de Gigantes Asiáticos:</strong> Competencia directa y sumamente agresiva con transnacionales como Hikvision y Dahua, líderes mundiales en costes de seguridad.</li>
-                        <li><strong>Guerra de Precios:</strong> Comoditización severa del segmento de consumo y retail de gama baja (routers estándar y cámaras básicas).</li>
-                        <li><strong>Contramedida de Intelbras:</strong> La empresa compite mediante soporte técnico inmediato en el idioma local, garantías extendidas efectivas y stock físico inmediato.</li>
-                    </ul>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Poder de competidores globales</strong>
+                        Guerra directa con monstruos chinos de escala masiva (Hikvision/Dahua).
+                    </div>
+                    <div class="factor-num n-5">5</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Crecimiento y saturación del sector</strong>
+                        Mercado maduro con agresividad comercial alta en gama baja.
+                    </div>
+                    <div class="factor-num n-4">4</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Barreras de salida del mercado</strong>
+                        Gran infraestructura de plantas físicas que amarra la permanencia.
+                    </div>
+                    <div class="factor-num n-5">5</div>
                 </div>
             </div>
 
@@ -375,17 +338,31 @@
             <div class="force-card">
                 <div class="force-header">
                     <h3>Poder de Negociación de Proveedores</h3>
-                    <div class="intensity-badge badge-4">
-                        <span class="number">4</span>
-                        <span class="label">Alta</span>
+                    <div class="force-total-badge">
+                        <span class="score">4.0</span>
+                        <span class="label">Promedio</span>
                     </div>
                 </div>
-                <div class="force-body">
-                    <ul>
-                        <li><strong>Monopolio de Suministros:</strong> Dependencia absoluta de microchips, procesadores y sensores de silicio de alta gama fabricados casi exclusivamente en Asia (Taiwán/China).</li>
-                        <li><strong>Riesgo Cambiario y Logístico:</strong> Costos de importación expuestos a crisis marítimas globales y a la volatilidad constante del dólar.</li>
-                        <li><strong>Amortiguación por Volumen:</strong> Su escala regional le otorga una posición de compra preferencial respecto a ensambladores locales más chicos.</li>
-                    </ul>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Concentración de insumos críticos</strong>
+                        Dependencia mundial de fundiciones de semiconductores en Asia.
+                    </div>
+                    <div class="factor-num n-5">5</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Costos de cambio de proveedor</strong>
+                        Complejo rediseñar placas y circuitos para cambiar de componentes.
+                    </div>
+                    <div class="factor-num n-4">4</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Volumen de compra de Intelbras</strong>
+                        Su escala mitiga la presión al comprar lotes masivos en la región.
+                    </div>
+                    <div class="factor-num n-3">3</div>
                 </div>
             </div>
 
@@ -393,58 +370,72 @@
             <div class="force-card">
                 <div class="force-header">
                     <h3>Poder de Negociación de Clientes</h3>
-                    <div class="intensity-badge badge-3">
-                        <span class="number">3</span>
-                        <span class="label">Moderada</span>
+                    <div class="force-total-badge">
+                        <span class="score">3.3</span>
+                        <span class="label">Promedio</span>
                     </div>
                 </div>
-                <div class="force-body">
-                    <ul>
-                        <li><strong>Poder Concentrado en el Canal B2B:</strong> El instalador o distribuidor es el verdadero cliente estratégico. Si sus márgenes caen, tienen el poder de recomendar marcas rivales.</li>
-                        <li><strong>Exigencia de Rentabilidad:</strong> El mercado exige un portafolio con buena relación precio-beneficio e incentivos comerciales atractivos.</li>
-                        <li><strong>Estrategia de Retención:</strong> Mitigado con capacitaciones técnicas continuas de alto nivel a través del *Itec* (Instituto Intelbras), amarrando al técnico a su ecosistema operativo.</li>
-                    </ul>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Concentración de canales (B2B)</strong>
+                        Los distribuidores clave concentran volúmenes altos y exigen margen.
+                    </div>
+                    <div class="factor-num n-4">4</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Sensibilidad del cliente al precio</strong>
+                        Compradores finales buscan economía en líneas estándar de routers/CCTV.
+                    </div>
+                    <div class="factor-num n-4">4</div>
+                </div>
+                <div class="factor-item">
+                    <div class="factor-text">
+                        <strong>Diferenciación e intangibles</strong>
+                        Capacitaciones gratuitas e identidad local reducen la fuga del técnico.
+                    </div>
+                    <div class="factor-num n-2">2</div>
                 </div>
             </div>
 
         </div>
 
-        <!-- TABLA RESUMEN / MATRIZ -->
+        <!-- TABLA RESUMEN / MATRIZ CON MEDIAS -->
         <section class="matrix-section">
-            <h2>Matriz de Posicionamiento Final</h2>
+            <h2>Matriz de Resultados Consolidados (Cálculo Final)</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Fuerza de Porter</th>
-                        <th>Grado de Amenaza (1-5)</th>
-                        <th>Estrategia de Mitigación Corporativa</th>
+                        <th>Fuerza Competitiva</th>
+                        <th>Fórmula de Cálculo (Suma / Factores)</th>
+                        <th>Grado de Amenaza Real</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>Amenaza de Nuevos Entrantes</strong></td>
-                        <td><span class="table-badge tb-2">Nivel 2 (Baja)</span></td>
-                        <td>Bloqueo de canales mediante capilaridad logística y fidelización de instaladores técnicos.</td>
+                        <td>(2 + 1 + 4) / 3</td>
+                        <td><span class="final-badge n-2">2.33 (Baja)</span></td>
                     </tr>
                     <tr>
                         <td><strong>Amenaza de Productos Sustitutos</strong></td>
-                        <td><span class="table-badge tb-3">Nivel 3 (Moderada)</span></td>
-                        <td>Migración e integración nativa hacia ecosistemas en la nube (Intelbras Cloud) e IoT.</td>
+                        <td>(4 + 3 + 2) / 3</td>
+                        <td><span class="final-badge n-3">3.00 (Moderada)</span></td>
                     </tr>
                     <tr>
                         <td><strong>Rivalidad entre Competidores</strong></td>
-                        <td><span class="table-badge tb-5">Nivel 5 (Muy Alta)</span></td>
-                        <td>Diferenciación crítica basada en garantías locales efectivas, presencia física y soporte postventa premium.</td>
+                        <td>(5 + 4 + 5) / 3</td>
+                        <td><span class="final-badge n-5">4.66 (Muy Alta)</span></td>
                     </tr>
                     <tr>
                         <td><strong>Poder de Negociación de Proveedores</strong></td>
-                        <td><span class="table-badge tb-4">Nivel 4 (Alta)</span></td>
-                        <td>Planificación avanzada de compras por volumen masivo y mantenimiento preventivo de inventarios de seguridad.</td>
+                        <td>(5 + 4 + 3) / 3</td>
+                        <td><span class="final-badge n-4">4.00 (Alta)</span></td>
                     </tr>
                     <tr>
                         <td><strong>Poder de Negociación de Clientes</strong></td>
-                        <td><span class="table-badge tb-3">Nivel 3 (Moderada)</span></td>
-                        <td>Capacitación técnica corporativa a través del Itec para crear dependencia técnica y de marca hacia el instalador.</td>
+                        <td>(4 + 4 + 2) / 3</td>
+                        <td><span class="final-badge n-3">3.33 (Moderada)</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -453,7 +444,7 @@
     </div>
 
     <footer>
-        <p>© 2026 — Análisis de Estrategia Corporativa. Estructura basada en el Modelo de Competitividad de M. Porter.</p>
+        <p>© 2026 — Modelo Porter Cuantitativo. Formulación estratégica de precisión para Intelbras S.A.</p>
     </footer>
 
 </body>
