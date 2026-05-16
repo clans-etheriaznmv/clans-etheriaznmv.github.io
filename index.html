@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análisis Cuantitativo de Porter — Intelbras</title>
+    <title>Análisis Estratégico Cuantitativo — Intelbras</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
             --gris-fondo: #f7fafc;
             --blanco: #ffffff;
             
-            /* Colores de escala 1 a 5 */
+            /* Colores de escala Porter 1 a 5 */
             --color-1: #4299e1; /* Muy Baja */
             --color-2: #48bb78; /* Baja */
             --color-3: #ecc94b; /* Moderada */
@@ -62,6 +62,48 @@
             padding: 3rem 2rem;
         }
 
+        /* Sección de Información de la Empresa (Recuperada) */
+        .intro-section {
+            background: var(--blanco);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 4rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .intro-section h2 {
+            color: var(--verde-intelbras);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro-section > p {
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            color: var(--gris-texto);
+        }
+
+        .grid-intro {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .intro-card {
+            background: var(--gris-fondo);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--verde-intelbras);
+        }
+
+        .intro-card h3 {
+            color: var(--gris-oscuro);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Estructura de las Fuerzas */
         .porter-title {
             text-align: center;
             font-size: 2rem;
@@ -114,7 +156,6 @@
             max-width: 70%;
         }
 
-        /* Badge del Promedio de la Fuerza */
         .force-total-badge {
             background-color: var(--gris-oscuro);
             color: white;
@@ -133,7 +174,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Factores determinantes (Desglose) */
         .factor-item {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -156,7 +196,6 @@
             margin-bottom: 0.25rem;
         }
 
-        /* Badge numérico individual de los factores */
         .factor-num {
             width: 36px;
             height: 36px;
@@ -171,20 +210,20 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* Clases dinámicas de color por nota */
         .n-1 { background-color: var(--color-1); }
         .n-2 { background-color: var(--color-2); }
         .n-3 { background-color: var(--color-3); color: #5a4308; }
         .n-4 { background-color: var(--color-4); }
         .n-5 { background-color: var(--color-5); }
 
-        /* Matriz de Cierre */
+        /* Matriz Final */
         .matrix-section {
             background: var(--blanco);
             padding: 3rem;
             border-radius: 12px;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
             overflow-x: auto;
+            border: 1px solid #e2e8f0;
         }
 
         .matrix-section h2 {
@@ -223,18 +262,49 @@
             font-weight: bold;
             font-size: 0.95rem;
         }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
+            background-color: var(--gris-oscuro);
+            margin-top: 5rem;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Análisis Cuantitativo de las 5 Fuerzas de Porter</h1>
-        <p>Modelo de Diagnóstico Basado en Promedios de Factores Determinantes — Intelbras S.A.</p>
+        <p>Estudio de Entorno Competitivo y Modelo de Diagnóstico Avanzado — Intelbras S.A.</p>
     </header>
 
     <div class="container">
 
-        <h2 class="porter-title">Evaluación de Factores y Ponderación</h2>
+        <!-- INFORMACIÓN DE LA EMPRESA (RECUPERADA Y OPTIMIZADA) -->
+        <section class="intro-section">
+            <h2>Contexto Industrial: ¿Quién es Intelbras?</h2>
+            <p>Intelbras es una compañía brasileña líder en tecnología con más de 45 años de historia en el mercado latinoamericano. Su modelo estratégico se basa en transformar hardware e infraestructura compleja en soluciones accesibles para el consumo masivo y corporativo a través de tres pilares fundamentales:</p>
+            
+            <div class="grid-intro">
+                <div class="intro-card">
+                    <h3>Origen y Alcance</h3>
+                    <p>Fundada en 1976 en Brasil. Cuenta con múltiples plantas de producción automatizada de manufactura avanzada y centros de distribución de alta capacidad regional.</p>
+                </div>
+                <div class="intro-card">
+                    <h3>Sectores Clave</h3>
+                    <p>Liderazgo de mercado consolidado en seguridad electrónica (circuitos cerrados de televisión CCTV y alarmas), redes de comunicación y soluciones de energía solar fotovoltaica.</p>
+                </div>
+                <div class="intro-card">
+                    <h3>Ecosistema de Canal</h3>
+                    <p>Su mayor blindaje y ventaja competitiva: una densa red de distribución local integrada por miles de técnicos instaladores independientes y empresas de integración corporativa fidelizadas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAS 5 FUERZAS CON DESGLOSE Y MATEMÁTICA -->
+        <h2 class="porter-title">Evaluación de Fuerzas y Factores Determinantes</h2>
         
         <div class="forces-grid">
             
@@ -250,21 +320,21 @@
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Economías de escala</strong>
-                        Alta escala de producción de Intelbras que deprime costos base.
+                        La enorme capacidad de manufactura e importación directa de Intelbras reduce los costos unitarios a niveles insuperables para competidores pequeños.
                     </div>
                     <div class="factor-num n-2">2</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Barreras de acceso a canales</strong>
-                        Dificultad extrema para captar la red existente de instaladores técnicos.
+                        Dificultad extrema para que una nueva marca capte la red existente de técnicos instaladores que ya confían en el portafolio actual.
                     </div>
                     <div class="factor-num n-1">1</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Requisitos de capital y normativas</strong>
-                        Inversión alta en desarrollo y homologaciones legales (ej. Anatel).
+                        Inversiones elevadas en desarrollo y estrictas homologaciones legales de telecomunicaciones y seguridad frente a entes locales.
                     </div>
                     <div class="factor-num n-4">4</div>
                 </div>
@@ -282,21 +352,21 @@
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Disponibilidad de sustitutos DIY</strong>
-                        Auge de ecosistemas domésticos auto-instalables (Google/Alexa).
+                        Auge de ecosistemas domésticos inteligentes auto-instalables (como dispositivos genéricos de Tuya, Alexa o Google) que no requieren técnicos.
                     </div>
                     <div class="factor-num n-4">4</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Costo de cambio del comprador</strong>
-                        Fácil migración tecnológica para hogares, costosa para corporaciones.
+                        Migración tecnológica rápida y sin fricciones en hogares, pero sustancialmente compleja y costosa en redes corporativas.
                     </div>
                     <div class="factor-num n-3">3</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Rendimiento relativo del sustituto</strong>
-                        Soluciones 100% de software que canibalizan hardware tradicional.
+                        Soluciones basadas en la nube y aplicaciones móviles ágiles que reemplazan eficazmente a centrales e infraestructuras físicas clásicas.
                     </div>
                     <div class="factor-num n-2">2</div>
                 </div>
@@ -314,21 +384,21 @@
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Poder de competidores globales</strong>
-                        Guerra directa con monstruos chinos de escala masiva (Hikvision/Dahua).
+                        Guerra comercial directa con monstruos asiáticos de escala masiva (como Hikvision y Dahua) que marcan los precios base del sector.
                     </div>
                     <div class="factor-num n-5">5</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Crecimiento y saturación del sector</strong>
-                        Mercado maduro con agresividad comercial alta en gama baja.
+                        Mercado maduro con alta agresividad en los márgenes de ganancia para las líneas de productos estándar expuestas al retail.
                     </div>
                     <div class="factor-num n-4">4</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Barreras de salida del mercado</strong>
-                        Gran infraestructura de plantas físicas que amarra la permanencia.
+                        Estructuras físicas de producción pesada e inventarios que obligan a las marcas líderes a defender su cuota a cualquier costo.
                     </div>
                     <div class="factor-num n-5">5</div>
                 </div>
@@ -346,21 +416,21 @@
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Concentración de insumos críticos</strong>
-                        Dependencia mundial de fundiciones de semiconductores en Asia.
+                        Dependencia mundial de las fundiciones asiáticas de silicio para el abastecimiento de semiconductores, microchips y sensores.
                     </div>
                     <div class="factor-num n-5">5</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Costos de cambio de proveedor</strong>
-                        Complejo rediseñar placas y circuitos para cambiar de componentes.
+                        Alto impacto técnico; cambiar de proveedor de chips exige rediseñar placas electrónicas, circuitos fijos y firmwares de los equipos.
                     </div>
                     <div class="factor-num n-4">4</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Volumen de compra de Intelbras</strong>
-                        Su escala mitiga la presión al comprar lotes masivos en la región.
+                        Al ser el comprador de mayor volumen en la región, su escala mitiga la presión permitiéndole negociar prioridades de stock.
                     </div>
                     <div class="factor-num n-3">3</div>
                 </div>
@@ -378,21 +448,21 @@
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Concentración de canales (B2B)</strong>
-                        Los distribuidores clave concentran volúmenes altos y exigen margen.
+                        Los grandes distribuidores concentran compras masivas y exigen condiciones comerciales agresivas o exclusividades.
                     </div>
                     <div class="factor-num n-4">4</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Sensibilidad del cliente al precio</strong>
-                        Compradores finales buscan economía en líneas estándar de routers/CCTV.
+                        Los compradores finales buscan la máxima economía en gamas de entrada (routers comunes y seguridad residencial básica).
                     </div>
                     <div class="factor-num n-4">4</div>
                 </div>
                 <div class="factor-item">
                     <div class="factor-text">
                         <strong>Diferenciación e intangibles</strong>
-                        Capacitaciones gratuitas e identidad local reducen la fuga del técnico.
+                        Las certificaciones técnicas gratuitas (Itec) e identidad local reducen drásticamente el riesgo de fuga del instalador.
                     </div>
                     <div class="factor-num n-2">2</div>
                 </div>
@@ -400,14 +470,14 @@
 
         </div>
 
-        <!-- TABLA RESUMEN / MATRIZ CON MEDIAS -->
+        <!-- MATRIZ RESUMEN FINAL CON MEDIAS -->
         <section class="matrix-section">
-            <h2>Matriz de Resultados Consolidados (Cálculo Final)</h2>
+            <h2>Matriz de Resultados Consolidados (Cálculo Final de Intensidad)</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Fuerza Competitiva</th>
-                        <th>Fórmula de Cálculo (Suma / Factores)</th>
+                        <th>Fórmula de Cálculo (Suma de Factores / 3)</th>
                         <th>Grado de Amenaza Real</th>
                     </tr>
                 </thead>
@@ -444,7 +514,7 @@
     </div>
 
     <footer>
-        <p>© 2026 — Modelo Porter Cuantitativo. Formulación estratégica de precisión para Intelbras S.A.</p>
+        <p>© 2026 — Modelo Porter Cuantitativo Avanzado. Información corporativa y estructural de Intelbras S.A.</p>
     </footer>
 
 </body>
