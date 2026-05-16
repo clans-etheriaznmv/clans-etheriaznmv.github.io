@@ -3,321 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light only">
-    <title>Actualizaciones - Etheria</title>
+    <title>Análisis de Porter — Intelbras S.A.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { color-scheme: light only !important; }
-        
+        :root {
+            --verde-intelbras: #00A859;
+            --verde-oscuro: #008744;
+            --gris-oscuro: #2c3e50;
+            --gris-texto: #4a5568;
+            --gris-fondo: #f7fafc;
+            --blanco: #ffffff;
+            
+            /* Colores de Alerta Porter */
+            --badge-bajo: #48bb78;
+            --badge-moderado: #ecc94b;
+            --badge-alto: #f56565;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f0f2f5 !important;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            forced-color-adjust: none !important;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--gris-texto);
+            line-height: 1.6;
         }
 
-        .hero-link {
-            width: 100%;
-            text-decoration: none;
-            display: block;
-        }
-
-        .hero-network {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('placeholder2.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 50px;
-            font-weight: 900;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            margin-bottom: 40px;
-            transition: opacity 0.3s ease;
-        }
-
-        .posts-container {
-            width: 90%;
-            max-width: 1100px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding-bottom: 50px;
-        }
-
-        .post-card {
-            background: white !important;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .post-image {
-            width: 100%;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            border-bottom: 4px solid #5865f2;
-        }
-
-        .post-content {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .post-title {
-            font-size: 18px;
-            font-weight: 800;
-            margin: 0 0 10px 0;
-            color: #1a2b49 !important;
-            align-self: flex-start;
-        }
-
-        .text-wrapper {
-            position: relative;
-            max-height: 4.5em;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            width: 100%;
-        }
-
-        .post-desc {
-            font-size: 14px;
-            color: #6b7280 !important;
-            line-height: 1.5;
-            margin: 0;
-            text-align: justify;
-        }
-
-        .blur-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: linear-gradient(transparent, white);
-            backdrop-filter: blur(1px);
-            transition: opacity 0.3s ease;
-        }
-
-        .toggle-input { display: none; }
-
-        .expand-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 40px;
-            background-color: #7c3aed;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: background-color 0.3s ease;
-        }
-
-        .expand-btn:hover {
-            background-color: #6d28d9;
-        }
-
-        .expand-btn::before {
-            content: '>';
-            color: white;
-            font-weight: bold;
-            font-size: 16px;
-            transform: rotate(90deg);
-            display: inline-block;
-        }
-
-        .toggle-input:checked ~ .text-wrapper {
-            max-height: 1000px;
-        }
-
-        .toggle-input:checked ~ .text-wrapper .blur-overlay {
-            opacity: 0;
-        }
-
-        .toggle-input:checked ~ .expand-btn::before {
-            transform: rotate(-90deg);
-        }
-
-        .toggle-input:checked ~ .expand-btn {
-            transform: none;
-        }
-
-        .ver-mas {
-            display: none;
-            margin-top: 15px;
-            color: #5865f2;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 13px;
-            text-transform: uppercase;
+        /* Hero / Header Section */
+        header {
+            background: linear-gradient(135deg, var(--gris-oscuro) 0%, #1a202c 100%);
+            color: var(--blanco);
+            padding: 5rem 2rem;
             text-align: center;
+            position: relative;
+            border-bottom: 5px solid var(--verde-intelbras);
         }
 
-        .toggle-input:checked ~ .ver-mas {
-            display: inline-block;
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
         }
 
-        .coming-soon { cursor: not-allowed; }
-        .coming-soon::after {
-            content: "PRÓXIMAMENTE";
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(88, 101, 242, 0.9);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 900;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 5;
-        }
-        .coming-soon:hover::after { opacity: 1; }
-
-        .footer {
-            width: 100%;
-            background-color: #5865f2; 
-            background-image: linear-gradient(135deg, #5865f2 0%, #7c3aed 100%);
-            padding: 40px 0;
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            border-top: 4px solid rgba(255, 255, 255, 0.1);
+        header p {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .footer-content {
-            width: 90%;
-            max-width: 700px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Sección Introducción */
+        .intro-section {
+            background: var(--blanco);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 4rem;
+        }
+
+        .intro-section h2 {
+            color: var(--verde-intelbras);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-intro {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .intro-card {
+            background: var(--gris-fondo);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--verde-intelbras);
+        }
+
+        .intro-card h3 {
+            color: var(--gris-oscuro);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Sección Porter (Tarjetas de las 5 Fuerzas) */
+        .porter-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--gris-oscuro);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .porter-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--verde-intelbras);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .forces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .force-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            justify-content: space-between;
         }
 
-        .copyright {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.9) !important;
-            font-weight: 600;
-            margin: 0;
+        .force-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .force-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .force-card h3 {
+            color: var(--gris-oscuro);
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Badges de Amenaza */
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--blanco);
             letter-spacing: 0.5px;
         }
 
-        .social-links {
-            display: flex;
-            gap: 25px;
-            align-items: center;
+        .badge.baja { background-color: var(--badge-bajo); }
+        .badge.moderada { background-color: var(--badge-moderado); color: #744210; }
+        .badge.alto { background-color: var(--badge-alto); }
+
+        .force-body ul {
+            list-style-type: none;
         }
 
-        .social-icon img {
-            width: 28px;
-            height: 28px;
-            filter: brightness(0) invert(1);
-            opacity: 0.8;
-            transition: all 0.3s ease;
+        .force-body li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
-        .social-icon img:hover {
-            opacity: 1;
-            transform: translateY(-5px);
+        .force-body li::before {
+            content: "•";
+            color: var(--verde-intelbras);
+            font-weight: bold;
+            font-size: 1.3rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Tabla de Matriz de Cierre */
+        .matrix-section {
+            background: var(--blanco);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        .matrix-section h2 {
+            color: var(--gris-oscuro);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--verde-intelbras);
+            color: var(--blanco);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--gris-fondo);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
+            background-color: var(--gris-oscuro);
+            margin-top: 5rem;
+        }
+
+        /* Responsividad para pantallas pequeñas */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .forces-grid { grid-template-columns: 1fr; }
+            .matrix-section { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <a href="" class="hero-link">
-        <header class="hero-network">
-           
-        </header>
-    </a>
+    <header>
+        <h1>Análisis de las 5 Fuerzas de Porter</h1>
+        <p>Estudio de Posicionamiento Estratégico y Entorno Competitivo para Intelbras S.A.</p>
+    </header>
 
-    <main class="posts-container">
-        <div class="post-card">
-            <div class="post-image" style="background-image: url('placeholder3.jpg');"></div>
-            <div class="post-content">
-                <h3 class="post-title">#001 | ¡SISTEMA DE CLANES, GUERRAS & MÁS!</h3>
-                
-                <input type="checkbox" id="check-clanes" class="toggle-input">
-                
-                <div class="text-wrapper">
-                    <p class="post-desc">
-                        ¡Saludos, exploradores! Les presentamos el nuevo sistema de clanes, que a pesar de iniciar sólo como una idea en desarrollo, esperamos que pueda utilizarse para realizar eventos y dinámicas divertidas junto a todos ustedes. Esta actualización trae consigo la introducción de un sistema formal para la creación de grupos (llámese clanes) que podrán competir cada cierto tiempo para obtener recompensas exclusivas tanto dentro del Servidor, como cosméticos para la misma aplicación.
-                    </p>
-                    <div class="blur-overlay"></div>
+    <div class="container">
+        
+        <!-- INTRODUCCIÓN -->
+        <section class="intro-section">
+            <h2>Contexto Industrial: ¿Quién es Intelbras?</h2>
+            <p>Intelbras es un gigante tecnológico brasileño con más de 45 años de historia. Su éxito radica en transformar hardware complejo en soluciones accesibles para el mercado latinoamericano mediante tres verticales clave:</p>
+            
+            <div class="grid-intro">
+                <div class="intro-card">
+                    <h3>Origen y Alcance</h3>
+                    <p>Fundada en 1976 en Brasil. Hoy cuenta con múltiples plantas industriales de manufactura avanzada y distribución en toda la región.</p>
                 </div>
-
-                <label for="check-clanes" class="expand-btn"></label>
-
-                <a href="clans.html" class="ver-mas">VER MÁS DETALLES</a>
+                <div class="intro-card">
+                    <h3>Sectores Clave</h3>
+                    <p>Líder robusto en seguridad electrónica (CCTV/alarmas), redes de comunicación y un fuerte empuje hacia la energía solar fotovoltaica.</p>
+                </div>
+                <div class="intro-card">
+                    <h3>Ecosistema de Canal</h3>
+                    <p>Su ventaja competitiva no es solo el producto, sino su inmensa red de técnicos, instaladores e integradores corporativos fidelizados.</p>
+                </div>
             </div>
+        </section>
+
+        <!-- LAS 5 FUERZAS -->
+        <h2 class="porter-title">Despliegue de las 5 Fuerzas</h2>
+        
+        <div class="forces-grid">
+            
+            <!-- FUERZA 1 -->
+            <div class="force-card">
+                <div class="force-header">
+                    <h3>1. Amenaza de Nuevos Entrantes</h3>
+                    <span class="badge baja">Baja a Moderada</span>
+                </div>
+                <div class="force-body">
+                    <ul>
+                        <li><strong>Economías de Escala:</strong> La altísima capacidad productiva e importadora de Intelbras en la región reduce los costos unitarios a niveles inalcanzables para nuevos competidores independientes.</li>
+                        <li><strong>Barreras de Canal:</strong> Los clientes finales confían en los instaladores de confianza; blindar y educar este ecosistema de técnicos locales es la barrera más fuerte de Intelbras.</li>
+                        <li><strong>Homologaciones Legales:</strong> Las estrictas regulaciones y normativas locales de telecomunicaciones y equipos de seguridad (ej. Anatel) actúan como un filtro inmediato contra actores improvisados.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FUERZA 2 -->
+            <div class="force-card">
+                <div class="force-header">
+                    <h3>2. Amenaza de Productos Sustitutos</h3>
+                    <span class="badge moderada">Moderada</span>
+                </div>
+                <div class="force-body">
+                    <ul>
+                        <li><strong>Soluciones Smart Home DIY:</strong> El crecimiento masivo de plataformas globales de hogar inteligente (Alexa, Google, Tuya) permite al consumidor común comprar e instalar equipos genéricos sin un integrador profesional.</li>
+                        <li><strong>Desmaterialización por Software:</strong> Softwares basados 100% en la nube y aplicaciones móviles ágiles están reemplazando centrales físicas tradicionales y cableados complejos.</li>
+                        <li><strong>Asimetría Corporativa:</strong> Aunque el sector residencial cambia de tecnologías fácilmente (costo de cambio bajo), el sector industrial y corporativo mantiene hardware tradicional por temas de robustez y cumplimiento normativo.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FUERZA 3 -->
+            <div class="force-card">
+                <div class="force-header">
+                    <h3>3. Rivalidad de la Industria</h3>
+                    <span class="badge alto">Alta</span>
+                </div>
+                <div class="force-body">
+                    <ul>
+                        <li><strong>Gigantes de Costo Asiáticos:</strong> Competencia frontal y agresiva con firmas transnacionales como Hikvision y Dahua, quienes dictan los márgenes de precios a nivel mundial.</li>
+                        <li><strong>Comoditización del Segmento Bajo:</strong> Los routers de entrada y cámaras básicas sufren de una fuerte canibalización de márgenes y guerras de precios constantes en el retail.</li>
+                        <li><strong>Ventaja Local:</strong> Intelbras neutraliza la rivalidad ofreciendo una sólida red de soporte técnico nativo, garantías extendidas aplicables localmente y repuestos de entrega inmediata.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FUERZA 4 -->
+            <div class="force-card">
+                <div class="force-header">
+                    <h3>4. Poder de Proveedores</h3>
+                    <span class="badge moderada">Moderada a Alta</span>
+                </div>
+                <div class="force-body">
+                    <ul>
+                        <li><strong>Monopolio de Componentes:</strong> Dependencia crítica de procesadores, semiconductores y sensores de alta tecnología fabricados casi de forma exclusiva por fundiciones en Asia (Taiwán/China).</li>
+                        <li><strong>Sensibilidad Logística y Cambiaria:</strong> Los costos operativos y los inventarios están permanentemente expuestos a las disrupciones de las cadenas de suministro marítimas y a la volatilidad del dólar.</li>
+                        <li><strong>Poder por Escala Regional:</strong> Al ser el mayor comprador de componentes del sector en la región, Intelbras tiene una capacidad de negociación superior que le permite asegurar stock prioritario sobre sus rivales más pequeños.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FUERZA 5 -->
+            <div class="force-card">
+                <div class="force-header">
+                    <h3>5. Poder de Negociación de Clientes</h3>
+                    <span class="badge moderada">Moderada</span>
+                </div>
+                <div class="force-body">
+                    <ul>
+                        <li><strong>El Rol del Instalador B2B:</strong> El consumidor final rara vez elige la marca por criterios propios; delega la decisión en el técnico. Por ende, el verdadero cliente con poder es el canal de distribución.</li>
+                        <li><strong>Demanda de Márgenes Competitivos:</strong> Los distribuidores exigen que la marca sea rentable. Si Intelbras reduce significativamente sus incentivos, estos canales pueden virar sus recomendaciones hacia portafolios de la competencia.</li>
+                        <li><strong>Costos de Retención:</strong> Intelbras mitiga este poder ofreciendo capacitaciones masivas gratuitas especializadas (a través del Instituto Intelbras - Itec), creando un lazo de dependencia técnica con la marca.</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
 
-        <div class="post-card coming-soon">
-            <div class="post-image" style="background-image: url('placeholder4.jpg'); filter: grayscale(80%);"></div>
-            <div class="post-content">
-                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
-            </div>
-        </div>
+        <!-- TABLA RESUMEN / MATRIZ -->
+        <section class="matrix-section">
+            <h2>Matriz Resumen de Posicionamiento</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fuerza de Porter</th>
+                        <th>Intensidad de Riesgo</th>
+                        <th>Estrategia Corporativa de Mitigación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nuevos Entrantes</strong></td>
+                        <td><span class="badge baja">Baja a Moderada</span></td>
+                        <td>Apalancamiento en la capilaridad de su gigantesca red de instaladores locales autorizados.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Productos Sustitutos</strong></td>
+                        <td><span class="badge moderada">Moderada</span></td>
+                        <td>Evolución tecnológica constante hacia plataformas en la nube (Intelbras Cloud) y desarrollo IoT.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rivalidad Industrial</strong></td>
+                        <td><span class="badge alto">Alta</span></td>
+                        <td>Diferenciación basada en soporte técnico postventa local, cercanía física y centros logísticos locales.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Poder de Proveedores</strong></td>
+                        <td><span class="badge moderada">Moderada a Alta</span></td>
+                        <td>Contratos logísticos por volumen masivo y mantenimiento preventivo de stocks de seguridad.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Poder de Clientes</strong></td>
+                        <td><span class="badge moderada">Moderada</span></td>
+                        <td>Fidelización técnica continua e incentivos de canal a través del Itec (Instituto Intelbras).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-        <div class="post-card coming-soon">
-            <div class="post-image" style="background-image: url('background-image.png'); filter: grayscale(80%);"></div>
-            <div class="post-content">
-                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
-            </div>
-        </div>
+    </div>
 
-                <div class="post-card coming-soon">
-            <div class="post-image" style="background-image: url('placeholder7.png'); filter: grayscale(80%);"></div>
-            <div class="post-content">
-                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
-            </div>
-        </div>
-
-                <div class="post-card coming-soon">
-            <div class="post-image" style="background-image: url('placeholder6.png'); filter: grayscale(80%);"></div>
-            <div class="post-content">
-                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
-            </div>
-        </div>
-
-                <div class="post-card coming-soon">
-            <div class="post-image" style="background-image: url('placeholder8.jpg'); filter: grayscale(80%);"></div>
-            <div class="post-content">
-                <h3 class="post-title">PUBLICACIÓN NO DISPONIBLE</h3>
-                <p class="post-desc">Próximamente más novedades sobre el servidor.</p>
-            </div>
-        </div>
-
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://discord.gg/QWx89C38" target="_blank" class="social-icon">
-                    <img src="discor-logo.png" alt="Discord">
-                </a>
-                <a href="https://www.instagram.com/etheria.znmv/" target="_blank" class="social-icon">
-                    <img src="insta-logo.png" alt="Instagram">
-                </a>
-            </div>
-            <p class="copyright">© 2026 Etheria. Todos los derechos reservados.</p>
-        </div>
+    <footer>
+        <p>© 2026 — Análisis de Estrategia Corporativa. Desarrollado con estándares web modernos.</p>
     </footer>
+
 </body>
 </html>
