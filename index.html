@@ -3,15 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análisis PESTEL - Intelbras</title>
+    <title>Informe Estratégico Corporativo - Intelbras</title>
     <style>
         :root {
-            --primary-color: #00A859; /* Verde característico de Intelbras */
-            --secondary-color: #007A3E;
-            --dark-color: #2D3142;
-            --light-bg: #F4F7F6;
-            --card-bg: #FFFFFF;
-            --text-color: #333333;
+            --primary: #00A859;       /* Verde Intelbras */
+            --primary-dark: #007A3E;  /* Verde Oscuro institucional */
+            --dark: #1E2229;          /* Gris carbón profesional */
+            --slate: #4A5568;         /* Gris secundario para texto */
+            --light-bg: #F8FAFC;      /* Fondo limpio de página */
+            --card-bg: #FFFFFF;       /* Fondo de contenedores */
+            --border-color: #E2E8F0;  /* Bordes suaves */
+            
+            /* Colores temáticos para matrices */
+            --politico: #E74C3C;
+            --economico: #3498DB;
+            --social: #9B59B6;
+            --tecnologico: #F1C40F;
+            --ambiental: #2ECC71;
+            --legal: #34495E;
+            
+            --foda-f: #27AE60;
+            --foda-o: #2980B9;
+            --foda-d: #E67E22;
+            --foda-a: #C0392B;
+
+            /* Badges VRIO */
+            --vrio-sostenible-bg: #E6F4EA;
+            --vrio-sostenible-txt: #137333;
+            --vrio-temporal-bg: #FEF3D6;
+            --vrio-temporal-txt: #8F6B00;
+            --vrio-paridad-bg: #EDF2F7;
+            --vrio-paridad-txt: #4A5568;
         }
 
         * {
@@ -21,324 +43,573 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--light-bg);
-            color: var(--text-color);
-            padding-bottom: 60px;
+            color: var(--dark);
+            line-height: 1.6;
+            padding-bottom: 80px;
         }
 
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        /* Navegación Fija */
+        nav {
+            background-color: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
             color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #A0AEC0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* Encabezado */
+        header {
+            background: linear-gradient(135deg, #11141A 0%, #1E2229 100%);
+            color: white;
+            padding: 80px 20px;
             text-align: center;
-            padding: 50px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            border-bottom: 4px solid var(--primary);
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
 
         header p {
             font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
+            color: #A0AEC0;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 50px auto 0 auto;
             padding: 0 20px;
         }
 
-        .intro {
+        section {
             background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            border-left: 5px solid var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
         }
 
-        .intro h2 {
-            color: var(--dark-color);
-            margin-bottom: 15px;
-        }
-
-        .pestel-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .pestel-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-weight: 700;
             position: relative;
-            overflow: hidden;
-        }
-
-        .pestel-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-
-        .pestel-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-        }
-
-        .card-p::before { background-color: #E74C3C; } /* Político */
-        .card-e::before { background-color: #3498DB; } /* Económico */
-        .card-s::before { background-color: #9B59B6; } /* Social */
-        .card-t::before { background-color: #F1C40F; } /* Tecnológico */
-        .card-a::before { background-color: #2ECC71; } /* Ambiental */
-        .card-l::before { background-color: #34495E; } /* Legal */
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .card-letter {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-right: 15px;
-        }
-
-        .card-p .card-letter { color: #E74C3C; }
-        .card-e .card-letter { color: #3498DB; }
-        .card-s .card-letter { color: #9B59B6; }
-        .card-t .card-letter { color: #F1C40F; }
-        .card-a .card-letter { color: #2ECC71; }
-        .card-l .card-letter { color: #34495E; }
-
-        .pestel-card h3 {
-            font-size: 1.4rem;
-            color: var(--dark-color);
-        }
-
-        .pestel-card ul {
-            list-style-type: none;
-        }
-
-        .pestel-card li {
-            margin-bottom: 12px;
-            position: relative;
-            padding-left: 20px;
-            font-size: 0.95rem;
-        }
-
-        .pestel-card li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .card-p li::before { color: #E74C3C; }
-        .card-e li::before { color: #3498DB; }
-        .card-s li::before { color: #9B59B6; }
-        .card-t li::before { color: #F1C40F; }
-        .card-a li::before { color: #2ECC71; }
-        .card-l li::before { color: #34495E; }
-
-        .pestel-card strong {
-            color: var(--dark-color);
-        }
-
-        .summary {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 35px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .summary h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
             padding-bottom: 10px;
         }
 
-        .summary-columns {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
         }
 
-        .summary-box h3 {
-            margin-bottom: 12px;
-            font-size: 1.2rem;
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--slate);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        p, li {
+            color: var(--slate);
+            font-size: 1.05rem;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        /* Estructura PESTEL */
+        .pestel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .pestel-item {
+            background-color: #FAFAFA;
+            border-left: 4px solid var(--primary);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pestel-item.p { border-left-color: var(--politico); }
+        .pestel-item.e { border-left-color: var(--economico); }
+        .pestel-item.s { border-left-color: var(--social); }
+        .pestel-item.t { border-left-color: var(--tecnologico); }
+        .pestel-item.a { border-left-color: var(--ambiental); }
+        .pestel-item.l { border-left-color: var(--legal); }
+
+        .pestel-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        .pestel-item.p h4 { color: var(--politico); }
+        .pestel-item.e h4 { color: var(--economico); }
+        .pestel-item.s h4 { color: var(--social); }
+        .pestel-item.t h4 { color: var(--tecnologico); }
+        .pestel-item.a h4 { color: var(--ambiental); }
+        .pestel-item.l h4 { color: var(--legal); }
+
+        /* Las 5 Fuerzas */
+        .porter-container {
             display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .porter-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            background-color: #FCFDFE;
+        }
+
+        .porter-card h4 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .amenazas h3 { color: #E74C3C; }
-        .oportunidades h3 { color: #2ECC71; }
-
-        .summary-box ul {
-            list-style-position: inside;
-            padding-left: 5px;
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
-        .summary-box li {
+        .badge.alto { background-color: #FCE8E6; color: #A51D24; }
+        .badge.medio { background-color: #FEF3D6; color: #8F6B00; }
+        .badge.bajo { background-color: #E6F4EA; color: #137333; }
+
+        /* Matriz FODA */
+        .foda-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .foda-box {
+            padding: 25px;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .foda-box h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .foda-box ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .foda-box li {
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: 10px;
-            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .foda-f { background-color: var(--foda-f); }
+        .foda-o { background-color: var(--foda-o); }
+        .foda-d { background-color: var(--foda-d); }
+        .foda-a { background-color: var(--foda-a); }
+
+        /* Estilos Tabla e Info VRIO */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 25px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .vrio-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        .vrio-table th {
+            background-color: var(--dark);
+            color: white;
+            padding: 14px 16px;
+            font-weight: 600;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .vrio-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--slate);
+        }
+
+        .vrio-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vrio-table tr:nth-child(even) {
+            background-color: #F8FAFC;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .resource-title {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .vrio-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .vrio-sostenible { background-color: var(--vrio-sostenible-bg); color: var(--vrio-sostenible-txt); }
+        .vrio-temporal { background-color: var(--vrio-temporal-bg); color: var(--vrio-temporal-txt); }
+        .vrio-paridad { background-color: var(--vrio-paridad-bg); color: var(--vrio-paridad-txt); }
+
+        .vrio-guide {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .guide-box {
+            background-color: #FAFAFA;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-box strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        /* Conclusiones e Highlight */
+        .conclusion-highlight {
+            background-color: #F0FDF4;
+            border: 1px solid #DCFCE7;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .conclusion-highlight h4 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
         }
 
         footer {
             text-align: center;
-            margin-top: 40px;
+            padding: 40px 20px;
+            color: #718096;
             font-size: 0.9rem;
-            color: #777;
+            border-top: 1px solid var(--border-color);
+            background-color: white;
+        }
+
+        @media (max-width: 992px) {
+            .vrio-table { font-size: 0.85rem; }
+            .vrio-table th, .vrio-table td { padding: 10px; }
         }
 
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
-            .pestel-grid { grid-template-columns: 1fr; }
-            .summary-columns { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            section { padding: 20px; }
+            .pestel-grid, .foda-layout { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Intelbras <span>Análisis</span></div>
+            <ul class="nav-links">
+                <li><a href="#macroentorno">Macroentorno</a></li>
+                <li><a href="#pestel">PESTEL</a></li>
+                <li><a href="#microentorno">Microentorno (Porter)</a></li>
+                <li><a href="#foda">Matriz FODA</a></li>
+                <li><a href="#vrio">Análisis VRIO</a></li>
+                <li><a href="#estrategia">Conclusiones</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <header>
-        <h1>Análisis PESTEL de Intelbras</h1>
-        <p>Estudio del entorno macroeconómico para el líder en tecnología, seguridad electrónica y energía solar.</p>
+        <h1>Análisis de Entorno y Diagnóstico Estratégico</h1>
+        <p>Estudio analítico de la firma tecnológica Intelbras S.A. enfocado en la toma de decisiones operativas y de mercado.</p>
     </header>
 
     <div class="container">
-        
-        <section class="intro">
-            <h2>Contexto de la Empresa</h2>
-            <p>Intelbras es una compañía brasileña con un portafolio diversificado que abarca seguridad electrónica, redes de comunicación, domótica y soluciones de energía solar. Este análisis PESTEL examina las fuerzas externas que impactan su competitividad tanto en su mercado interno como en su expansión por toda América Latina.</p>
+
+        <section id="macroentorno">
+            <h2 class="section-title">1. Estudio del Entorno de la Empresa (Macroentorno)</h2>
+            <p class="section-subtitle">Alineación global y variables contextuales no controlables.</p>
+            <p>El análisis del macroentorno para Intelbras comprende todas aquellas fuerzas externas que, aunque escapan a su control directo, definen las reglas del juego. Al ser una compañía multilocal con sede central en Brasil y una red de distribución expansiva en América Latina, el entorno macro se define por una sincronía compleja entre las políticas proteccionistas regionales, la globalización de la cadena de componentes de hardware y la aceleración de los hábitos digitales de consumo.</p>
+            <p>Comprender este entorno le permite a la dirección anticiparse a cambios estructurales en la economía mundial, fluctuaciones drásticas en la disponibilidad de semiconductores y transformaciones en los marcos jurídicos sobre soberanía de datos y uso de infraestructuras críticas de red.</p>
         </section>
 
-        <section class="pestel-grid">
+        <section id="pestel">
+            <h2 class="section-title">2. Análisis PESTEL de la Empresa</h2>
+            <p class="section-subtitle">Evaluación detallada de las fuerzas contextuales.</p>
             
-            <!-- POLÍTICO -->
-            <div class="pestel-card card-p">
-                <div class="card-header">
-                    <span class="card-letter">P</span>
-                    <h3>Factores Políticos</h3>
+            <div class="pestel-grid">
+                <div class="pestel-item p">
+                    <h4>Político</h4>
+                    <p>Intelbras opera en un ecosistema fuertemente influenciado por regímenes fiscales especiales. En Brasil, se beneficia directamente de políticas de incentivo como la <em>Lei de Informática</em> y la <em>Lei do Bem</em>, las cuales ofrecen créditos impositivos sustanciales a las corporaciones que desarrollan manufactura nacional e invierten en I+D. No obstante, las tensiones geopolíticas entre potencias occidentales y China representan un desafío logístico para el abastecimiento de componentes.</p>
                 </div>
-                <ul>
-                    <li><strong>Incentivos Tecnológicos:</strong> Beneficios directos de leyes sectoriales en Brasil (como la <em>Lei do Bem</em> y la <em>Lei de Informática</em>) que otorgan exenciones fiscales a empresas que fabrican localmente e invierten en I+D.</li>
-                    <li><strong>Políticas Comerciales:</strong> Dependencia de la importación de semiconductores de Asia. Los aranceles y las tensiones geopolíticas globales impactan los costos de producción en sus plantas locales.</li>
-                    <li><strong>Estabilidad Regional:</strong> Los cambios políticos y normativos en los países destino de América Latina pueden alterar los flujos de exportación.</li>
-                </ul>
-            </div>
-
-            <!-- ECONÓMICO -->
-            <div class="pestel-card card-e">
-                <div class="card-header">
-                    <span class="card-letter">E</span>
-                    <h3>Factores Económicos</h3>
+                <div class="pestel-item e">
+                    <h4>Económico</h4>
+                    <p>El negocio está intrínsecamente ligado a la volatilidad cambiaria. Al importar una parte considerable de los insumos y semiconductores cotizados en dólares, las variaciones en las monedas locales afectan directamente sus márgenes brutos. Por otro lado, los periodos con tasas de interés elevadas restringen el acceso al crédito para grandes licitaciones corporativas (B2B), aunque se compensa con el auge de la energía solar.</p>
                 </div>
-                <ul>
-                    <li><strong>Fluctuación Cambiaria:</strong> La volatilidad del dólar frente al Real Brasileño y otras monedas locales afecta el costo de las materias primas importadas, presionando los márgenes de ganancia.</li>
-                    <li><strong>Tasas de Interés:</strong> Escenarios con altas tasas de interés reducen la capacidad crediticia de los consumidores y ralentizan la inversión corporativa (B2B) en grandes proyectos de infraestructura.</li>
-                    <li><strong>Mercado Solar:</strong> La inflación en las tarifas eléctricas residenciales y comerciales dinamiza con fuerza la demanda de soluciones de energía fotovoltaica.</li>
-                </ul>
-            </div>
-
-            <!-- SOCIAL -->
-            <div class="pestel-card card-s">
-                <div class="card-header">
-                    <span class="card-letter">S</span>
-                    <h3>Factores Sociales</h3>
+                <div class="pestel-item s">
+                    <h4>Social</h4>
+                    <p>La cultura latinoamericana de prevención frente a los índices de criminalidad urbana asegura una demanda orgánica y permanente para la división de seguridad de la firma. Asimismo, la consolidación estructural de modalidades de trabajo híbrido y remoto ha cambiado la perspectiva del consumidor, elevando las expectativas respecto a routers avanzados e infraestructura residencial.</p>
                 </div>
-                <ul>
-                    <li><strong>Cultura de Seguridad:</strong> La alta percepción de inseguridad ciudadana en la región genera una demanda estructural y constante de sistemas de videovigilancia (CCTV) y control de acceso.</li>
-                    <li><strong>Trabajo Híbrido:</strong> La consolidación del home office empuja el mercado hacia un consumo mayor de routers avanzados, repetidores y tecnologías de conectividad doméstica.</li>
-                    <li><strong>Conciencia Sostenible:</strong> Preferencia por marcas con soluciones de eficiencia energética y tecnologías limpias que disminuyan la huella ambiental.</li>
-                </ul>
-            </div>
-
-            <!-- TECNOLÓGICO -->
-            <div class="pestel-card card-t">
-                <div class="card-header">
-                    <span class="card-letter">T</span>
-                    <h3>Factores Tecnológicos</h3>
+                <div class="pestel-item t">
+                    <h4>Tecnológico</h4>
+                    <p>Nos encontramos ante un ecosistema en mutación acelerada. La masificación de la infraestructura 5G actúa como el gran catalizador para las soluciones de Internet de las Cosas (IoT) y la domótica. Paralelamente, el mercado exige la integración de Inteligencia Artificial nativa en el hardware (analítica perimetral y algoritmos de predicción de eventos).</p>
                 </div>
-                <ul>
-                    <li><strong>IoT y Redes 5G:</strong> La expansión de las redes de quinta generación impulsa el ecosistema de Internet de las Cosas (IoT), abriendo mercado para la domótica y las <em>Smart Cities</em>.</li>
-                    <li><strong>Inteligencia Artificial:</strong> Exigencia creciente de analíticas avanzadas de video mediante IA (reconocimiento de patentes, detección facial) integradas nativamente en el hardware.</li>
-                    <li><strong>Ciclos de Obsolescencia:</strong> El ritmo acelerado del sector tecnológico obliga a una constante reinversión en I+D para competir eficazmente con los gigantes asiáticos.</li>
-                </ul>
-            </div>
-
-            <!-- AMBIENTAL -->
-            <div class="pestel-card card-a">
-                <div class="card-header">
-                    <span class="card-letter">E</span>
-                    <h3>Factores Ambientales</h3>
+                <div class="pestel-item a">
+                    <h4>Ambiental</h4>
+                    <p>La transición hacia energías renovables representa un vector de crecimiento crucial para la división fotovoltaica de la compañía. En contraparte, Intelbras debe mitigar el impacto ambiental mediante políticas estrictas de gestión y disposición final de residuos electrónicos (e-waste), alineándose con las exigencias ESG.</p>
                 </div>
-                <ul>
-                    <li><strong>Transición Energética:</strong> El impulso mundial hacia la descarbonización favorece el crecimiento exponencial de su división de energía solar.</li>
-                    <li><strong>Gestión de Residuos (E-waste):</strong> Normativas estrictas de logística inversa para baterías, plásticos y componentes electrónicos obsoletos.</li>
-                    <li><strong>Producción Limpia:</strong> Presión por optimizar la eficiencia y reducir las emisiones de carbono en los centros de producción propios tras su salida a bolsa (IPO).</li>
-                </ul>
-            </div>
-
-            <!-- LEGAL -->
-            <div class="pestel-card card-l">
-                <div class="card-header">
-                    <span class="card-letter">L</span>
-                    <h3>Factores Legales</h3>
+                <div class="pestel-item l">
+                    <h4>Legal</h4>
+                    <p>Al procesar e ingresar volúmenes masivos de datos personales a través de su infraestructura cloud y sistemas de cámaras, el cumplimiento riguroso de normativas como la LGPD es crítico. Cualquier falla o brecha de seguridad informática expone a la marca a severas sanciones civiles y financieras.</p>
                 </div>
-                <ul>
-                    <li><strong>Protección de Datos:</strong> El almacenamiento en la nube y el software de vigilancia obligan a una adherencia absoluta a leyes como la LGPD en Brasil para evitar sanciones legales y financieras.</li>
-                    <li><strong>Certificaciones Técnicas:</strong> Obligación de homologar todos los equipos de telecomunicaciones ante reguladores oficiales como ANATEL.</li>
-                    <li><strong>Propiedad Intelectual:</strong> Exposición a litigios internacionales por patentes tecnológicas, software corporativo y regulaciones de contratos laborales fabriles.</li>
-                </ul>
             </div>
-
         </section>
 
-        <section class="summary">
-            <h2>Resumen Estratégico</h2>
-            <div class="summary-columns">
-                <div class="summary-box amenazas">
-                    <h3>⚠️ Principales Amenazas</h3>
+        <section id="microentorno">
+            <h2 class="section-title">3. Estudio del Microentorno (Las 5 Fuerzas de Porter)</h2>
+            <p class="section-subtitle">Dinámicas competitivas e interacción con el mercado.</p>
+            
+            <div class="porter-container">
+                <div class="porter-card">
+                    <h4>Rivalidad entre competidores existentes <span class="badge alto">Alta</span></h4>
+                    <p>El mercado de seguridad electrónica enfrenta una competencia feroz. Intelbras compite de manera frontal con gigantes asiáticos de escala global (como Hikvision y Dahua) que poseen estructuras de costos sumamente agresivas. La diferenciación radica en el soporte técnico capilar y su red de distribución.</p>
+                </div>
+                <div class="porter-card">
+                    <h4>Poder de negociación de los proveedores <span class="badge medio">Medio - Alto</span></h4>
+                    <p>Los proveedores de chipsets de silicio retienen un poder elevado debido a la alta concentración industrial en Asia. El volumen de compra consolidado de Intelbras a nivel regional actúa como un amortiguador clave.</p>
+                </div>
+                <div class="porter-card">
+                    <h4>Poder de negociación de los compradores <span class="badge medio">Medio</span></h4>
+                    <p>El costo de cambio para el cliente final es moderado. Sin embargo, Intelbras neutraliza esta fuerza fidelizando fuertemente al canal de distribución e instaladores a través de capacitación continua y certificaciones exclusivas.</p>
+                </div>
+                <div class="porter-card">
+                    <h4>Amenaza de nuevos competidores entrantes <span class="badge bajo">Baja - Media</span></h4>
+                    <p>Aunque la barrera para importar hardware básico es baja, consolidar una marca confiable, levantar una red logística integral y obtener certificaciones estatales (como ANATEL) limita el éxito de nuevos actores.</p>
+                </div>
+                <div class="porter-card">
+                    <h4>Amenaza de productos o servicios sustitutos <span class="badge medio">Media</span></h4>
+                    <p>La irrupción de ecosistemas globales de hogar inteligente basados 100% en nubes ajenas sustituye a los esquemas tradicionales de hardware dedicado, planteando retos de adaptación ágil.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="foda">
+            <h2 class="section-title">4. Diagnóstico Interno: Matriz FODA</h2>
+            <p class="section-subtitle">Cruce de variables organizacionales.</p>
+            
+            <div class="foda-layout">
+                <div class="foda-box foda-f">
+                    <h4>Fortalezas</h4>
                     <ul>
-                        <li>Fuerte volatilidad cambiaria de las monedas latinoamericanas frente al dólar.</li>
-                        <li>Competencia agresiva en costos de fabricantes asiáticos de gran volumen.</li>
-                        <li>Rápida obsolescencia de los estándares de hardware de red.</li>
+                        <li>Red logística de distribución y canales de soporte técnico altamente capilar.</li>
+                        <li>Fuerte reputación de marca asociada a la confiabilidad.</li>
+                        <li>Capacidad de manufactura local flexible con beneficios fiscales.</li>
                     </ul>
                 </div>
-                <div class="summary-box oportunidades">
-                    <h3>🚀 Principales Oportunidades</h3>
+                <div class="foda-box foda-o">
+                    <h4>Oportunidades</h4>
                     <ul>
-                        <li>Explotación de la vertical de energía solar respaldada por subsidios de transición verde.</li>
-                        <li>Integración de Inteligencia Artificial en soluciones de seguridad urbana e industrial.</li>
-                        <li>Desarrollo de dispositivos IoT nativos para el despliegue inminente del 5G y domótica.</li>
+                        <li>Crecimiento exponencial en la demanda de proyectos de energía solar.</li>
+                        <li>Integración de analítica predictiva de IA en hardware de video.</li>
+                        <li>Expansión del ecosistema de domótica bajo redes 5G.</li>
+                    </ul>
+                </div>
+                <div class="foda-box foda-d">
+                    <h4>Debilidades</h4>
+                    <ul>
+                        <li>Dependencia crítica del suministro de semiconductores de origen asiático.</li>
+                        <li>Exposición de márgenes netos a ciclos de devaluación cambiaria.</li>
+                        <li>Necesidad de reinversión intensiva en I+D frente a laboratorios globales.</li>
+                    </ul>
+                </div>
+                <div class="foda-box foda-a">
+                    <h4>Amenazas</h4>
+                    <ul>
+                        <li>Competencia agresiva en precios por parte de conglomerados de gran escala.</li>
+                        <li>Endurecimiento súbito de leyes sobre privacidad y biometría facial.</li>
+                        <li>Inestabilidad macroeconómica en los mercados de exportación clave.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <footer>
-            <p>Análisis Macroeconómico Automatizado - Entorno Empresarial Intelbras</p>
-        </footer>
+        <section id="vrio">
+            <h2 class="section-title">5. Marco de Análisis VRIO</h2>
+            <p class="section-subtitle">Evaluación de recursos y capacidades críticas internas de Intelbras.</p>
+            <p>El Marco VRIO determina si las ventajas internas observadas en el diagnóstico FODA se traducen en posiciones competitivas de largo plazo, analizando si los recursos clave son Valiosos, Raros, Inimitables y respaldados por la Organización.</p>
+            
+            <div class="table-responsive">
+                <table class="vrio-table">
+                    <thead>
+                        <tr>
+                            <th>Recurso / Capacidad Analizada</th>
+                            <th class="text-center">¿V?</th>
+                            <th class="text-center">¿R?</th>
+                            <th class="text-center">¿I?</th>
+                            <th class="text-center">¿O?</th>
+                            <th>Diagnóstico VRIO</th>
+                            <th>Implicancia Estratégica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="resource-title">Red Logística Capilar y Soporte Técnico Local</td>
+                            <td class="text-center">Sí</td>
+                            <td class="text-center">Sí</td>
+                            <td class="text-center">Sí</td>
+                            <td class="text-center">Sí</td>
+                            <td><span class="vrio-badge vrio-sostenible">Ventaja Competitiva Sostenible</span></td>
+                            <td>Es el núcleo defensivo frente a los gigantes asiáticos. Difícil de duplicar en el corto plazo por infraestructura y confianza de los canales.</td>
+                        </tr>
+                        <tr>
+                            <td class="resource-title">Manufactura Local Flexible e Incentivos Fiscales</td>
+                            <td class="text-center">Sí</td>
+                            <td class="text-center">Sí</td>
+                            <td class="text-center">No</td>
+                            <td class="text-center">Sí</td>
+                            <td><span class="vrio-badge vrio-temporal">Ventaja Competitiva Temporal</span></td>
+                            <td>Aporta un escudo de costos regional inmediato, pero está expuesto a variaciones en marcos regulatorios y subsidios gubernamentales.</td>
+                        </tr>
+                        <tr>
+                            <td class="resource-title">Sistemas de Gestión Interna y Control de Stock estándar</td>
+                            <td class="text-center">Sí</td>
+                            <td class="text-center">No</td>
+                            <td class="text-center">No</td>
+                            <td class="text-center">Sí</td>
+                            <td><span class="vrio-badge vrio-paridad">Paridad Competitiva</span></td>
+                            <td>Mantiene la compañía funcional y alineada con las demandas operativas básicas del mercado, pero no genera un rendimiento superior.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="vrio-guide">
+                <div class="guide-box">
+                    <strong>No Valioso:</strong> Desventaja competitiva. Genera costos.
+                </div>
+                <div class="guide-box">
+                    <strong>Valioso / No Raro:</strong> Paridad. Requisito mínimo de industria.
+                </div>
+                <div class="guide-box">
+                    <strong>Valioso / Raro / Imitable:</strong> Ventaja Temporal. Aprovechar ciclos rápidos.
+                </div>
+                <div class="guide-box">
+                    <strong>V / R / I / O:</strong> Ventaja Sostenible. Blindar y reinvertir.
+                </div>
+            </div>
+        </section>
+
+        <section id="estrategia">
+            <h2 class="section-title">6. Lineamientos y Conclusiones Estratégicas</h2>
+            <p class="section-subtitle">Síntesis integrada para la toma de decisiones.</p>
+            <p>La evaluación conjunta demuestra que la verdadera ventaja competitiva de Intelbras no reside exclusivamente en el hardware, sino en su tejido de relaciones, confianza posventa y blindaje logístico local.</p>
+            <div class="conclusion-highlight">
+                <h4>Recomendación de Enfoque Directivo:</h4>
+                <p>La organización debe apalancar los flujos estables de sus divisiones tradicionales (Seguridad y Redes) para financiar la penetración en Energía Solar e Infraestructura IoT. Robustecer la resiliencia de la cadena de suministro y mantener el enfoque de protección de datos garantizará el liderazgo a largo plazo.</p>
+            </div>
+        </section>
 
     </div>
+
+    <footer>
+        <p>© 2026 Informe de Inteligencia de Mercado & Dirección Estratégica. Intelbras S.A.</p>
+    </footer>
 
 </body>
 </html>
