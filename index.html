@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe Estratégico Corporativo - Intelbras</title>
+    <title>Informe Estratégico Corporativo Integrado - Intelbras S.A.</title>
     <style>
         :root {
             --primary: #00A859;       /* Verde Intelbras */
@@ -363,6 +363,73 @@
             color: var(--dark);
         }
 
+        /* Estilos Cadena de Valor (NUEVO PUNT0 6) */
+        .chain-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .chain-group {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        .chain-group.primary {
+            border-left: 5px solid var(--primary);
+            background-color: #FCFDFE;
+        }
+
+        .chain-group.support {
+            border-left: 5px solid var(--slate);
+            background-color: #FAFAFA;
+        }
+
+        .chain-group h4 {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .chain-group.primary h4 { color: var(--primary); }
+        .chain-group.support h4 { color: var(--slate); }
+
+        .chain-activity {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .chain-activity::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .chain-group.support .chain-activity::before {
+            color: var(--slate);
+        }
+
+        .activity-title {
+            font-weight: 700;
+            color: var(--dark);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .activity-desc {
+            font-size: 0.95rem;
+            color: var(--slate);
+        }
+
         /* Conclusiones e Highlight */
         .conclusion-highlight {
             background-color: #F0FDF4;
@@ -389,6 +456,7 @@
         @media (max-width: 992px) {
             .vrio-table { font-size: 0.85rem; }
             .vrio-table th, .vrio-table td { padding: 10px; }
+            .chain-layout { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -407,17 +475,18 @@
             <ul class="nav-links">
                 <li><a href="#macroentorno">Macroentorno</a></li>
                 <li><a href="#pestel">PESTEL</a></li>
-                <li><a href="#microentorno">Microentorno (Porter)</a></li>
-                <li><a href="#foda">Matriz FODA</a></li>
-                <li><a href="#vrio">Análisis VRIO</a></li>
+                <li><a href="#microentorno">Porter</a></li>
+                <li><a href="#foda">FODA</a></li>
+                <li><a href="#vrio">VRIO</a></li>
+                <li><a href="#cadenadevalor">Cadena de Valor</a></li>
                 <li><a href="#estrategia">Conclusiones</a></li>
             </ul>
         </div>
     </nav>
 
     <header>
-        <h1>Análisis de Entorno y Diagnóstico Estratégico</h1>
-        <p>Estudio analítico de la firma tecnológica Intelbras S.A. enfocado en la toma de decisiones operativas y de mercado.</p>
+        <h1>Análisis de Entorno y Diagnóstico Estratégico Integrado</h1>
+        <p>Estudio analítico de la firma tecnológica Intelbras S.A. enfocado en la toma de decisiones operativas y de mercado regional.</p>
     </header>
 
     <div class="container">
@@ -595,8 +664,64 @@
             </div>
         </section>
 
+        <!-- SECCIÓN 6: CADENA DE VALOR (NUEVO) -->
+        <section id="cadenadevalor">
+            <h2 class="section-title">6. Análisis de la Cadena de Valor</h2>
+            <p class="section-subtitle">Examen de las actividades primarias y de apoyo que generan el margen de la empresa.</p>
+            <p>La cadena de valor de Intelbras se caracteriza por un modelo de manufactura híbrido que optimiza la importación de alta tecnología con el ensamblaje regional, apalancado por una capilaridad de distribución única en América Latina.</p>
+
+            <div class="chain-layout">
+                
+                <!-- ACTIVIDADES PRIMARIAS -->
+                <div class="chain-group primary">
+                    <h4>Actividades Primarias</h4>
+                    <div class="chain-activity">
+                        <span class="activity-title">Logística Interna</span>
+                        <span class="activity-desc">Gestión optimizada de la importación de chipsets y componentes electrónicos desde Asia hacia los centros de distribución y plantas de Brasil. Control de stock crítico para manufactura.</span>
+                    </div>
+                    <div class="chain-activity">
+                        <span class="activity-title">Operaciones</span>
+                        <span class="activity-desc">Fabricación y ensamblaje de hardware en plantas propias (como Palhoça y Manaus), aprovechando incentivos fiscales locales para productos finales de seguridad y redes.</span>
+                    </div>
+                    <div class="chain-activity">
+                        <span class="activity-title">Logística Externa</span>
+                        <span class="activity-desc">Distribución capilar a través de una red masiva de revendedores autorizados y grandes minoristas en Latam, asegurando disponibilidad en zonas rurales y urbanas.</span>
+                    </div>
+                    <div class="chain-activity">
+                        <span class="activity-title">Marketing y Ventas</span>
+                        <span class="activity-desc">Estrategia de marca basada en la confiabilidad y soporte local. Fidelización agresiva del "canal de instalación" mediante capacitación y certificaciones.</span>
+                    </div>
+                    <div class="chain-activity">
+                        <span class="activity-title">Servicio Posventa</span>
+                        <span class="activity-desc">Soporte técnico local de excelencia, garantías extendidas y servicios cloud propios, diferenciándose de competidores asiáticos de bajo costo.</span>
+                    </div>
+                </div>
+
+                <!-- ACTIVIDADES DE APOYO -->
+                <div class="chain-group support">
+                    <h4>Actividades de Apoyo</h4>
+                    <div class="chain-activity">
+                        <span class="activity-title">Infraestructura de la Firma</span>
+                        <span class="activity-desc">Gestión financiera sólida tras IPO, cumplimiento normativo estricto y planificación estratégica multilocal para expansión regional.</span>
+                    </div>
+                    <div class="chain-activity">
+                        <span class="activity-title">Administración de RR.HH.</span>
+                        <span class="activity-desc">Capacitación continua tanto interna como de la red de instaladores externos (esencial para la adopción de nuevas tecnologías).</span>
+                    </div>
+                    <div class="chain-activity">
+                        <span class="activity-title">Desarrollo Tecnológico (I+D)</span>
+                        <span class="activity-desc">Inversión intensiva en la tropicalización de software, integración de IA en firmware de cámaras y desarrollo de soluciones IoT/5G.</span>
+                    </div>
+                    <div class="chain-activity">
+                        <span class="activity-title">Abastecimiento (Compras)</span>
+                        <span class="activity-desc">Negociación a gran escala con proveedores globales de silicio para mitigar los riesgos de la cadena de suministro y la volatilidad cambiaria.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="estrategia">
-            <h2 class="section-title">6. Lineamientos y Conclusiones Estratégicas</h2>
+            <h2 class="section-title">7. Lineamientos y Conclusiones Estratégicas</h2>
             <p class="section-subtitle">Síntesis integrada para la toma de decisiones.</p>
             <p>La evaluación conjunta demuestra que la verdadera ventaja competitiva de Intelbras no reside exclusivamente en el hardware, sino en su tejido de relaciones, confianza posventa y blindaje logístico local.</p>
             <div class="conclusion-highlight">
@@ -608,7 +733,7 @@
     </div>
 
     <footer>
-        <p>© 2026 Informe de Inteligencia de Mercado & Dirección Estratégica. Intelbras S.A.</p>
+        <p>© 2026 Informe de Inteligencia de Mercado & Dirección Estratégica. Intelbras S.A. Modelo Integrado PESTEL-Porter-FODA-VRIO-VC.</p>
     </footer>
 
 </body>
