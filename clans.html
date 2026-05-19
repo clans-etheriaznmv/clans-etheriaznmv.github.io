@@ -1,146 +1,40 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <title>Estudo do Microentorno da Empresa</title>
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-        
-        @page {
-            size: A4;
-            margin: 20mm 15mm;
-            background-color: #ffffff;
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            color: #333333;
-            line-height: 1.5;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            -webkit-print-color-adjust: exact;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 10px;
-        }
-
-        .header-section {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        h1 {
-            font-size: 24pt;
-            color: #000000;
-            margin: 0 0 10px 0;
-            font-weight: bold;
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Accent green underline under Microentorno */
-        .underline-accent {
-            border-bottom: 4px solid #00A859;
-            padding-bottom: 4px;
-        }
-
-        .subtitle {
-            font-size: 13pt;
-            color: #7A8B99;
-            font-weight: bold;
-            margin-top: 15px;
-            margin-bottom: 0;
-        }
-
-        .main-description {
-            font-size: 11pt;
-            color: #4A5568;
-            text-align: justify;
-            margin: 0 auto 40px auto;
-            max-width: 720px;
-            line-height: 1.6;
-        }
-
-        /* Table layout used to simulate a 3-column layout reliably in WeasyPrint */
-        .columns-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 15px 0;
-            margin-top: 20px;
-            page-break-inside: avoid;
-        }
-
-        .card-cell {
-            width: 33.333%;
-            vertical-align: top;
-            background-color: #F8FAFC;
-            border-left: 4px solid #00A859;
-            border-top: 1px solid #E2E8F0;
-            border-right: 1px solid #E2E8F0;
-            border-bottom: 1px solid #E2E8F0;
-            border-top-right-radius: 8px;
-            border-bottom-right-radius: 8px;
-            padding: 24px 18px;
-        }
-
-        .card-title {
-            font-size: 12pt;
-            color: #1A202C;
-            font-weight: bold;
-            margin: 0 0 12px 0;
-        }
-
-        .card-text {
-            font-size: 10pt;
-            color: #4A5568;
-            margin: 0;
-            line-height: 1.5;
-            text-align: left;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <div class="header-section">
-        <h1>Estudo do <span class="underline-accent">Microambiente</span> da Empresa</h1>
-        <div class="subtitle">Contexto da Empresa: Quem é a Intelbras?</div>
+<div class="microentorno-section" style="font-family: Arial, sans-serif; color: #333; max-width: 900px; margin: 0 auto; padding: 20px;">
+    
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 32px; font-weight: bold; color: #000; margin-bottom: 10px;">
+            Estudo do <span style="border-bottom: 4px solid #00A859; padding-bottom: 5px;">Microambiente</span> da Empresa
+        </h2>
+        <p style="font-size: 16px; color: #7A8B99; font-weight: bold; margin-top: 15px;">
+            Contexto da Empresa: Quem é a Intelbras?
+        </p>
     </div>
 
-    <p class="main-description">
+    <p style="font-size: 15px; color: #4A5568; text-align: center; line-height: 1.6; max-width: 750px; margin: 0 auto 40px auto;">
         A Intelbras é uma companhia brasileira líder em tecnologia com mais de 45 anos de história no mercado latino-americano. Seu modelo estratégico baseia-se em transformar hardware e infraestrutura complexa em soluções acessíveis para o consumo massivo e corporativo através de três pilares fundamentais para a empresa:
     </p>
 
-    <table class="columns-table">
-        <tr>
-            <td class="card-cell">
-                <div class="card-title">Origem e Alcance</div>
-                <div class="card-text">
-                    Fundada em 1976 no Brasil. Conta com múltiplas plantas de produção automatizada de manufatura avançada e centros de distribuição de alta capacidade regional.
-                </div>
-            </td>
-            <td class="card-cell">
-                <div class="card-title">Setores-Chave</div>
-                <div class="card-text">
-                    Liderança de mercado consolidada em segurança eletrônica (circuitos fechados de televisão CFTV e alarmes), redes de comunicação e soluções de energia solar fotovoltaica.
-                </div>
-            </td>
-            <td class="card-cell">
-                <div class="card-title">Ecossistema de Canal</div>
-                <div class="card-text">
-                    Sua maior blindagem e vantagem competitiva: uma densa rede de distribuição local integrada por milhares de técnicos instaladores independentes e empresas de integração corporativa fidelizadas.
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
+    <div style="display: flex; gap: 20px; justify-content: space-between; flex-wrap: wrap;">
+        
+        <div style="flex: 1; min-width: 250px; background-color: #F8FAFC; border-left: 4px solid #00A859; border-top: 1px solid #E2E8F0; border-right: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; border-radius: 0 8px 8px 0; padding: 20px; box-sizing: border-box;">
+            <h3 style="font-size: 16px; color: #1A202C; font-weight: bold; margin: 0 0 10px 0;">Origem e Alcance</h3>
+            <p style="font-size: 13px; color: #4A5568; line-height: 1.5; margin: 0; text-align: left;">
+                Fundada em 1976 no Brasil. Conta com múltiplas plantas de produção automatizada de manufatura avançada e centros de distribuição de alta capacidade regional.
+            </p>
+        </div>
 
-</body>
-</html>
+        <div style="flex: 1; min-width: 250px; background-color: #F8FAFC; border-left: 4px solid #00A859; border-top: 1px solid #E2E8F0; border-right: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; border-radius: 0 8px 8px 0; padding: 20px; box-sizing: border-box;">
+            <h3 style="font-size: 16px; color: #1A202C; font-weight: bold; margin: 0 0 10px 0;">Setores-Chave</h3>
+            <p style="font-size: 13px; color: #4A5568; line-height: 1.5; margin: 0; text-align: left;">
+                Liderança de mercado consolidada em segurança eletrônica (circuitos fechados de televisão CFTV e alarmes), redes de comunicação e soluções de energia solar fotovoltaica.
+            </p>
+        </div>
+
+        <div style="flex: 1; min-width: 250px; background-color: #F8FAFC; border-left: 4px solid #00A859; border-top: 1px solid #E2E8F0; border-right: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; border-radius: 0 8px 8px 0; padding: 20px; box-sizing: border-box;">
+            <h3 style="font-size: 16px; color: #1A202C; font-weight: bold; margin: 0 0 10px 0;">Ecossistema de Canal</h3>
+            <p style="font-size: 13px; color: #4A5568; line-height: 1.5; margin: 0; text-align: left;">
+                Sua maior blindagem e vantagem competitiva: uma densa rede de distribuição local integrada por milhares de técnicos instaladores independentes e empresas de integração corporativa fidelizadas.
+            </p>
+        </div>
+
+    </div>
+</div>
