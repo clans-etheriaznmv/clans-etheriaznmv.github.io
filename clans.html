@@ -1,40 +1,150 @@
-<div class="microentorno-section" style="font-family: Arial, sans-serif; color: #333; max-width: 900px; margin: 0 auto; padding: 20px;">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolución de Ejercicios de Microeconomía</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f6f9;
+        }
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h1 { margin: 0; font-size: 24px; }
+        h2 { color: #1e3a8a; border-bottom: 2px solid #1e3a8a; padding-bottom: 5px; margin-top: 35px; }
+        h3 { color: #2563eb; margin-top: 20px; }
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            text-align: center;
+        }
+        th { background-color: #e2e8f0; color: #1e3a8a; font-weight: bold; }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        .formula {
+            background-color: #f1f5f9;
+            border-left: 4px solid #2563eb;
+            padding: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .highlight { font-weight: bold; color: #b91c1c; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } table { display: block; overflow-x: auto; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Resolución de Ejercicios de Microeconomía</h1>
+    <p>Semestre: Otoño 2026 | Ingeniería en Control de Gestión</p>
+</header>
+
+<div class="section">
+    <h2>Bloque 1: Estudio de Mercado (Smart TV)</h2>
+    <p><strong>Funciones iniciales:</strong> Demanda: <em>q = 5.000 - 10p</em> | Oferta: <em>q = 5p</em></p>
     
-    <div style="text-align: center; margin-bottom: 30px;">
-        <h2 style="font-size: 32px; font-weight: bold; color: #000; margin-bottom: 10px;">
-            Estudo do <span style="border-bottom: 4px solid #00A859; padding-bottom: 5px;">Microambiente</span> da Empresa
-        </h2>
-        <p style="font-size: 16px; color: #7A8B99; font-weight: bold; margin-top: 15px;">
-            Contexto da Empresa: Quem é a Intelbras?
-        </p>
+    <h3>a) Precio y cantidad de equilibrio</h3>
+    <p>Igualamos cantidad ofertada y demandada (q<sub>o</sub> = q<sub>d</sub>):</p>
+    <div class="formula">5.000 - 10p = 5p &rArr; 5.000 = 15p &rArr; <strong>p* = 333,33</strong></div>
+    <p>Sustituyendo en la oferta: q* = 5 &middot; 333,33 = <span class="highlight">1.666,67 unidades</span></p>
+
+    <div class="grid">
+        <div>
+            <h3>b) Excedente del Consumidor (EC)</h3>
+            <p>Precio máximo (donde q=0): p<sub>max</sub> = 500</p>
+            <div class="formula">EC = [(500 - 333,33) &middot; 1.666,67] / 2</div>
+            <p><strong>EC = <span class="highlight">138.889,17</span></strong></p>
+        </div>
+        <div>
+            <h3>c) Excedente del Productor (EP)</h3>
+            <p>Precio mínimo (donde q=0): p<sub>min</sub> = 0</p>
+            <div class="formula">EP = [(333,33 - 0) &middot; 1.666,67] / 2</div>
+            <p><strong>EP = <span class="highlight">277.778,33</span></strong></p>
+        </div>
     </div>
 
-    <p style="font-size: 15px; color: #4A5568; text-align: center; line-height: 1.6; max-width: 750px; margin: 0 auto 40px auto;">
-        A Intelbras é uma companhia brasileira líder em tecnologia com mais de 45 anos de história no mercado latino-americano. Seu modelo estratégico baseia-se em transformar hardware e infraestrutura complexa em soluções acessíveis para o consumo massivo e corporativo através de três pilares fundamentais para a empresa:
+    <hr style="border: 0; border-top: 1px dashed #cbd5e1; margin: 20px 0;">
+    <h3>Escenario con Impuesto (La cantidad cae a q<sub>i</sub> = 500)</h3>
+    <p>Precios bajo el efecto del impuesto: 
+        <strong>p<sub>d</sub> (consumidor) = 450</strong> | 
+        <strong>p<sub>o</sub> (productor) = 100</strong>
     </p>
 
-    <div style="display: flex; gap: 20px; justify-content: space-between; flex-wrap: wrap;">
-        
-        <div style="flex: 1; min-width: 250px; background-color: #F8FAFC; border-left: 4px solid #00A859; border-top: 1px solid #E2E8F0; border-right: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; border-radius: 0 8px 8px 0; padding: 20px; box-sizing: border-box;">
-            <h3 style="font-size: 16px; color: #1A202C; font-weight: bold; margin: 0 0 10px 0;">Origem e Alcance</h3>
-            <p style="font-size: 13px; color: #4A5568; line-height: 1.5; margin: 0; text-align: left;">
-                Fundada em 1976 no Brasil. Conta com múltiplas plantas de produção automatizada de manufatura avançada e centros de distribuição de alta capacidade regional.
-            </p>
-        </div>
-
-        <div style="flex: 1; min-width: 250px; background-color: #F8FAFC; border-left: 4px solid #00A859; border-top: 1px solid #E2E8F0; border-right: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; border-radius: 0 8px 8px 0; padding: 20px; box-sizing: border-box;">
-            <h3 style="font-size: 16px; color: #1A202C; font-weight: bold; margin: 0 0 10px 0;">Setores-Chave</h3>
-            <p style="font-size: 13px; color: #4A5568; line-height: 1.5; margin: 0; text-align: left;">
-                Liderança de mercado consolidada em segurança eletrônica (circuitos fechados de televisão CFTV e alarmes), redes de comunicação e soluções de energia solar fotovoltaica.
-            </p>
-        </div>
-
-        <div style="flex: 1; min-width: 250px; background-color: #F8FAFC; border-left: 4px solid #00A859; border-top: 1px solid #E2E8F0; border-right: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; border-radius: 0 8px 8px 0; padding: 20px; box-sizing: border-box;">
-            <h3 style="font-size: 16px; color: #1A202C; font-weight: bold; margin: 0 0 10px 0;">Ecossistema de Canal</h3>
-            <p style="font-size: 13px; color: #4A5568; line-height: 1.5; margin: 0; text-align: left;">
-                Sua maior blindagem e vantagem competitiva: uma densa rede de distribuição local integrada por milhares de técnicos instaladores independentes e empresas de integração corporativa fidelizadas.
-            </p>
-        </div>
-
-    </div>
+    <ul>
+        <li><strong>d) Excedente del consumidor con impuesto:</strong><br>
+            EC<sub>i</sub> = [(500 - 450) &middot; 500] / 2 = <span class="highlight">12.500</span>
+        </li>
+        <li><strong>e) Excedente del productor con impuesto:</strong><br>
+            EP<sub>i</sub> = [(100 - 0) &middot; 500] / 2 = <span class="highlight">25.000</span>
+        </li>
+        <li><strong>f) Recaudación Fiscal:</strong><br>
+            Impuesto unitario (T) = 450 - 100 = 350. Recaudación = 350 &middot; 500 = <span class="highlight">175.000</span>
+        </li>
+        <li><strong>g) Pérdida de excedente del consumidor:</strong><br>
+            138.889,17 - 12.500 = <span class="highlight">126.389,17</span>
+        </li>
+        <li><strong>h) Pérdida de excedente del productor:</strong><br>
+            277.778,33 - 25.000 = <span class="highlight">252.778,33</span>
+        </li>
+        <li><strong>i) Pérdida de excedente total para la sociedad (PSN):</strong><br>
+            PSN = [ (450 - 100) &middot; (1.666,67 - 500) ] / 2 = <span class="highlight">204.167,50</span>
+        </li>
+    </ul>
 </div>
+
+<div class="section">
+    <h2>Bloque 2: Gerencia en Mercado Competitivo (Relojes)</h2>
+    <p><strong>Datos:</strong> CT = 200 + 2q<sup>2</sup> | CMg = 4q | CF = 200 | Precio (P) = 100</p>
+    
+    <h3>a) Nivel de producción óptimo</h3>
+    <p>Regla de maximización en competencia perfecta: P = CMg</p>
+    <div class="formula">100 = 4q &rArr; q = 100 / 4 &rArr; <strong>q = <span class="highlight">25 unidades</span></strong></div>
+
+    <h3>b) Nivel de utilidad</h3>
+    <ul>
+        <li>Ingreso Total (IT) = 100 &middot; 25 = 2.500</li>
+        <li>Costo Total (CT) = 200 + 2(25)<sup>2</sup> = 1.450</li>
+        <li>Utilidad (B) = 2.500 - 1.450 = <strong><span class="highlight">1.050 dólares</span></strong></li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Bloque 3: Ejercicios Variados de Competencia Perfecta</h2>
+    
+    <h3>Pregunta 1: Firma competitiva (P = 375)</h3>
+    <p>Funciones: CT = 1000 + 2,5q<sup>2</sup> | CMg = 5q</p>
+    <ul>
+        <li><strong>a) Producción óptima:</strong> 375 = 5q &rArr; <span class="highlight">q = 75</span></li>
+        <li><strong>b) Ingreso Total:</strong> 375 &middot; 75 = <span class="highlight">28.125</span></li>
+        <li><strong>c) Costo Total:</strong> 1000 + 2,5(75)<sup>2</sup> = <span class="highlight">15.062,5</span></li>
+        <li><strong>d) Utilidad:</strong> 28.125 - 15.062,5 = <span class="highlight">13.062,5</span></li>
+    </ul>
+
+    <h3>Pregunta 2: Análisis de pérdidas a corto plazo</h3>
+    <p><strong>Afirmación: VERDADERA.</strong> A corto plazo, una empresa competitiva puede decidir seguir produciendo aunque tenga pérdidas si el precio de mercado supera o iguala al Costo Variable Medio (<strong>P &ge; CVMe</strong>). Al operar en este tramo, la firma logra cubrir la totalidad de sus costos variables y le queda un rem
